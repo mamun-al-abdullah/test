@@ -1,1 +1,1 @@
-idd.innerHTML = "<b>wOw</b> great
+idd.innerHTML = "<b>wOw</b> great"
