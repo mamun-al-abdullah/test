@@ -1,1 +1,1 @@
-idd.innerHTML = "<b>wOw</b> great"
+idd.innerHTML = "ডা: মোহাম্মাদ আব্দুল্লাহ আল মামুন"
