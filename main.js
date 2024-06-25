@@ -1,0 +1,1 @@
+idd.innerHTML = "wow this is <b>bold</b> text"
