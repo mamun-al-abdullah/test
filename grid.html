@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+ <html lang="en">
+ <head>
+ <title>App</title>
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, user-scalable=no">
+ </head>
+ 
+ <body>
+ 
+<div cn>
+<div p1><img i1 src="https://picsum.photos/seed/picsum/1000/2000"></div>
+<div>2</div>
+<div>3</div>
+<div>4</div>
+<div>5</div>
+</div>
+
+<style>
+html, body{
+background : #eee;
+height : 95%;
+margin : 0
+}
+[cn]{
+display : grid;
+gap : 5px;
+height : 100%;
+grid-template-columns : repeat(3, 1fr);
+margin : 5px;
+}
+[cn]>*{
+position : relative
+}
+[cn] :nth-child(1){
+background : purple;
+grid-column : 1/3
+}
+[cn] :nth-child(2){
+background : darkgreen;
+grid-row : 1/3;
+grid-column : 3/4
+}
+[cn] :nth-child(3){
+background : teal;
+grid-row : 2/4;
+}
+[cn] :nth-child(4){
+background : rebeccapurple;
+}
+[cn] :nth-child(5){
+background : tomato;
+grid-column : 2/4
+}
+
+[i1]{
+position : absolute;
+margin : auto;
+height : 100%;
+width : 100%;
+object-fit : contain;
+}
+
+
+</style>
+ 
+ </body>
+ </html>
