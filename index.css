@@ -1,3 +1,13 @@
 h1{
     color : teal
 }
+
+a{
+display : block;
+text-decoration : none;
+margin : 15px;
+background : #eee;
+padding : 15px;
+border-radius : 15px;
+color : #444
+}
