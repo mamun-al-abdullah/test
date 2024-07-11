@@ -6,141 +6,59 @@
  <meta name="viewport" content="width=device-width, user-scalable=no">
  </head>
  
-<body>
-<div id=prnt> 
-		<div id=scrl>scroll</div>
-</div>
-<div id=sec>
-		<div id=handle>drag</div>
+ <body>
+ 
+<div cn>
+<div p1><img i1 src="https://picsum.photos/seed/picsum/1000/2000"></div>
+<div>2</div>
+<div>3</div>
+<div>4</div>
+<div>5</div>
 </div>
 
 <style>
-html,body{
-overscroll-behavior:none;
-margin : 0;
-padding : 0;
+html, body{
+background : #eee;
+height : 95%;
+margin : 0
+}
+[cn]{
+display : grid;
+gap : 5px;
 height : 100%;
-position : relative;
-overflow : hidden;
+grid-template-columns : repeat(3, 1fr);
+margin : 5px;
 }
-#prnt{
-background : tomato;
-position : absolute;
-inset : 0;
-padding : 0;
-margin : 0;
-overflow : hidden auto;
+[cn]>*{
+position : relative
 }
-#scrl{
-background : repeating-linear-gradient(tomato, teal 10%, blue 20%, purple 30%, tomato 40%);
-height : 200%;
-padding-top : 200px;
-text-align : center;
+[cn] :nth-child(1){
+background : purple;
+grid-column : 1/3
 }
-#sec{
+[cn] :nth-child(2){
+background : darkgreen;
+grid-row : 1/3;
+grid-column : 3/4
+}
+[cn] :nth-child(3){
 background : teal;
-position : absolute;
-left :15px;
-right : 15px;
-top : 0;
-bottom : 30px;
-z-index : 2;
-border-radius : 0 0 30px 30px;
-overflow : hidden;
+grid-row : 2/4;
 }
-#handle{
-background : darkcyan;
-color : #fff;
-position : absolute ;
-bottom : 0;
-left : 0;
-right : 0;
-padding : 15px;
-text-align : center;
+[cn] :nth-child(4){
+background : rebeccapurple;
 }
+[cn] :nth-child(5){
+background : tomato;
+grid-column : 2/4
+}
+
+[i1]{
+margin : auto;
+}
+
+
 </style>
-
-<script>
-
-
-let py = 0
-let sy = 0
-let dy = 0
-const pos = {
-now : "low",
-dir : "up",
-top : -375,
-mid : -300,
-low : 0
-}
-
-
-window.onresize = resize
-resize()
-
-function resize(){
-var adjuster = 155
-var val = -window.innerHeight + adjuster
-pos.top = val - 75
-pos.mid = val
-if(pos.now == "mid"){
-py = pos.mid
-}else if (pos.now == "top"){
-py = pos.top
-}
-sec.style.transition = "transform 0ms"
-sec.style.transform = `translateY(${py}px)`
-}
-
-
-handle.ontouchstart = function (e){
-sy = (e.touches[0].clientY - py).toFixed(2)
-sec.style.transition = "transform 0ms"
-//c(sy)
-}
-
-
-
-
-handle.ontouchend = function (){
-sec.style.transition = "transform 300ms"
-if(pos.now == "low" && pos.dir == "up"){
-py = pos.mid
-pos.now = "mid"
-}else if(pos.now == "mid"){
-		if(pos.dir == "up"){
-				py = pos.top
-				pos.now = "top"
-		}else if(pos.dir == "down"){
-				py = pos.low
-				pos.now = "low"
-		}
-}else if(pos.now == "top" && pos.dir == "down"){
-py = pos.low
-pos.now = "low"
-}
-
-sec.style.transform = `translateY(${py}px)`
-//c("py : " + py)
-}
-
-
-
-
-
-handle.ontouchmove = function (e){
-const cy = e.touches[0].clientY
-dy = (cy - sy).toFixed(2)
-pos.dir = py-dy > 0? "up" : "down"
-if(pos.now != "low"){
-sec.style.transform = `translateY(${dy}px)`
-}else if(pos.dir == "up"){
-sec.style.transform = `translateY(${dy}px)`
-}
-//c(dy)
-}
-
-</script>
  
  </body>
  </html>
