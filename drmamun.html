@@ -1,0 +1,1256 @@
+<style>
+@font-face {
+            font-family: 'Material Icons';
+            font-style: normal;
+            font-weight: 400;
+            src: url(https://fonts.gstatic.com/s/materialicons/v50/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2) format('woff2');
+        }
+        
+       .mt, .mi, [mi], mi{
+            transition: 0.5;
+            width:30px;
+            height:30px;
+            padding:10px;
+            line-height:30px;
+            text-align:center;
+            font-family: 'Material Icons';
+            font-weight: normal;
+            font-style: normal;
+            font-size: 24px;
+            letter-spacing: normal;
+            text-transform: none;
+            display: inline-block;
+            overflow: hidden;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            color: #c0c9c3;
+            -moz-font-feature-settings: 'liga';
+            -moz-osx-font-smoothing: grayscale;
+        }
+html, body{
+margin:0;
+height : 100%;
+line-height : 1.5;
+box-sizing : border-box
+}
+
+[tg] *, [ntg]{
+pointer-events : none;
+}
+[nos]{
+-webkit-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+}
+[contenteditable]{
+outline : none
+}
+mi{
+width:30px;
+height:30px;
+padding:10px;
+display: inline-block;
+line-height:30px;
+}
+h{
+display : flex;
+flex-direction : row;
+position : relative
+}
+v{
+display : flex;
+flex-direction : column;
+position : relative
+}
+[wr]{flex-wrap : wrap}
+hs{
+display : block;
+overflow-x : auto;
+white-space : nowrap;
+position : relative
+}
+hs>*{
+display : inline-block !important;
+}
+vs{
+display : block;
+overflow-y : auto;
+position : relative;
+height : 100%
+}
+c, [c]{
+display : flex;
+justify-content : center;
+align-items : center;
+position : relative
+}
+[cm]{
+display : flex;
+justify-content : center;
+}
+[ca]{
+display : flex;
+align-items : center;
+}
+
+[jcfs]{justify-content : flex-start}
+[jcfe]{justify-content : flex-end}
+[jcsb]{justify-content : space-between}
+[jcsa]{justify-content : space-around}
+[jcse]{justify-content : space-evenly}
+[ais]{align-items : stretch}
+[aifs]{align-items : flex-start}
+[aife]{align-items : flex-end}
+[aib]{align-items : baseline}
+ass]{align-self : stretch}
+[asfs]{align-self : flex-start}
+[asfe]{align-self : flex-end}
+[asb]{align-self : baseline}
+
+f,[f]{flex : 1}
+v>[f]{height : 10px}
+
+[bb]{box-sizing : border-box}
+
+[poa]{position : absolute}
+[pof]{position : fixed}
+[por]{position : relative}
+
+[ma]{margin : auto}
+[mla]{margin-left : auto}
+[mra]{margin-right : auto}
+[mxa]{margin-right : auto; margin-left : auto}
+
+[fb]{font-weight : bold}
+
+[ttu]{text-transform : uppercase}
+[ttc]{text-transform : capitalize}
+
+[tac]{text-align : center}
+[tar]{text-align : right}
+[tal]{text-align : left}
+
+[bs1]{box-shadow : 0 1px 3px rgba(0,0,0,0.1)}
+[bs2]{box-shadow : 0 -1px 3px rgba(0,0,0,0.1)}
+[bs3]{box-shadow : 0 0 0 1px rgba(0,0,0,0.1)}
+[bs4]{box-shadow : 0 0 0 2px rgba(0,0,0,0.1)}
+
+[oh]{
+overflow : hidden
+}
+[oxh]{
+overflow-x : hidden
+}
+[oyh]{
+overflow-y : hidden
+}
+[oa]{
+overflow : auto
+}
+[oxa]{
+overflow-x : auto
+}
+[oya]{
+overflow-y : auto
+}
+[ha]{height : auto}
+[wa]{width : auto}
+
+[bda]{border : 1px solid rgba(0,0,0,0.2)}
+[bdb]{border : 2px rgba(0,0,0,0.2)}
+[bdn]{border : none}
+[otn]{outline : none}
+
+[bfbl]{
+background : rgba(255,255,255,0.7);
+backdrop-filter : blur(15px)
+}
+[none]{
+display : none
+}
+[db]{display : block}
+[dib]{display : inline-block}
+[df]{display : flex}
+[di]{display : inline}
+
+[totl]{transform-origin : top left}
+[totr]{transform-origin : top right}
+[tobl]{transform-origin : bottom left}
+[tobr]{transform-origin : bottom right}
+[toc]{transform-origin : center}
+[tsp]{transform-style:preserve-3d}
+
+[afi]{animation : fadein 0.3s both}
+[afo]{animation : fadeout 0.3s both}
+[alfi]{animation : leftfadein 0.3s both}
+[alfo]{animation : leftfadeout 0.3s both}
+[atfi]{animation : topfadein 0.3s both}
+[atfo]{animation : topfadeout 0.3s both}
+[arfi]{animation : rightfadein 0.3s both}
+[arfo]{animation : rightfadeout 0.3s both}
+[abfi]{animation : bottomfadein 0.3s both}
+[abfo]{animation : bottomfadeout 0.3s both}
+
+[ali]{animation : leftin 0.3s both}
+[alo]{animation : leftout 0.3s both}
+[ati]{animation : topin 0.3s both}
+[ato]{animation : topout 0.3s both}
+[ari]{animation : rightin 0.3s both}
+[aro]{animation : rightout 0.3s both}
+[abi]{animation : bottomin 0.3s both}
+[abo]{animation : bottomout 0.3s both}
+
+@keyframes fadein{from{opacity : 0}}
+@keyframes fadeout{to{opacity : 0}}
+@keyframes leftfadein{from{transform : translatex(-100%);opacity : 0}}
+@keyframes leftfadeout{to{transform : translatex(-100%);opacity : 0}}
+@keyframes rightfadein{from{transform : translatex(100%);opacity : 0}}
+@keyframes rightfadeout{to{transform : translatex(100%);opacity : 0}}
+
+@keyframes topfadein{from{transform : translatey(-100%);opacity : 0}}
+@keyframes topfadeout{to{transform : translatey(-100%);opacity : 0}}
+@keyframes bottomfadein{from{transform : translatey(100%);opacity : 0}}
+@keyframes bottomfadeout{to{transform : translatey(100%);opacity : 0}}
+
+
+@keyframes leftin{from{transform : translatex(-100%)}}
+@keyframes leftout{to{transform : translatex(-100%)}}
+@keyframes rightin{from{transform : translatex(100%)}}
+@keyframes rightout{to{transform : translatex(100%)}}
+
+@keyframes topin{from{transform : translatey(-100%)}}
+@keyframes topout{to{transform : translatey(-100%)}}
+@keyframes bottomin{from{transform : translatey(100%)}}
+@keyframes bottomout{to{transform : translatey(100%)}}
+
+
+</style>
+<script>
+
+function s(elm){
+return (document.querySelector(elm) || document.querySelector("[" + elm + "]"))
+}
+
+function S(elm){
+return document.querySelector(elm)
+}
+
+function sa(elms){
+return document.querySelectorAll(elms)
+}
+function $O(prop, cbGet, cbSet){
+Object.defineProperty(Object.prototype, prop,
+{get : cbGet, set : cbSet})}
+
+function $A(prop, cbGet, cbSet){
+Object.defineProperty(Array.prototype, prop,
+{get : cbGet, set : cbSet})
+Object.defineProperty(NodeList.prototype, prop,
+{get : cbGet, set : cbSet})}
+
+function $S(prop, cbGet, cbSet){
+Object.defineProperty(String.prototype, prop,
+{get : cbGet, set : cbSet})}
+
+function $N(prop, cbGet, cbSet){
+Object.defineProperty(Number.prototype, prop,
+{get : cbGet, set : cbSet})}
+
+function $H(prop, cbGet, cbSet){
+Object.defineProperty(HTMLElement.prototype, prop,
+{get : cbGet, set : cbSet})
+Object.defineProperty(SVGElement.prototype, prop,
+{get : cbGet, set : cbSet})
+}
+
+$O("js", function (){return JSON.stringify(this)})
+$O("jsc", function (){console.log(JSON.stringify(this,null,4))})
+$O("jsa", function (){a(JSON.stringify(this,null,4))})
+$O("jsm", function (){os.message(JSON.stringify(this,null,4))})
+$O("jsn", function (){os.alert(JSON.stringify(this,null,4))})
+
+$O("jp", function (){return JSON.parse(this)})
+//$O("m", function (){os.message(this)})
+//$O("a", function (){os.alert(this)})
+//$O("A", function (){alert(this)})
+$O("copy", function (){return JSON.parse(JSON.stringify(this))})
+
+//
+
+$S("l", function (){return this.length})
+
+$A("l", function (){return this.length})
+
+$A("last", function (){return this[this.length -1 ]},
+function (val){this[this.length -1 ] = val})
+
+$A("secondLast", function (){return this[this.length -2 ]},
+function (val){this[this.length -2 ] = val})
+
+
+function $Af(fnName, fnDef){
+Array.prototype[fnName] = fnDef
+}
+function $Hf(fnName, fnDef){
+HTMLElement.prototype[fnName] = fnDef;
+SVGElement.prototype[fnName] = fnDef
+}
+
+$Af("Has", function (strOrNum){
+if(this.indexOf(strOrNum) != -1){
+return true
+}
+return false
+})
+
+$Af("has", function (strPart){
+for (var i=0; i<this.length; i++){
+if(typeof(this[i]) != "string"){
+this[i] = this[i].toString()
+}
+if(this[i].indexOf(strPart) != -1){
+return true
+}
+}
+return false
+})
+
+$Af("ind", function (srtOrNum){
+return this.indexOf(srtOrNum)
+})
+
+$Af("indOf", function (strPart){
+for (var i=0; i<this.length; i++){
+if(typeof(this[i]) != "string"){
+this[i] = this[i].toString()
+}
+if(this[i].indexOf(strPart) != -1){
+return i
+}
+}
+return -1
+})
+
+$Af("ins", function (index, valueToInsert){
+this.splice(index,0, valueToInsert)
+})
+
+$Af("rep", function (index, valueToReplace){
+this.splice(index,1, valueToReplace)
+})
+
+$Af("rm", function (index){
+this.splice(index,1)
+})
+
+$Af("tog", function (srtOrNum){
+if(this.Has(srtOrNum)){
+this.rm(this.ind(srtOrNum))
+}else{
+this.push(srtOrNum)
+}
+})
+
+$O("isArr", function (){
+return Array.isArray(this)
+})
+
+$O("isNum", function (){
+return this.constructor.name == "Number"
+})
+
+$O("isStr", function (){
+return this.constructor.name == "String"
+})
+
+$O("isEl", function (){
+return this instanceof Element || this instanceof HTMLDocument
+})
+
+
+$Hf("ats", function (attrName, attrValue){
+this.setAttribute(attrName,attrValue||"")
+reRenderHtml(this)
+return this
+})
+$Hf("atg", function (attrName){
+return this.getAttribute(attrName)
+})
+$Hf("atr", function (attrName, attrValue){
+this.removeAttribute(attrName,attrValue||"")
+reRenderHtml(this)
+return this
+})
+$Hf("att", function (attrName){
+this.style = ""
+this.toggleAttribute(attrName)
+reRenderHtml(this)
+return this
+})
+$Hf("ath", function (attrName){
+return this.hasAttribute(attrName)
+})
+
+$H("cln", function (){
+return this.className
+},
+function (classStr){
+this.className = classStr
+})
+
+$Hf("cla", function (classStr){
+this.classList.add(classStr)
+return this
+})
+$Hf("clr", function (classStr){
+this.classList.remove(classStr)
+return this
+})
+$Hf("clt", function (classStr){
+this.classList.toggle(classStr)
+return this
+})
+$Hf("clh", function (classStr){
+return this.className.indexOf(classStr) != -1
+})
+
+$H("ih", function (){
+return this.innerHTML
+},
+function (htmlStr){
+this.innerHTML = htmlStr
+reRenderHtmlChildren(this)
+})
+
+$H("oh", function (){
+return this.outerHTML
+},
+function (htmlStr){
+var pel = this.parentElement
+this.outerHTML = htmlStr
+reRenderHtmlChildren(pel)
+})
+
+
+
+$H("it", function (){
+return this.innerText
+},
+function (txtStr){
+this.innerText = txtStr
+})
+
+$H("tc", function (){
+return this.textContent
+},
+function (txtStr){
+this.textContent = txtStr
+})
+
+$H("C", function (){
+return function (fn){
+this.onclick = fn
+}
+},
+function (fn){
+this.onclick = fn
+})
+
+
+$H("c", function (){
+return function (fn){
+this.addEventListener("click", fn)
+}
+},
+function (fn){
+this.addEventListener("click", fn)
+})
+
+//html controller
+var htc = {
+p(t,v){t.style.padding = pc(v)},
+m(t,v){t.style.margin = pc(v)},
+h(t,v){t.style.height = pc(v)},
+w(t,v){t.style.width = pc(v)},
+s(t,v){this.h(t,v);this.w(t,v)},
+l(t,v){t.style.left = pc(v)},
+r(t,v){t.style.right = pc(v)},
+t(t,v){t.style.top = pc(v)},
+b(t,v){t.style.bottom = pc(v)},
+i(t,v){this.l(t,v);this.r(t,v);this.t(t,v);this.b(t,v)},
+c(t,v){t.style.borderRadius = pc(v)},
+f(t,v){t.style.fontSize = pc(v)},
+o(t,v){t.style.opacity = v/10},
+z(t,v){t.style.zIndex = v},
+
+
+fx(t,v){t.style.flex = v},
+fg(t,v){t.style.flexGrow = v},
+fs(t,v){t.style.flexShrink = v},
+fb(t,v){t.style.flexBasis = pc(v)},
+
+pt(t,v){t.style.paddingTop = pc(v)},
+pb(t,v){t.style.paddingBottom = pc(v)},
+pl(t,v){t.style.paddingLeft = pc(v)},
+pr(t,v){t.style.paddingRight = pc(v)},
+px(t,v){this.pl(t,v);this.pr(t,v)},
+py(t,v){this.pt(t,v);this.pb(t,v)},
+
+mt(t,v){t.style.marginTop = pc(v)},
+mb(t,v){t.style.marginBottom = pc(v)},
+ml(t,v){t.style.marginLeft = pc(v)},
+mr(t,v){t.style.marginRight = pc(v)},
+mx(t,v){this.ml(t,v);this.mr(t,v)},
+my(t,v){this.mt(t,v);this.mb(t,v)},
+
+hm(t,v){t.style.maxHeight = pc(v)},
+hn(t,v){t.style.minHeight = pc(v)},
+wm(t,v){t.style.maxWidth = pc(v)},
+wn(t,v){t.style.minWidth = pc(v)},
+
+ra(t,v){t.style.border = pc(v) + " solid #ccc"},
+rt(t,v){t.style.borderTop = pc(v) + " solid #ccc"},
+rb(t,v){t.style.borderBottom = pc(v) + " solid #ccc"},
+rl(t,v){t.style.borderLeft = pc(v) + " solid #ccc"},
+rr(t,v){t.style.borderRight = pc(v) + " solid #ccc"},
+
+cm(t,v){t.style.borderTopLeftRadius = pc(v)},
+cn(t,v){t.style.borderTopRightRadius = pc(v)},
+co(t,v){t.style.borderBottomRightRadius = pc(v)},
+cp(t,v){t.style.borderBottomLeftRadius = pc(v)},
+
+bf(t,v){t.style.backdropFilter = "blur(" + v + "px)"},
+
+bw(t,v){t.style.backgroundColor = "rgba(255,255,255," + v/10 + ")"},
+bb(t,v){t.style.backgroundColor = "rgba(0,0,0," + v/10 + ")"},
+cw(t,v){t.style.color = "rgba(255,255,255," + v/10 + ")"},
+cb(t,v){t.style.color = "rgba(0,0,0," + v/10 + ")"},
+
+tn(t,v){t.style.transitionDuration = v/10 + "s"},
+td(t,v){t.style.transitionDelay = v/10 + "s"},
+
+tr(t,v){t.style.transform = "rotate(" + v + "deg"},
+tx(t,v){t.style.transform = "translatex(" + pc(v) +")"},
+ty(t,v){t.style.transform = "translatey(" + pc(v) +")"},
+tt(t,v){
+t.style.transform =  "translate(" + pc(v.split('_')[0]) + "," + pc(v.split('_')[1]) +")"
+},
+ts(t,v){t.style.transform = "scale(" + v/10 + ")"},
+ta(t,v){t.style.transform = "skewx(" + v + "deg"},
+tb(t,v){t.style.transform = "skewy(" + v + "deg"},
+
+ad(t,v){t.style.animationDuration = v/10 + "s"},
+aw(t,v){t.style.animationDelay = v/10 + "s"},
+bg(t,v){t.style.background = clr(v)},
+cl(t,v){t.style.color = clr(v)},
+da(t,v){t.style.borderColor = clr(v)},
+dt(t,v){t.style.borderTopColor = clr(v)},
+db(t,v){t.style.borderBottomColor = clr(v)},
+dl(t,v){t.style.borderLeftColor = clr(v)},
+dr(t,v){t.style.borderRightColor = clr(v)},
+}
+
+function pc(v){
+if(v.slice(-1) == "p") return v.slice(0,-1) + "%"
+return v + "px"
+}
+
+function reRenderHtmlChildren(parentElm = "body"){
+var els
+if(typeof(parentElm) != "string"){
+els = parentElm.querySelectorAll("*")
+}else{
+els = sa(parentElm + " *")
+}
+
+for(var i=0; i<els.length;i++){
+reRenderHtml(els[i])
+}
+}
+
+function reRenderHtml(el){
+var atrs = el.attributes
+
+if(atrs.length == 0) return
+
+//s("[ctr]").style = ""
+
+for(var i =0; i<atrs.length; i++){
+var nm = atrs[i].name
+var vl = atrs[i].value
+////
+if(num(1)){
+htc[nm[0]](el, nm.slice(1))
+}else if(num(2)){
+var fn = nm[0] + nm[1]
+if(!["in","bs","bg","cl"].Has(fn)){
+htc[fn](el, vl.l==0?nm.slice(2):'$*'+vl)
+}
+}else{
+var fn = nm[0] + nm[1]
+if(["bg","cl","da","dt","db","dl","dr"].Has(fn)){
+htc[fn](el, vl.l==0?nm.slice(2):'$*'+vl)
+}
+}
+////
+}
+function num(index){
+return (!isNaN(nm[index]) || nm[index] == "-" || nm[index] == ".")
+}
+}
+
+
+
+
+
+
+function clr(clrCode, bol){
+if(clrCode.includes("$*")){
+var cl =  clrCode.replace("$*","")
+if(cl.startsWith("L")){
+var cl = "linear-gradient(" +
+cl.replace("L","").split(",").map((v,i)=> {
+if(i==0){
+return v.l==0?"135deg" : v+"deg"
+}
+var vl =  v.trim().split(" ")
+return vl.l==1?clr(vl[0]):(clr(vl[0]) + " " + pc(vl[1]))
+}) +
+")"
+}
+
+if(cl.startsWith("R")){
+var cl = "radial-gradient(" +
+cl.replace("R","").split(",").map((v,i)=> {
+if(i==0){
+return v.l==0?"circle" : "ellipse"
+}
+var vl =  v.trim().split(" ")
+return vl.l==1?clr(vl[0]):(clr(vl[0]) + " " + pc(vl[1]))
+}) +
+")"
+}
+
+if(cl.startsWith("C")){
+var cl = "conic-gradient(" +
+cl.replace("C","").split(",").map((v,i)=> {
+if(i==0){
+return v.l==0?"from 0deg" : "from " + v+"deg"
+}
+var vl =  v.trim().split(" ")
+return vl.l==1?clr(vl[0]):(clr(vl[0]) + " " + vl[1] + "deg")
+}) +
+")"
+}
+
+return cl
+}
+
+var addedIndex = 0
+if(bol == undefined){
+addedIndex = 0
+}else{
+addedIndex = 2
+}
+var ab="abcdefghijklmnopqrstuvwxyz"
+var h = Math.round(ab.split("").indexOf(clrCode[0 + addedIndex]) * 14.4)
+var s = Math.round(ab.split("").indexOf(clrCode[1 + addedIndex]) * 4)
+var l = Math.round(ab.split("").indexOf(clrCode[2 + addedIndex]) * 4)
+var a = ab.split("").indexOf(clrCode[3 + addedIndex]) * 0.04
+
+s<0 && (s=50)
+l<0 && (l=50)
+a<0 && (a=1)
+
+var str = `hsla(${h},${s}%,${l}%,${a})`
+return str
+}
+
+</script><!--fbconfig--
+<token>KocSlgJqfdSlqRCf3dYR2956GbkQhhuNsoEn21Fs</token>
+<url>https://dr-mamum-default-rtdb.firebaseio.com/</url>
+<bucket>drmamun</bucket>
+--fbconfig-->
+<!DOCTYPE html>
+ <html lang="en">
+ <head>
+ <title>App</title>
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, user-scalable=no">
+ </head>
+ 
+ <body>
+
+<tops nos>
+  <dgn></dgn><dgn></dgn><dgn></dgn>
+  <infor>
+     <tdtm></tdtm>
+     <liveani>ডাক্তার চেম্বারে আছেন </liveani>
+  </infor>
+</tops>
+
+<mains>
+  <conts nos>
+    <titl>ডাক্তার</titl>
+    <docts>
+     <dcnm class="deconstructed"> ডাঃ মোহাম্মদ আব্দুল্লাহ আল মামুন <div>ডাঃ মোহাম্মদ আব্দুল্লাহ আল মামুন</div> <div>ডাঃ মোহাম্মদ আব্দুল্লাহ আল মামুন</div> <div>ডাঃ মোহাম্মদ আব্দুল্লাহ আল মামুন</div> <div>ডাঃ মোহাম্মদ আব্দুল্লাহ আল মামুন</div> </dcnm>
+     <dgre>এম.বি.বি.এস., জে.আর.আর.এম.সি.এইচ</dgre>
+     <dsnt>সিনিয়র মেডিক্যাল অফিসার</dsnt>
+     <hspt>লায়ন্স শিশু হাসপাতাল, সিলেট</hspt>
+     <expr>শিশু বিষয়ে অভিজ্ঞ</expr>
+
+    </docts>
+  </conts>
+
+  <conts nos>
+    <titl>চেম্বারের সময়</titl>
+    <scdl>
+      <chmc class="animate-charcter">মাগরিবের পর থেকে রাত ১০ঃ০০টা পর্যন্ত</chmc>
+      <chmi style="color: #e91e63; font-weight:
+           700">বৃহস্পতিবার বন্ধ</chmi>
+
+ <!--chmi style="color: #e91e63; font-weight: 700; margin-top : 25px">৩, ৪, ৫ নভেম্বর ২০২২ চেম্বার সম্পূর্ণভাবে বন্ধ থাকবে</chmi--!>
+
+    </scdl>
+  </conts>
+
+  <conts nos>
+     <titl>চেম্বারের স্থান</titl>
+     <addrs>
+<svg viewBox="0 0 960 200"> <symbol id="s-text"> <text text-anchor="middle" x="45%" y="55%">জনপ্রিয় ড্রাগ হাউজ</text> </symbol> <g class = "g-ants"> <use xlink:href="#s-text" class="text-copy"></use> <use xlink:href="#s-text" class="text-copy"></use> <use xlink:href="#s-text" class="text-copy"></use> <use xlink:href="#s-text" class="text-copy"></use> <use xlink:href="#s-text" class="text-copy"></use> </g> </svg>
+
+      <locn>কুমারপাড়া পয়েন্ট, মানিকপীর রোড, সিলেট </locn>
+      <serl>সিরিয়ালের জন্য</serl>
+
+<sern>
+<svg><path d="M16.6 14c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.2-.6.8-.8 1-.1.2-.3.2-.5.1-.7-.3-1.4-.7-2-1.2-.5-.5-1-1.1-1.4-1.7-.1-.2 0-.4.1-.5.1-.1.2-.3.4-.4.1-.1.2-.3.2-.4.1-.1.1-.3 0-.4-.1-.1-.6-1.3-.8-1.8-.1-.7-.3-.7-.5-.7h-.5c-.2 0-.5.2-.6.3-.6.6-.9 1.3-.9 2.1.1.9.4 1.8 1 2.6 1.1 1.6 2.5 2.9 4.2 3.7.5.2.9.4 1.4.5.5.2 1 .2 1.6.1.7-.1 1.3-.6 1.7-1.2.2-.4.2-.8.1-1.2l-.4-.2m2.5-9.1C15.2 1 8.9 1 5 4.9c-3.2 3.2-3.8 8.1-1.6 12L2 22l5.3-1.4c1.5.8 3.1 1.2 4.7 1.2 5.5 0 9.9-4.4 9.9-9.9.1-2.6-1-5.1-2.8-7m-2.7 14c-1.3.8-2.8 1.3-4.4 1.3-1.5 0-2.9-.4-4.2-1.1l-.3-.2-3.1.8.8-3-.2-.3c-2.4-4-1.2-9 2.7-11.5S16.6 3.7 19 7.5c2.4 3.9 1.3 9-2.6 11.4"></path></svg>
+01961748564
+</sern>
+      <sern>
+<svg> <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 0 0-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"></path></svg>
+
+  01610663935</sern>
+
+    </addrs>
+  </conts>
+
+</mains>
+
+<secs cals></secs>
+<secs calsbutton tgme></secs>
+<secs today></secs>
+<secs todaybutton></secs>
+<secs maps></secs>
+<secs mapsbutton tgme></secs>
+
+ </body>
+ </html>
+<style>
+html,body{
+margin : 0;
+height : 100%;
+width : 100%;
+overflow : hidden
+}
+[tg] *, [tgme]{
+pointer-events : none;
+}
+[nos]{
+-webkit-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+}
+
+tops{
+background : #e91e63;
+z-index : 5;
+position : fixed;
+top : 0;
+left : 0;
+height : 200px;
+width : 100%;
+border-radius : 0 0 40px 40px;
+box-shadow : 0 2px 3px rgba(0,0,0,0.2);
+overflow : hidden
+}
+dgn{
+position : absolute
+}
+dgn:first-of-type{
+background : #607d8b;
+height : 60%;
+width : 100%;
+border-radius : 0 0 100% 0
+}
+dgn:nth-of-type(2){
+background : #26a69a;
+height : 60%;
+right : 0;
+bottom : 0;
+left : 70px;
+border-radius : 150px 100% 0 0
+}
+dgn:last-of-type{
+background : #00bcd4;
+height : 80%;
+width : 30%;
+bottom : 0;
+border-radius : 0 100% 0 0
+}
+
+
+infor{
+position : absolute ;
+height : 100%;
+min-width : 300px;
+left : 60%;
+-webkit-transform : translatex(-50%);
+color : #eee;
+}
+infor>*{
+display : block
+}
+tdtm{
+font-size : 30px;
+}
+tdtm~*{
+font-size : 20px;
+margin-left : 15%
+}
+tdda{
+margin-top : 60px
+}
+
+liveani{
+font-size : 18px;
+position : absolute ;
+bottom : 15px;
+left : 0;
+display : none
+}
+liveani:before,
+liveani:after{
+content : "";
+position : absolute ;
+left : -70px;
+bottom : 50%;
+-webkit-transform : translatey(50%);
+width : 30px;
+height : 30px;
+border-radius : 50%;
+background : #e91e63;
+z-index : 2;
+-webkit-animation : liveanim 1s infinite
+}
+liveani:after{
+background : #eceff1;
+z-index : 1;
+-webkit-animation-delay : 0.1s
+}
+
+@-webkit-keyframes liveanim {
+50% {
+-webkit-transform : translatey(50%)scale(0.5);
+}
+}
+mains{
+position : absolute ;
+top : 58px;
+left : 0;
+bottom : 0;
+right : 0;
+overflow-y : auto;
+overflow-x : hidden;
+background : #eceff1;
+scroll-behavior : smooth
+}
+conts titl{
+position : absolute;
+top : -30px;
+left : 0
+}
+conts:first-of-type{
+margin-top : 200px
+}
+conts:last-of-type{
+margin-bottom : 120px
+}
+conts{
+position : relative;
+display : flex;
+background : #fff;
+margin : 60px 20px;
+padding : 30px;
+border-radius : 20px;
+box-shadow : 0 2px 3px rgba(0,0,0,0.1);
+}
+
+conts>*>*{
+display : block
+}
+
+titl{
+font-size : 18px;
+color : #607d8b;
+font-weight : 900
+}
+chmt{
+color : #00bcd4;
+font-weight : 600;
+}
+chmo{
+margin-top : 30px;
+color : #607d8b
+}
+chmc{
+color : #009688;
+font-weight : 600;
+}
+
+
+dcnm{
+color : #00bcd4;
+font-weight : 700;
+font-size : 18px
+}
+dgre, hspt{
+font-size  : 14px;
+color : #607d8b
+}
+dsnt{
+font-weight : 600;
+color : #009688;
+margin-top : 20px;
+}
+expr{
+color : #e91e63;
+font-weight : 600;
+margin-top : 20px;
+}
+
+shpn{
+color : #00bcd4;
+font-weight : 700;
+font-size : 18px
+}
+serl{
+margin-top : 30px;
+color : #607d8b
+}
+sern{
+color : #009688;
+font-weight : 600;
+font-size : 20px;
+padding-top : 10px;
+}
+sern svg{
+fill : teal; width : 30px; height : 24px; display : inline; vertical-align : middle; 
+}
+
+.animate-charcter { text-transform: uppercase;
+background-image: linear-gradient( -225deg, #fff800 0%, #ff1361 29%, #00bcd4 67%, #00bcd4 100% );
+background-size: auto auto; background-clip: border-box; background-size: 200% auto; color: #fff; background-clip: text; text-fill-color: transparent; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: textclip 2s linear infinite; display: inline-block; } 
+
+@-webkit-keyframes textclip { from { background-position: 200% center; } }
+
+
+
+.deconstructed {
+position: relative; color: transparent}
+.deconstructed > div {
+position: absolute; top: 0; left: 0; right: 0; bottom: 0; color: #00bcd4; pointer-events: none
+}
+.deconstructed > div:nth-child(1) {
+-webkit-mask-image: linear-gradient(black 25%, transparent 25%); mask-image: linear-gradient(black 25%, transparent 25%); 
+animation: deconstructed1 3s infinite; } 
+.deconstructed > div:nth-child(2) { -webkit-mask-image: linear-gradient(transparent 25%, black 25%, black 50%, transparent 50%); 
+mask-image: linear-gradient(transparent 25%, black 25%, black 50%, transparent 50%); 
+animation: deconstructed2 3s infinite; } 
+.deconstructed > div:nth-child(3) { -webkit-mask-image: linear-gradient(transparent 50%, black 50%, black 75%, transparent 75%); mask-image: linear-gradient(transparent 50%, black 50%, black 75%, transparent 75%); 
+animation: deconstructed3 3s infinite; } 
+.deconstructed > div:nth-child(4) { -webkit-mask-image: linear-gradient(transparent 75%, black 75%); mask-image: linear-gradient(transparent 75%, black 75%); animation: deconstructed4 3s infinite; } @keyframes deconstructed1 { 0% { transform: translateX(100%); } 26% { transform: translateX(0%); } 83% { transform: translateX(-0.1%); } 100% { transform: translateX(-120%); } } @keyframes deconstructed2 { 0% { transform: translateX(100%); } 24% { transform: translateX(0.5%); } 82% { transform: translateX(-0.2%); } 100% { transform: translateX(-125%); } } @keyframes deconstructed3 { 0% { transform: translateX(100%); } 22% { transform: translateX(0%); } 81% { transform: translateX(0%); } 100% { transform: translateX(-130%); } } @keyframes deconstructed4 { 0% { transform: translateX(100%); } 20% { transform: translateX(0%); } 80% { transform: translateX(0%); } 100% { transform: translateX(-135%); } }
+
+
+
+
+svg {display: block; font-size: 7em;} 
+
+.text-copy { fill: none; stroke: white; stroke-dasharray: 6% 29%; stroke-width: 5px; stroke-dashoffset: 0%; animation: stroke-offset 5.5s infinite linear; } .text-copy:nth-child(1){ stroke: #4D163D; animation-delay: -1; } .text-copy:nth-child(2){ stroke: #00bcd4; animation-delay: -2s; } .text-copy:nth-child(3){ stroke: #e91e63; animation-delay: -3s; } .text-copy:nth-child(4){ stroke: #BD0034; animation-delay: -4s; } .text-copy:nth-child(5){ stroke: #26a69a; animation-delay: -5s; } @keyframes stroke-offset{ 100% {stroke-dashoffset: -35%;} }
+
+secs[today]{
+z-index : 3;
+position : fixed;
+bottom : 37px;
+left : 0;
+height : 45px;
+width : 45px;
+left : 50%;
+-webkit-transform : translatex(-50%);
+border-radius : 50%;
+box-shadow : inset 0 -8px 5px -8px rgba(0,0,0,0.2),
+0 50px 0 20px #607d8b;
+}
+secs[todaybutton]{
+position : fixed;
+z-index : 15;
+width : 58px;
+height : 58px;
+background : #607d8b;
+bottom : 50px;
+left : 50%;
+-webkit-transform : translatex(-50%);
+border-radius : 50%;
+box-shadow : 1px 1px 3px rgba(0,0,0,0.2);
+}
+secs[todaybutton]:before{
+content : "";
+position : absolute ;
+left : 50%;
+top: 32px;
+-webkit-transform : translate(-50%,-50%);
+padding : 6px 4px;
+border : 8px solid #80deea;
+border-bottom : none
+}
+secs[todaybutton]:after{
+content : "";
+position : absolute ;
+left : 50%;
+top: 10px;
+-webkit-transform : translate(-50%,-50%);
+border : 18px solid transparent;
+border-bottom-color : #80deea
+}
+
+
+secs[cals],
+secs[maps]{
+position : fixed !important;
+z-index : 2;
+height: 58px;
+background : #607d8b;
+bottom : 0 !important;
+box-shadow : 0 -2px 3px rgba(0,0,0,0.1);
+width : 50%;
+left : 0;
+}
+
+secs[cals]{
+border-top-right-radius : 50px;
+display : flex;
+justify-content : center;
+align-items : center;
+}
+secs[calsbutton]{
+border-bottom-left-radius : 50px;
+position : fixed;
+height : 23px;
+width : 23px;
+left : 17%;
+bottom : 15px;
+border-left :5px solid #00e676;
+border-bottom :5px solid #00e676;
+z-index : 99
+}
+secs[calsbutton]:before{
+content : "";
+position : absolute;
+height : 10px;
+width : 10px;
+top : -5px;
+left : -3px;
+-webkit-transform : rotatez(-23deg);
+border-bottom : 5px solid transparent;
+border-left : 8px solid #00e676;
+}
+secs[calsbutton]:after{
+content : "";
+position : absolute;
+height : 10px;
+width : 10px;
+top : 10px;
+left : 10px;
+-webkit-transform : rotatez(-73deg);
+border-top : 5px solid transparent;
+border-left : 8px solid #00e676;
+}
+secs[maps]{
+left : auto;
+right : 0;
+border-top-left-radius : 50px
+}
+
+secs[mapsbutton]{
+border-radius : 50px 50px 0 50px;
+position : fixed;
+height : 28px;
+width : 28px;
+right : 17%;
+bottom : 18px;
+background : #e91e63;
+-webkit-transform : rotatez(45deg);
+z-index : 99
+}
+secs[mapsbutton]:after{
+content : "";
+position : absolute;
+height : 10px;
+width : 10px;
+border-radius : 50%;
+top : 10px;
+left : 10px;
+background : #607d8b;
+-webkit-transform : rotatez(-73deg);
+z-index : 99999
+}
+</style>
+<script>
+//os.statusBar.show(true)
+//os.statusBar.color("#607d8b")
+
+var app = {
+version : 2.39,
+liveMsg : {
+"1" : "চেম্বারে আছেন",
+"2" : "চেম্বারে রোগী দেখাতে পারবেন "
+}
+}
+
+var g = {
+global : {},
+tops : {},
+mains : {},
+secs : {}
+}
+
+
+g.global.liveVar = false
+
+g.tops.updateTime = function (){
+
+function osClock(secondShow=false){
+var css="<style>.os-clock{display: flex;justify-content:center;flex-direction: column;padding: 10px}.os-clock span:first-child{font-size: 1em;color: rgba(255,255,255,0.8)}.os-clock span:last-child{font-size: 0.8em;color: rgba(255,255,255,0.5)}</style>";
+
+function dbl(val){
+if((val+"").length==1){return "0"+val}else{return val}}
+
+var weekDays=["রবি","সোম","মঙ্গল","বুধ","বৃহ","শুক্র","শনি"];
+var dt = new Date();
+var d=dbl(dt.getDate())+"/"+dbl(dt.getMonth()+1)+" - "+weekDays[dt.getDay()]+"বার";
+var h = dt. getHours();
+var m = dt.getMinutes();
+var sc ;
+if(secondShow){sc= ":"+dbl(dt. getSeconds())}else{sc=""};
+
+//(dt.getDay() != 5 && h>=11 && (h<=14 || (h==15 && m <=0 && sc <=0)))
+
+if(g.global.liveVar){
+document.querySelector("liveani").style.display = "block"
+if(app.liveMsg[g.global.liveVar]){
+s("liveani").ih = app.liveMsg[g.global.liveVar]
+}
+}else{
+document.querySelector("liveani").style.display = "none"
+}
+
+var _time;
+if(h > 12) {
+var hr=dbl(h-12);
+_time= '<div class="os-clock"><span>'+hr+ ':' + m + sc +' PM</span><span>'+d+'</span></div>'+css
+}else if(h==0){
+_time= '<div class="os-clock"><span>'+12 + ':' + m + sc +' AM</span><span>'+d+'</span></div>'+css
+}else{
+var hr=dbl(h);
+_time= '<div class="os-clock"><span>'+hr + ':' + m + sc +' AM</span><span>'+d+'</span></div>'+css
+}
+return _time
+}
+s("tdtm").innerHTML= osClock(true);
+setInterval(function (){
+s("tdtm").innerHTML= osClock(true);
+},1000);
+}
+
+g.tops.updateTime()
+
+/*
+fb.bucket("drmamundata")
+
+setTimeout(function (){
+fb.getData("isLive", function (value){
+g.global.liveVar = value
+})
+
+fb.getData("liveMsg", function (value){
+app.liveMsg["3"] = value
+})
+
+fb.on = function (tag, value){
+if(tag == "isLive"){
+g.global.liveVar = value
+}
+if(tag == "liveMsg"){
+app.liveMsg["3"] = value
+}
+if(tag == "version"){
+if(app.version < value){
+os.alert("updating")
+fb.bucket("drmamun")
+}
+}
+}
+
+fb.getData("version", function (value){
+if(app.version < value){
+os.alert("updating")
+fb.bucket("drmamun")
+}else{
+fb.bucket("drmamundata")
+}
+})
+}, 1000)
+
+*/
+/*
+s("secs[cals]").onclick = function (){
+os.activity.action = "android.intent.action.DIAL"
+os.activity.dataUri = "tel:01610663935"
+os.activity.start()
+}
+
+s("secs[cals]").onclick = function (){
+os.activity.action = "android.intent.action.SEND"
+os.activity.class = "com.whatsapp.contact.picker.ContactPicker"
+os.activity.package = "com.whatsapp"
+os.activity.extraKey = "android.intent.extra.TEXT"
+os.activity.extraValue = "wow"
+os.activity.start()
+}
+
+//https://wa.me/01961748564 
+//https://community.appinventor.mit.edu/t/whatsapptools-extension-free-open-source/17771
+
+s("secs[maps]").onclick = function (){
+os.activity.action = "android.intent.action.VIEW"
+os.activity.class = "com.google.android.maps.MapsActivity"
+os.activity.package = "com.google.android.apps.maps"
+os.activity.dataUri = "geo:24.899478,91.878669?z=19"
+os.activity.start()
+}
+
+
+*/
+
+
+s("secs[todaybutton]").onclick = function (){
+if(s("mains").scrollTop !=undefined){
+s("mains").scrollTop = 0
+}
+}
+
+
+
+</script>
