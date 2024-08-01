@@ -736,11 +736,15 @@ return str
 
 </mains>
 
-<secs cals><a href="tel:01610663935" w100p h100p></a></secs>
+<secs cals>
+		<a href="tel:01610663935" w100p h100p></a>
+</secs>
 <secs calsbutton tgme></secs>
 <secs today></secs>
 <secs todaybutton></secs>
-<secs maps></secs>
+<secs maps por>
+		<a href= "https://www.google.com/maps/?q=24.899478,91.878669?z=19" poa h100p w100p p15></a>
+</secs>
 <secs mapsbutton tgme></secs>
 
  </body>
@@ -1214,37 +1218,11 @@ fb.bucket("drmamundata")
 }, 1000)
 
 */
-
-
-/*
-s("secs[cals]").onclick = function (){
-os.activity.action = "android.intent.action.SEND"
-os.activity.class = "com.whatsapp.contact.picker.ContactPicker"
-os.activity.package = "com.whatsapp"
-os.activity.extraKey = "android.intent.extra.TEXT"
-os.activity.extraValue = "wow"
-os.activity.start()
-}
-
-
-//https://wa.me/01961748564 
-//https://community.appinventor.mit.edu/t/whatsapptools-extension-free-open-source/17771
-
-s("secs[maps]").onclick = function (){
-os.activity.action = "android.intent.action.VIEW"
-os.activity.class = "com.google.android.maps.MapsActivity"
-os.activity.package = "com.google.android.apps.maps"
-os.activity.dataUri = "geo:24.899478,91.878669?z=19"
-os.activity.start()
-}
-
 s("secs[todaybutton]").onclick = function (){
 if(s("mains").scrollTop !=undefined){
 s("mains").scrollTop = 0
 }
 }
-
-*/
 
 
 </script>
