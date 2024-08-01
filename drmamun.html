@@ -229,6 +229,56 @@ display : none
 </style>
 <script>
 
+
+const lb = {
+//all the library methods should be linked there.
+}
+
+function K(obj){return Object.keys(obj)}
+
+function k(v){
+if(v==undefined||v==null||v.constructor.name=="Function"){
+return (v +" is not a pure object")
+}
+if(v == "[object Math]"){
+return Object.getOwnPropertyNames(v)
+}
+//setTimeout(()=>c(v))
+if(v instanceof HTMLElement){
+var elx = []
+elx = prot(Node).concat(prot(Element), prot(HTMLElement),prot(EventTarget)).reverse()
+if(v.constructor.name == "HTMLInputElement"){
+elx = elx.concat(prot(HTMLInputElement))}
+if(v.constructor.name == "HTMLTextAreaElement"){
+elx = elx.concat(prot(HTMLTextAreaElement))}
+return elx
+}
+var _arr = []
+if(v.constructor === Object){_arr = Object.keys(v)}
+
+var _arrOwn = []
+if(![Array, Object, String].has(v.constructor)){
+_arrOwn = Object.getOwnPropertyNames(v)}
+
+var _arrProto = Object.getOwnPropertyNames(Object.getPrototypeOf(v)).reverse()
+var _arrAll = _arr.concat(_arrOwn,_arrProto)
+return(_arrAll)
+
+function prot(ifc){
+return Object.getOwnPropertyNames(ifc.prototype)}
+
+};
+
+
+const c = console.log;
+
+function a(v){alert(v)};
+var w = window;
+function s(elm){
+return (document.querySelector(elm) || document.querySelector("[" + elm + "]"))
+}
+
+
 function s(elm){
 return (document.querySelector(elm) || document.querySelector("[" + elm + "]"))
 }
@@ -468,6 +518,9 @@ function (fn){
 this.addEventListener("click", fn)
 })
 
+//stl >> style library
+const stl = {}
+
 //html controller
 var htc = {
 p(t,v){t.style.padding = pc(v)},
@@ -668,15 +721,19 @@ var str = `hsla(${h},${s}%,${l}%,${a})`
 return str
 }
 
+</script>
+
 </script><!DOCTYPE html>
  <html lang="en">
  <head>
  <title>Dr Mamun</title>
  <meta charset="utf-8">
  <meta name="viewport" content="width=device-width, user-scalable=no">
-<link rel="shortcut icon" href="./favicon.ico"/>
+<link rel="shortcut icon" href="https://mamun-al-abdullah.github.io/test/favicon.ico"/>
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#607d8b" />
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#666666" />
  </head>
- 
+
  <body>
 
 <tops nos>
@@ -757,6 +814,7 @@ height : 100%;
 width : 100%;
 overflow : hidden;
 -webkit-tap-highlight-color: transparent;
+display : none
 }
 [tg] *, [tgme]{
 pointer-events : none;
@@ -1112,12 +1170,14 @@ z-index : 99999
 }
 </style>
 <script>
+s("html").style.display = "block"
+document.body.style.display = "block"
 reRenderHtmlChildren()
 //os.statusBar.show(true)
 //os.statusBar.color("#607d8b")
 
-var app = {
-version : 2.39,
+const app = {
+version : 0.1,
 liveMsg : {
 "1" : "চেম্বারে আছেন",
 "2" : "চেম্বারে রোগী দেখাতে পারবেন "
