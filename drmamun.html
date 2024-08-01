@@ -674,7 +674,7 @@ return str
  <title>App</title>
  <meta charset="utf-8">
  <meta name="viewport" content="width=device-width, user-scalable=no">
-<link rel="shortcut icon" href="./fabicon.ico"/>
+<link rel="shortcut icon" href="./favicon.ico"/>
  </head>
  
  <body>
@@ -1181,44 +1181,6 @@ s("tdtm").innerHTML= osClock(true);
 
 g.tops.updateTime()
 
-/*
-fb.bucket("drmamundata")
-
-setTimeout(function (){
-fb.getData("isLive", function (value){
-g.global.liveVar = value
-})
-
-fb.getData("liveMsg", function (value){
-app.liveMsg["3"] = value
-})
-
-fb.on = function (tag, value){
-if(tag == "isLive"){
-g.global.liveVar = value
-}
-if(tag == "liveMsg"){
-app.liveMsg["3"] = value
-}
-if(tag == "version"){
-if(app.version < value){
-os.alert("updating")
-fb.bucket("drmamun")
-}
-}
-}
-
-fb.getData("version", function (value){
-if(app.version < value){
-os.alert("updating")
-fb.bucket("drmamun")
-}else{
-fb.bucket("drmamundata")
-}
-})
-}, 1000)
-
-*/
 s("secs[todaybutton]").onclick = function (){
 if(s("mains").scrollTop !=undefined){
 s("mains").scrollTop = 0
