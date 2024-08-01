@@ -1168,6 +1168,75 @@ background : #607d8b;
 -webkit-transform : rotatez(-73deg);
 z-index : 99999
 }
+:root{
+--statusbar : #1a1110;
+--pink : #5d0925;
+--teal : #0e3e3a;
+--blue : #00444d;
+--call : green;
+--maps : #a21041;
+--today : #007180;
+}
+
+
+@media (prefers-color-scheme: dark) {
+
+tops{
+background : var(--pink)
+}
+
+html, body, dgn:first-of-type{
+background : var(--statusbar)
+}
+
+dgn:nth-of-type(2){background : var(--teal)}
+
+dgn:last-of-type{background : var(--blue)}
+
+secs[todaybutton],secs[cals],
+secs[maps], secs[mapsbutton]:after{
+background : var(--statusbar)
+}
+
+secs[today]{
+box-shadow : inset 0 -8px 5px -8px rgba(0,0,0,0.2),
+0 50px 0 20px var(--statusbar)
+}
+
+secs[calsbutton]:before,
+secs[calsbutton]:after,
+secs[calsbutton]{
+border-left-color : var(--call)
+}
+secs[calsbutton]{
+border-bottom-color : var(--call)
+}
+secs[mapsbutton]{
+background : var(--maps)
+}
+
+secs[todaybutton]:before{
+border-color : var(--today)
+}
+
+secs[todaybutton]:after{
+border-bottom-color : var(--today)
+}
+
+mains{
+background : #000000
+}
+
+conts{
+background : #21272c
+}
+locn{
+color : #e91e63
+}
+
+
+}
+
 </style>
 <script>
 s("html").style.display = "block"
@@ -1184,6 +1253,24 @@ liveMsg : {
 }
 }
 
+/*
+if (window.matchMedia){
+if(window.matchMedia('(prefers-color-scheme: dark)').matches) {
+// dark mode
+a("dark")
+}else{
+a("light")
+}
+}
+
+*/
+
+/*
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+const newColorScheme = event.matches ? "dark" : "light"; 
+a(newColorScheme)
+});
+*/
 var g = {
 global : {},
 tops : {},
