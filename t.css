@@ -1,0 +1,227 @@
+@font-face {
+            font-family: 'Material Icons';
+            font-style: normal;
+            font-weight: 400;
+            src: url(https://fonts.gstatic.com/s/materialicons/v50/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2) format('woff2');
+        }
+        
+       .mt, .mi, [mi], mi{
+            transition: 0.5;
+            width:30px;
+            height:30px;
+            padding:10px;
+            line-height:30px;
+            text-align:center;
+            font-family: 'Material Icons';
+            font-weight: normal;
+            font-style: normal;
+            font-size: 24px;
+            letter-spacing: normal;
+            text-transform: none;
+            display: inline-block;
+            overflow: hidden;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            color: #c0c9c3;
+            -moz-font-feature-settings: 'liga';
+            -moz-osx-font-smoothing: grayscale;
+        }
+html, body{
+margin:0;
+height : 100%;
+line-height : 1.5;
+box-sizing : border-box;
+font-family: Tahoma, Verdana, sans-serif;
+}
+
+[tg] *, [ntg]{
+pointer-events : none;
+}
+[nos]{
+-webkit-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+}
+[contenteditable]{
+outline : none
+}
+mi{
+width:30px;
+height:30px;
+padding:10px;
+display: inline-block;
+line-height:30px;
+}
+h{
+display : flex;
+flex-direction : row;
+position : relative
+}
+v{
+display : flex;
+flex-direction : column;
+position : relative
+}
+[wr]{flex-wrap : wrap}
+hs{
+display : block;
+overflow-x : auto;
+white-space : nowrap;
+position : relative
+}
+hs>*{
+display : inline-block !important;
+}
+vs{
+display : block;
+overflow-y : auto;
+position : relative;
+height : 100%
+}
+c, [c]{
+display : flex;
+justify-content : center;
+align-items : center;
+position : relative
+}
+[cm]{
+display : flex;
+justify-content : center;
+}
+[ca]{
+display : flex;
+align-items : center;
+}
+
+[jcfs]{justify-content : flex-start}
+[jcfe]{justify-content : flex-end}
+[jcsb]{justify-content : space-between}
+[jcsa]{justify-content : space-around}
+[jcse]{justify-content : space-evenly}
+[ais]{align-items : stretch}
+[aifs]{align-items : flex-start}
+[aife]{align-items : flex-end}
+[aib]{align-items : baseline}
+ass]{align-self : stretch}
+[asfs]{align-self : flex-start}
+[asfe]{align-self : flex-end}
+[asb]{align-self : baseline}
+
+f,[f]{flex : 1}
+v>[f]{height : 10px}
+
+[bb]{box-sizing : border-box}
+
+[poa]{position : absolute}
+[pof]{position : fixed}
+[por]{position : relative}
+
+[ma]{margin : auto}
+[mla]{margin-left : auto}
+[mra]{margin-right : auto}
+[mxa]{margin-right : auto; margin-left : auto}
+
+[fb]{font-weight : bold}
+
+[ttu]{text-transform : uppercase}
+[ttc]{text-transform : capitalize}
+
+[tac]{text-align : center}
+[tar]{text-align : right}
+[tal]{text-align : left}
+
+[bs1]{box-shadow : 0 1px 3px rgba(0,0,0,0.1)}
+[bs2]{box-shadow : 0 -1px 3px rgba(0,0,0,0.1)}
+[bs3]{box-shadow : 0 0 0 1px rgba(0,0,0,0.1)}
+[bs4]{box-shadow : 0 0 0 2px rgba(0,0,0,0.1)}
+
+[oh]{
+overflow : hidden
+}
+[oxh]{
+overflow-x : hidden
+}
+[oyh]{
+overflow-y : hidden
+}
+[oa]{
+overflow : auto
+}
+[oxa]{
+overflow-x : auto
+}
+[oya]{
+overflow-y : auto
+}
+[ha]{height : auto}
+[wa]{width : auto}
+
+[bda]{border : 1px solid rgba(0,0,0,0.2)}
+[bdb]{border : 2px rgba(0,0,0,0.2)}
+[bdn]{border : none}
+[otn]{outline : none}
+
+[bfbl]{
+background : rgba(255,255,255,0.7);
+backdrop-filter : blur(15px)
+}
+[none]{
+display : none
+}
+[db]{display : block}
+[dib]{display : inline-block}
+[df]{display : flex}
+[di]{display : inline}
+
+[totl]{transform-origin : top left}
+[totr]{transform-origin : top right}
+[tobl]{transform-origin : bottom left}
+[tobr]{transform-origin : bottom right}
+[toc]{transform-origin : center}
+[tsp]{transform-style:preserve-3d}
+
+[afi]{animation : fadein 0.3s both}
+[afo]{animation : fadeout 0.3s both}
+[alfi]{animation : leftfadein 0.3s both}
+[alfo]{animation : leftfadeout 0.3s both}
+[atfi]{animation : topfadein 0.3s both}
+[atfo]{animation : topfadeout 0.3s both}
+[arfi]{animation : rightfadein 0.3s both}
+[arfo]{animation : rightfadeout 0.3s both}
+[abfi]{animation : bottomfadein 0.3s both}
+[abfo]{animation : bottomfadeout 0.3s both}
+
+[ali]{animation : leftin 0.3s both}
+[alo]{animation : leftout 0.3s both}
+[ati]{animation : topin 0.3s both}
+[ato]{animation : topout 0.3s both}
+[ari]{animation : rightin 0.3s both}
+[aro]{animation : rightout 0.3s both}
+[abi]{animation : bottomin 0.3s both}
+[abo]{animation : bottomout 0.3s both}
+
+@keyframes fadein{from{opacity : 0}}
+@keyframes fadeout{to{opacity : 0}}
+@keyframes leftfadein{from{transform : translatex(-100%);opacity : 0}}
+@keyframes leftfadeout{to{transform : translatex(-100%);opacity : 0}}
+@keyframes rightfadein{from{transform : translatex(100%);opacity : 0}}
+@keyframes rightfadeout{to{transform : translatex(100%);opacity : 0}}
+
+@keyframes topfadein{from{transform : translatey(-100%);opacity : 0}}
+@keyframes topfadeout{to{transform : translatey(-100%);opacity : 0}}
+@keyframes bottomfadein{from{transform : translatey(100%);opacity : 0}}
+@keyframes bottomfadeout{to{transform : translatey(100%);opacity : 0}}
+
+
+@keyframes leftin{from{transform : translatex(-100%)}}
+@keyframes leftout{to{transform : translatex(-100%)}}
+@keyframes rightin{from{transform : translatex(100%)}}
+@keyframes rightout{to{transform : translatex(100%)}}
+
+@keyframes topin{from{transform : translatey(-100%)}}
+@keyframes topout{to{transform : translatey(-100%)}}
+@keyframes bottomin{from{transform : translatey(100%)}}
+@keyframes bottomout{to{transform : translatey(100%)}}
+
