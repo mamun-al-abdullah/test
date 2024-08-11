@@ -1,4 +1,4 @@
-var [m, r1, r2, r3] = crn(`
+var [m, r1, r2, r3, r4] = crn(`
 <v p15 wm500 mxa>
 		<h bgizx p15 c5 bs1 mb15>
 				<h bgizg clzzz px25 c5 c>৳</h>
@@ -41,3 +41,5 @@ wow fantastic
 r2.it = `that's amazing
 `
 r3.style.color = "tomato"
+
+r4.style.color = "teal"
