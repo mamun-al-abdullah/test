@@ -1,57 +1,22 @@
-var [m, r1, r2, r3, r4, r5] = crn(`
-<v p15 wm500 mxa>
-		<h bgizx p15 c5 bs1 mb15>
-				<h bgizg clzzz px25 c5 c>৳</h>
-				<v f>
-				<h ttu px15 mb5 fb c>title is awesome</h>
-				<h ref bgizz bs1 p15 c5 f mx15>wow</h>
-				</v>
-				<h c px25 m-15>৳</h>
-		</h>
-		<h bguzx p15 c5 bs1 mb15>
-				<h bguzg clzzz px25 c5 c>৳</h>
-				<v f>
-				<h ttu px15 mb5 fb c>title is awesome</h>
-				<h ref bguzz bs1 p15 c5 f mx15>wow</h>
-				</v>
-				<h c px25 m-15>৳</h>
-		</h>
-		<h bgazx p15 c5 bs1 mb15>
-				<h bgazg clzzz px25 c5 c>৳</h>
-				<v f>
-				<h ttu px15 mb5 fb c>title is awesome</h>
-				<h ref bgazz bs1 p15 c5 f mx15>wow</h>
-				</v>
-				<h c px25 m-15>৳</h>
-		</h>
-		<h bgozx p15 c5 bs1 mb15>
-				<h bgozg clzzz px25 c5 c>৳</h>
-				<v f>
-				<h ttu px15 mb5 fb c>title is awesome</h>
-				<h ref bgozz bs1 p15 c5 f mx15>wow</h>
-				</v>
-				<h c px25 m-15>৳</h>
-		</h>
-		<h bgezx p15 c5 bs1 mb15>
-				<h bgezg clzzz px25 c5 c>৳</h>
-				<v f>
-				<h ttu px15 mb5 fb c>title is awesome</h>
-				<h ref bgezz bs1 p15 c5 f mx15>wow</h>
-				</v>
-				<h c px25 m-15>৳</h>
-		</h>
-</v>
-`)
 
-r1.it = `that's great
-wow fantastic
-`
-r2.it = `that's amazing
-`
-r3.style.color = "tomato"
+const [m,c1,c2,c3] = crn(`<v poa i0 b0 c tsp pv300 oh>
+		<v bguzg h150 co80 cp80 pof t0 l0 r0></v>
+		<h ref=c1 bgomu poa b150 c5 tsp tn20>
+				<v ref=c2 bgazg clzzz c5 tn20 ry90 tsp>
+						<v ref=c3 bgezg clzzz p100 c5 tn20 rx90></v>
+				</v>
+		</h>
+		<h bgozg clzzz pof b0 l0 r0 h60 f20>
+				<f c>EASY</f>
+				<f c clamq>HARD</f>
+		</h>
+</v>`)
 
-r4.style.color = "teal"
 
-r4.style.color = "teal"
+let dg = 270
+c1.style.transform = `rotate3d(1,1,1,${dg}deg)`
+c1.c = function (){
+dg = dg==270? 0 : 270
+c1.style.transform = `rotate3d(1,1,1,${dg}deg)`
+}
 
-r5.ih = "I am the crazy person"
