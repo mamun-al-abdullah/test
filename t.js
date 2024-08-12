@@ -353,7 +353,9 @@ cb(t,v){t.style.color = "rgba(0,0,0," + v/10 + ")"},
 tn(t,v){t.style.transitionDuration = v/10 + "s"},
 td(t,v){t.style.transitionDelay = v/10 + "s"},
 
-tr(t,v){t.style.transform = "rotate(" + v + "deg"},
+rz(t,v){t.style.transform = "rotatez(" + v + "deg"},
+rx(t,v){t.style.transform = "rotatex(" + v + "deg"},
+ry(t,v){t.style.transform = "rotatey(" + v + "deg"},
 tx(t,v){t.style.transform = "translatex(" + pc(v) +")"},
 ty(t,v){t.style.transform = "translatey(" + pc(v) +")"},
 tt(t,v){
