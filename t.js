@@ -491,7 +491,7 @@ return str
 }
 
 ///
-function crn(parentElm_se,htmlStr){
+function crn(parentElm_se,htmlStr, position){
 //if one parameter is passed, it'll be taken as htmlStr
 
 var parent, html
@@ -511,7 +511,20 @@ if(arguments.length==0){
 const parsedHtml = new DOMParser()
 				.parseFromString(html, "text/html").body;
 
-parent.appendChild(parsedHtml)
+var Position = position || 3
+var pos = {
+pos1 : "beforebegin",
+pos2 : "afterbegin",
+pos3 : "beforeend",
+pos4 : "afterend"
+}
+parent.insertAdjacentElement(pos["pos"+Position], parsedHtml)
+
+if(parent.tagName != "BODY" && [1,4].includes(Position)){
+parent = parent.parentElement
+}else if(parent.tagName == "BODY"){
+parent = document.body
+}
 
 reRenderHtmlChildren(parent)
 
