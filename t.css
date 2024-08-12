@@ -175,9 +175,14 @@ display : none
 [df]{display : flex}
 [di]{display : inline}
 
+[tot]{transform-origin : top}
+[tor]{transform-origin : right}
+[tob]{transform-origin : bottom}
+[tol]{transform-origin : left}
 [totl]{transform-origin : top left}
 [totr]{transform-origin : top right}
 [tobl]{transform-origin : bottom left}
+[tob]{transform-origin : bottom}
 [tobr]{transform-origin : bottom right}
 [toc]{transform-origin : center}
 [tsp]{transform-style:preserve-3d}
