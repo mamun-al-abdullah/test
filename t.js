@@ -364,6 +364,7 @@ t.style.transform =  "translate(" + pc(v.split('_')[0]) + "," + pc(v.split('_')[
 ts(t,v){t.style.transform = "scale(" + v/10 + ")"},
 ta(t,v){t.style.transform = "skewx(" + v + "deg"},
 tb(t,v){t.style.transform = "skewy(" + v + "deg"},
+pv(t,v){t.style.perspective = v + "px"},
 
 ad(t,v){t.style.animationDuration = v/10 + "s"},
 aw(t,v){t.style.animationDelay = v/10 + "s"},
