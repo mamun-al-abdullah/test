@@ -395,6 +395,7 @@ reRenderHtml(els[i])
 }
 }
 
+///
 function reRenderHtml(el){
 var atrs = el.attributes
 
@@ -407,15 +408,27 @@ var nm = atrs[i].name
 var vl = atrs[i].value
 ////
 if(num(1)){
+if(!htc[nm[0]]) {
+		c(nm[0]+nm.slice(1)+ " is not defined ❌")
+return
+}
 htc[nm[0]](el, nm.slice(1))
 }else if(num(2)){
 var fn = nm[0] + nm[1]
 if(!["in","bs","bg","cl"].Has(fn)){
+if(!htc[fn]) {
+		c(fn+nm.slice(2)+ " is not defined ❌")
+return
+}
 htc[fn](el, vl.l==0?nm.slice(2):'$*'+vl)
 }
 }else{
 var fn = nm[0] + nm[1]
 if(["bg","cl","da","dt","db","dl","dr"].Has(fn)){
+if(!htc[fn]) {
+		c(fn+nm.slice(2)+ " is not defined ❌")
+return
+}
 htc[fn](el, vl.l==0?nm.slice(2):'$*'+vl)
 }
 }
@@ -427,10 +440,7 @@ return (!isNaN(nm[index]) || nm[index] == "-" || nm[index] == ".")
 }
 
 
-
-
-
-
+///
 function clr(clrCode, bol){
 if(clrCode.includes("$*")){
 var cl =  clrCode.replace("$*","")
