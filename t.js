@@ -539,7 +539,14 @@ parent = parent.parentElement
 parent = document.body
 }
 
+const elo = {}
+const ela = parsedHtml.querySelectorAll("[ref]")
+ela.forEach((el, i)=>{
+const rVal = el.atg("ref") || ("ref"+ (i+1))
+elo[rVal] = el
+})
+
 reRenderHtmlChildren(parent)
 
-return [parsedHtml.children[0], ... parsedHtml.querySelectorAll("[ref]")]
+return elo
 }
