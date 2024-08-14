@@ -17,9 +17,24 @@ let r = {t : 3}
 aa(100, v=> r.t = os.random(10,50))
 
 
+function random(min, max) {
+if(!min || !max){
+return Math.random()
+}
+if((min>=0) && (max>=0)){
+min = Math.ceil(min);
+max = Math.floor(max);
+return Math.floor(Math.random() * (max - min + 1)) + min;
+}else{
+console.log("invoke os.random function with these two arguments : \nmin and max");
+return "";
+}
+}
+
+
 aa(r.t*300, v=>{
 c1.ats(`tn${r.t}`);
-c1.style.transform = `rotate3d(${os.random(1,2)-1},${os.random(1,2)-1},${os.random(1,2)-1},${os.random(1,360)}deg)`;
+c1.style.transform = `rotate3d(${random(1,2)-1},${random(1,2)-1},${random(1,2)-1},${random(1,360)}deg)`;
 }
 )
 
