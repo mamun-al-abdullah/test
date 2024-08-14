@@ -187,6 +187,16 @@ display : none
 [toc]{transform-origin : center}
 [tsp]{transform-style:preserve-3d}
 
+[tntl]{transition-timing-function : linear}
+[tntei]{transition-timing-function : ease-in}
+[tnteo]{transition-timing-function : ease-out}
+[tnteio]{transition-timing-function : ease-in-out}
+
+[atl]{animation-timing-function : linear}
+[atei]{animation-timing-function : ease-in}
+[ateo]{animation-timing-function : ease-out}
+[ateio]{animation-timing-function : ease-in-out}
+
 [afi]{animation : fadein 0.3s both}
 [afo]{animation : fadeout 0.3s both}
 [alfi]{animation : leftfadein 0.3s both}
@@ -229,4 +239,5 @@ display : none
 @keyframes topout{to{transform : translatey(-100%)}}
 @keyframes bottomin{from{transform : translatey(100%)}}
 @keyframes bottomout{to{transform : translatey(100%)}}
+
 
