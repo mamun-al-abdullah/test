@@ -1,3 +1,4 @@
+
 const {c1,c2,c3} = crn(`<v poa i0 b0 c tsp pv1000 oh>
 		<v bguzg h150 co80 cp80 pof t0 l0 r0></v>
 		<h ref=c1 bgom poa b150 c5 tsp tn20>
@@ -34,4 +35,5 @@ setInterval(v=>{
 c1.ats(`tn${r.t}`);
 c1.style.transform = `rotate3d(${random(1,2)-1},${random(1,2)-1},${random(1,2)-1},${random(1,360)}deg)`;
 },
-r.t*300)
+r.t*500)
+
