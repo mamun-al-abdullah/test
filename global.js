@@ -14,7 +14,7 @@ const {c1,c2,c3} = crn(`<v poa i0 b0 c tsp pv1000 oh>
 </v>`)
 
 let r = {t : 3}
-aa(100, v=> r.t = os.random(10,50))
+setTimeout(v=> r.t = random(10,50), 100)
 
 
 function random(min, max) {
@@ -32,11 +32,11 @@ return "";
 }
 
 
-aa(r.t*300, v=>{
+setInterval(v=>{
 c1.ats(`tn${r.t}`);
 c1.style.transform = `rotate3d(${random(1,2)-1},${random(1,2)-1},${random(1,2)-1},${random(1,360)}deg)`;
-}
-)
+},
+r.t*300)
 
 
 
