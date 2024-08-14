@@ -1,7 +1,8 @@
+<script>
 
-const [m,c1,c2,c3] = crn(`<v poa i0 b0 c tsp pv300 oh>
+const {c1,c2,c3} = crn(`<v poa i0 b0 c tsp pv1000 oh>
 		<v bguzg h150 co80 cp80 pof t0 l0 r0></v>
-		<h ref=c1 bgomu poa b150 c5 tsp tn20>
+		<h ref=c1 bgom poa b150 c5 tsp tn20>
 				<v ref=c2 bgazg clzzz c5 tn20 ry90 tsp>
 						<v ref=c3 bgezg clzzz p100 c5 tn20 rx90></v>
 				</v>
@@ -12,11 +13,16 @@ const [m,c1,c2,c3] = crn(`<v poa i0 b0 c tsp pv300 oh>
 		</h>
 </v>`)
 
+let r = {t : 3}
+aa(100, v=> r.t = os.random(10,50))
 
-let dg = 270
-c1.style.transform = `rotate3d(1,1,1,${dg}deg)`
-c1.c = function (){
-dg = dg==270? 0 : 270
-c1.style.transform = `rotate3d(1,1,1,${dg}deg)`
+
+aa(r.t*300, v=>{
+c1.ats(`tn${r.t}`);
+c1.style.transform = `rotate3d(${os.random(1,2)-1},${os.random(1,2)-1},${os.random(1,2)-1},${os.random(1,360)}deg)`;
 }
+)
 
+
+
+</script>
