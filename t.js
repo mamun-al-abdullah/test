@@ -1,52 +1,59 @@
-const lb = {
-//all the library methods should be linked there.
+var _iid = 0
+function iid(){ //eg-"sid0", run time incremental integer-id
+return ++_iid
+}
+
+var $_$_cidObj ={}
+function sid(namespaceStr){
+var namespace = namespaceStr || "sid"
+if(namespace.trim().length==0){namespace = "sid"}
+namespace = namespace.trim()
+if($_$_cidObj[namespace] != undefined){
+$_$_cidObj[namespace] = $_$_cidObj[namespace]+1
+}else{
+$_$_cidObj[namespace] = 0
+}
+return namespace + $_$_cidObj[namespace]
+}
+
+function cid(namespaceStr){
+var namespace = namespaceStr || "sid"
+if(namespace.trim().length==0){namespace = "sid"}
+namespace = namespace.trim()
+if($_$_cidObj[namespace] != undefined){
+return namespace+$_$_cidObj[namespace]
+}else{
+return namespace+0
+}
+}
+
+
+sid.reset = function (namespaceStr){ //eg-"sid0"
+var namespace = namespaceStr || "sid"
+if(namespace.trim().length==0){namespace = "sid"}
+namespace = namespace.trim()
+if($_$_cidObj[namespace] != undefined){
+$_$_cidObj[namespace] = 0
+}else{
+$_$_cidObj[namespace] = 0
+}
+return namespace + $_$_cidObj[namespace]
+}
+
+
+function uid(){
+return "uid"+new Date().getTime()+iid()
+}
+function usid(){
+return "usid"+new Date().getTime()+iid()
 }
 
 function K(obj){return Object.keys(obj)}
-
-function k(v){
-if(v==undefined||v==null||v.constructor.name=="Function"){
-return (v +" is not a pure object")
-}
-if(v == "[object Math]"){
-return Object.getOwnPropertyNames(v)
-}
-//setTimeout(()=>c(v))
-if(v instanceof HTMLElement){
-var elx = []
-elx = prot(Node).concat(prot(Element), prot(HTMLElement),prot(EventTarget)).reverse()
-if(v.constructor.name == "HTMLInputElement"){
-elx = elx.concat(prot(HTMLInputElement))}
-if(v.constructor.name == "HTMLTextAreaElement"){
-elx = elx.concat(prot(HTMLTextAreaElement))}
-return elx
-}
-var _arr = []
-if(v.constructor === Object){_arr = Object.keys(v)}
-
-var _arrOwn = []
-if(![Array, Object, String].has(v.constructor)){
-_arrOwn = Object.getOwnPropertyNames(v)}
-
-var _arrProto = Object.getOwnPropertyNames(Object.getPrototypeOf(v)).reverse()
-var _arrAll = _arr.concat(_arrOwn,_arrProto)
-return(_arrAll)
-
-function prot(ifc){
-return Object.getOwnPropertyNames(ifc.prototype)}
-
-};
-
 
 const c = console.log;
 
 function a(v){alert(v)};
 var w = window;
-function s(elm){
-return (document.querySelector(elm) || document.querySelector("[" + elm + "]"))
-}
-
-
 function s(elm){
 return (document.querySelector(elm) || document.querySelector("[" + elm + "]"))
 }
@@ -58,6 +65,8 @@ return document.querySelector(elm)
 function sa(elms){
 return document.querySelectorAll(elms)
 }
+
+
 function $O(prop, cbGet, cbSet){
 Object.defineProperty(Object.prototype, prop,
 {get : cbGet, set : cbSet})}
@@ -84,7 +93,8 @@ Object.defineProperty(SVGElement.prototype, prop,
 }
 
 $O("js", function (){return JSON.stringify(this)})
-$O("jsc", function (){console.log(JSON.stringify(this,null,4))})
+$O("jsf", function (){return JSON.stringify(this,null,4)})
+$O("jsc", function (){setTimeout(v=>console.log(JSON.stringify(this,null,4)))})
 $O("jsa", function (){a(JSON.stringify(this,null,4))})
 $O("jsm", function (){os.message(JSON.stringify(this,null,4))})
 $O("jsn", function (){os.alert(JSON.stringify(this,null,4))})
@@ -193,6 +203,16 @@ this.setAttribute(attrName,attrValue||"")
 reRenderHtml(this)
 return this
 })
+
+$Hf("atsa", function (attrNamesStr){
+const arr = attrNamesStr.trim().replace(/[\s\n]+/g, ' ').split(" ");
+arr.forEach(at=>{
+		this.setAttribute(at,"")
+})
+reRenderHtml(this)
+return this
+})
+
 $Hf("atg", function (attrName){
 return this.getAttribute(attrName)
 })
@@ -201,12 +221,23 @@ this.removeAttribute(attrName,attrValue||"")
 reRenderHtml(this)
 return this
 })
+
+$Hf("atra", function (attrNamesStr){
+const arr = attrNamesStr.trim().replace(/[\s\n]+/g, ' ').split(" ");
+arr.forEach(at=>{
+    this.removeAttribute(at,"")
+})
+reRenderHtml(this)
+return this
+})
+
 $Hf("att", function (attrName){
 this.style = ""
 this.toggleAttribute(attrName)
 reRenderHtml(this)
 return this
 })
+
 $Hf("ath", function (attrName){
 return this.hasAttribute(attrName)
 })
@@ -286,8 +317,291 @@ function (fn){
 this.addEventListener("click", fn)
 })
 
-//stl >> style library
-const stl = {}
+
+s("body").c=function(){
+var t = event.target
+if(t.ath("fn")){
+var fnStr = t.atg("fn")
+new Function(fnStr)()
+}
+}
+
+///
+function $s(obj, key, returnFn, setFn){
+//state handler
+obj[key] = ""
+Object.defineProperty(obj, key,
+{get : returnFn,set : setFn})}
+
+///
+function $(obj, key, el){
+//state-element syncer
+$s(obj, key, function (){return el && el.ih},
+v=>el && (el.ih = v))
+}
+
+///
+function tag(targetTagName){
+return(event.target.tagName == targetTagName.toUpperCase())
+}
+
+///
+function tf(elm,transformStr){
+elm.style.webkitTransform = transformStr
+}
+
+///
+function debounce(delay, cb){
+		let timer
+		return function (delay, cb){
+				clearTimeout(timer)
+				timer = af(delay, cb)
+		}
+}
+
+///
+function throttled (delay, cb) {
+let shouldWait = false
+let waitingArgs
+
+const timeoutFunc = () => {
+		if (waitingArgs == null) {
+				shouldWait = false
+		} else {
+		cb(...waitingArgs)
+		waitingArgs = null
+		setTimeout(timeoutFunc, delay)
+		}
+}
+return (...args) => {
+		if (shouldWait) {
+		waitingArgs = args
+		return
+		}
+		cb(...args)
+		shouldWait = true
+		setTimeout(timeoutFunc, delay)
+}
+}
+
+///
+function throttle (limit, callback) {
+var waiting = false;
+return function () {
+if (!waiting) {
+callback.apply(this, arguments);
+waiting = true;
+setTimeout(function () {
+waiting = false;
+}, limit); } } }
+
+
+///
+function cre(html, css){
+var html = html || ""
+var css ="<style>" + css + "</style>" || ""
+document.body.ih += html + css
+}
+
+
+///
+function crt(elmStr,parentElm_se,txt){
+var txt = txt || "";
+var el = document.createElement(elmStr.toUpperCase())
+
+if(parentElm_se ==null)return c("parentElement is not found")
+
+var parentElm = parentElm_se.isEl?parentElm_se : parentElm_se?s(parentElm_se):document.body
+
+if(!parentElm) return c("parentElement is not found")
+
+el.appendChild(document.createTextNode(txt));
+parentElm.appendChild(el)
+return el
+}
+
+///
+function crh(elmStr,parentElm_se,html){
+var html = html || ""
+
+if(parentElm_se ==null)return c("parentElement is not found")
+
+var parentElm = parentElm_se.isEl?parentElm_se : parentElm_se?s(parentElm_se):document.body
+
+if(!parentElm) return c("parentElement is not found")
+
+var el = document.createElement(elmStr.toUpperCase())
+el.ih= html;
+parentElm.appendChild(el)
+return el
+}
+
+///
+function cra(parentElm_se, txt){
+if(parentElm_se ==null)return c("parentElement is not found")
+
+var parentElm = parentElm_se.isEl?parentElm_se : parentElm_se?s(parentElm_se):document.body
+
+if(!parentElm) return c("parentElement is not found")
+
+var txt = txt || ""
+parentElm.append(txt)
+}
+
+///
+function crn(parentElm_se,htmlStr, position){
+//if one parameter is passed, it'll be taken as htmlStr
+
+var parent, html
+
+if(arguments.length==0){
+		return c("atleast one argument need to pass as htmlString")
+} else if(arguments.length==1){
+		parent = document.body
+		html = parentElm_se
+}else{
+		parent = parentElm_se.isEl ?
+				parentElm_se : (parentElm_se!="")?
+						s(parentElm_se) : document.body
+		html = htmlStr
+}
+
+html = `<div>${html}</div>`
+
+const parsedHtml = new DOMParser()
+				.parseFromString(html, "text/html").body.children[0].children[0];
+
+var Position = position || 3
+var pos = {
+pos1 : "beforebegin",
+pos2 : "afterbegin",
+pos3 : "beforeend",
+pos4 : "afterend"
+}
+parent.insertAdjacentElement(pos["pos"+Position], parsedHtml)
+if(parent.tagName != "BODY" && [1,4].includes(Position)){
+parent = parent.parentElement
+}else if(parent.tagName == "BODY"){
+parent = document.body
+}
+
+const elo = {}
+const ela = parsedHtml.querySelectorAll("[ref]")
+const elm = parsedHtml
+const rVal = elm.atg("ref") || "ref1"
+elo[rVal] = elm
+ela.forEach((el, i)=>{
+const rVal = el.atg("ref") || ("ref"+ (i+2))
+elo[rVal] = el
+})
+
+reRenderHtmlChildren(parent)
+return elo
+}
+
+///
+function cri(targetElm_se, html, position){
+//position : 1/2/3/4
+if(targetElm_se ==null)return c("targetElement is not found")
+
+var targetElm = targetElm_se.isEl?targetElm_se : targetElm_se?s(targetElm_se):document.body
+
+if(!targetElm) return c("targetElement is not found")
+
+var html = html || ""
+var Position = position || 3
+var pos = {
+pos1 : "beforebegin",
+pos2 : "afterbegin",
+pos3 : "beforeend",
+pos4 : "afterend"
+}
+targetElm.insertAdjacentHTML(pos["pos"+Position ], html);
+reRenderHtmlChildren(targetElm.parentElement)
+}
+
+
+
+///
+function remove(selectorStr, css, delay){
+if(selectorStr){
+var d = delay || 0;
+if (d>0){
+var str= "<style>"+selectorStr+ "{transition:"+d+"ms;"+css+"}"+
+selectorStr + " ~*{transition : "+d+"ms;\
+-webkit-transform :\
+translatey(-"+(s(selectorStr).clientHeight+5)+"px)}\
+</style>";
+var elm = sid()
+crh(elm,"",str)
+//c(str)
+setTimeout(function (){
+if(s(selectorStr)){
+s(selectorStr).remove();
+}
+s(elm).remove()
+},d)
+}else{
+if(s(selectorStr)){
+s(selectorStr).remove()
+}
+}
+}
+}
+
+///
+var _i = function (arrOfObj, id){
+var ind = -1;
+arrOfObj.forEach((item, index)=>{
+if(item.id==id){
+ind = index
+return
+}
+})
+return ind
+}
+
+function getStl(oElm, css3Prop) {
+var strValue = "";
+if (window.getComputedStyle) {
+strValue = getComputedStyle(oElm).getPropertyValue(css3Prop)
+}else if (oElm.currentStyle) {
+try { strValue = oElm.currentStyle[css3Prop]
+}catch (e) {} }
+return strValue
+}
+
+//fn get node index
+function ind(currentNode){
+var child = currentNode;
+var parent = child.parentNode;
+var index = Array.prototype.indexOf.call(parent.children, child);
+return index;
+}
+
+
+//setTimeout
+function af(millisecond, cb){
+var tnm = 1
+if(cb){
+tnm = setTimeout(cb,millisecond)
+}else{
+tnm = setTimeout(millisecond,0)
+}
+return tnm
+}
+
+//setInterval
+function aa(millisecond, cb){
+var tnm = 1
+if(cb){
+tnm = setInterval(cb,millisecond)
+}else{
+tnm = setInterval(millisecond,0)
+}
+return tnm
+}
+
 
 //html controller
 var htc = {
@@ -363,10 +677,12 @@ t.style.transform =  "translate(" + pc(v.split('_')[0]) + "," + pc(v.split('_')[
 ts(t,v){t.style.transform = "scale(" + v/10 + ")"},
 ta(t,v){t.style.transform = "skewx(" + v + "deg"},
 tb(t,v){t.style.transform = "skewy(" + v + "deg"},
+
 pv(t,v){t.style.perspective = v + "px"},
 
 ad(t,v){t.style.animationDuration = v/10 + "s"},
 aw(t,v){t.style.animationDelay = v/10 + "s"},
+ai(t,v){t.style.animationIterationCount = v},
 bg(t,v){t.style.background = clr(v)},
 cl(t,v){t.style.color = clr(v)},
 da(t,v){t.style.borderColor = clr(v)},
@@ -439,6 +755,8 @@ return (!isNaN(nm[index]) || nm[index] == "-" || nm[index] == ".")
 }
 
 
+
+
 ///
 function clr(clrCode, bol){
 if(clrCode.includes("$*")){
@@ -500,52 +818,4 @@ a<0 && (a=1)
 
 var str = `hsla(${h},${s}%,${l}%,${a})`
 return str
-}
-
-///
-function crn(parentElm_se,htmlStr, position){
-//if one parameter is passed, it'll be taken as htmlStr
-
-var parent, html
-
-if(arguments.length==0){
-		return c("atleast one argument need to pass as htmlString")
-} else if(arguments.length==1){
-		parent = document.body
-		html = parentElm_se
-}else{
-		parent = parentElm_se.isEl ?
-				parentElm_se : (parentElm_se!="")?
-						s(parentElm_se) : document.body
-		html = htmlStr
-}
-
-const parsedHtml = new DOMParser()
-				.parseFromString(html, "text/html").body;
-
-var Position = position || 3
-var pos = {
-pos1 : "beforebegin",
-pos2 : "afterbegin",
-pos3 : "beforeend",
-pos4 : "afterend"
-}
-parent.insertAdjacentElement(pos["pos"+Position], parsedHtml)
-
-if(parent.tagName != "BODY" && [1,4].includes(Position)){
-parent = parent.parentElement
-}else if(parent.tagName == "BODY"){
-parent = document.body
-}
-
-const elo = {}
-const ela = parsedHtml.querySelectorAll("[ref]")
-ela.forEach((el, i)=>{
-const rVal = el.atg("ref") || ("ref"+ (i+1))
-elo[rVal] = el
-})
-
-reRenderHtmlChildren(parent)
-
-return elo
 }
