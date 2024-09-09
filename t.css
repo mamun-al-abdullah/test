@@ -29,10 +29,11 @@
         }
 html, body{
 margin:0;
-height : 100%;
 line-height : 1.5;
 box-sizing : border-box;
 font-family: Tahoma, Verdana, sans-serif;
+max-height: 100%;
+oveflow : hidden
 }
 
 [tg] *, [ntg]{
@@ -43,6 +44,9 @@ pointer-events : none;
 -moz-user-select: none;
 -ms-user-select: none;
 user-select: none;
+}
+[als]{
+user-select : all
 }
 [contenteditable]{
 outline : none
@@ -64,7 +68,8 @@ display : flex;
 flex-direction : column;
 position : relative
 }
-[wr]{flex-wrap : wrap}
+[fw]{flex-wrap : wrap}
+[wr]{word-wrap : break-word}
 hs{
 display : block;
 overflow-x : auto;
@@ -132,10 +137,32 @@ v>[f]{height : 10px}
 [tar]{text-align : right}
 [tal]{text-align : left}
 
-[bs1]{box-shadow : 0 1px 3px rgba(0,0,0,0.1)}
-[bs2]{box-shadow : 0 -1px 3px rgba(0,0,0,0.1)}
-[bs3]{box-shadow : 0 0 0 1px rgba(0,0,0,0.1)}
-[bs4]{box-shadow : 0 0 0 2px rgba(0,0,0,0.1)}
+[bsm1]{box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px}
+[bsm2]{box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px}
+[bsm3]{box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px}
+[bsm4]{box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px}
+[bsm5]{box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px}
+[bsm6]{box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px}
+[bsm7]{box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px}
+
+[bs1]{box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px}
+[bs2]{box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px}
+[bs3]{box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px}
+[bs4]{box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px}
+[bs5]{box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px}
+[bs6]{box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px}
+[bs7]{box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px}
+[bs8]{box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset}
+
+[bsmac1]{box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px}
+[bsmac2]{box-shadow: rgba(0, 0, 0, 0.2) 0px 20px 30px}
+
+[bscircle1]{box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px}
+[bscircle2]{box-shadow: rgba(0, 0, 0, 0.35) 0px -50px 36px -28px inset}
+
+[bssolid]{box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset}
+
+[bsdrop]{box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px}
 
 [oh]{
 overflow : hidden
@@ -191,11 +218,8 @@ display : none
 [tntei]{transition-timing-function : ease-in}
 [tnteo]{transition-timing-function : ease-out}
 [tnteio]{transition-timing-function : ease-in-out}
+[tncbb]{transition-timing-function: cubic-bezier(0.680, -0.550, 0.265, 1.550) !important}
 
-[atl]{animation-timing-function : linear}
-[atei]{animation-timing-function : ease-in}
-[ateo]{animation-timing-function : ease-out}
-[ateio]{animation-timing-function : ease-in-out}
 
 [afi]{animation : fadein 0.3s both}
 [afo]{animation : fadeout 0.3s both}
@@ -216,6 +240,39 @@ display : none
 [aro]{animation : rightout 0.3s both}
 [abi]{animation : bottomin 0.3s both}
 [abo]{animation : bottomout 0.3s both}
+
+[asi]{animation : scalein 0.3s both}
+[aso]{animation : scaleout 0.3s both}
+
+[azi]{animation : zoomin 0.3s both}
+[azix]{animation : zoominx 0.3s both}
+[aziy]{animation : zoominy 0.3s both}
+[azo]{animation : zoomout 0.3s both}
+[azox]{animation : zoomoutx 0.3s both}
+[azoy]{animation : zoomouty 0.3s both}
+
+[aspn]{animation : spin 0.3s linear both infinite}
+
+[atl]{animation-timing-function : linear}
+[atei]{animation-timing-function : ease-in}
+[ateo]{animation-timing-function : ease-out}
+[ateio]{animation-timing-function : ease-in-out}
+[atcbb]{animation-timing-function : cubic-bezier(.51,.92,.24,1.15)}
+
+[atcb1]{animation-timing-function: cubic-bezier(0.680, -0.550, 0.265, 1.550)}
+[atcb2]{animation-timing-function : cubic-bezier(.47,1.64,.41,.8)}
+[atcb3]{animation-timing-function : cubic-bezier(.32,2,.55,.27)}
+[atcb4]{animation-timing-function : cubic-bezier(.22,.68,0,1.71)}
+[atcb5]{animation-timing-function : cubic-bezier(.57,.21,.69,3.25)}
+[atcb6]{animation-timing-function : cubic-bezier(.25,.75,.5,1.25)}
+[atcb7]{animation-timing-function : cubic-bezier(.5,-.75,.7,2)}
+[atcb8]{animation-timing-function : cubic-bezier(.42,.97,.52,1.49)}
+[atcb9]{animation-timing-function : cubic-bezier(.57,.21,.69,1.25)}
+[atcb10]{animation-timing-function : cubic-bezier(.17,.67,1,1.23)}
+
+[ainf]{animation-iteration-count : infinite}
+
+[atlv]{animation-timeline : view()}
 
 @keyframes fadein{from{opacity : 0}}
 @keyframes fadeout{to{opacity : 0}}
@@ -240,4 +297,120 @@ display : none
 @keyframes bottomin{from{transform : translatey(100%)}}
 @keyframes bottomout{to{transform : translatey(100%)}}
 
+@keyframes scalein{from{transform : scale(3);opacity:0}}
+@keyframes scaleout{to{transform : scale(3);opacity:0}}
 
+@keyframes zoomin{from{transform : scale(0)}}
+@keyframes zoominx{from{transform : scalex(0)}}
+@keyframes zoominy{from{transform : scaley(0)}}
+@keyframes zoomout{to{transform : scale(0)}}
+@keyframes zoomoutx{to{transform : scalex(0)}}
+@keyframes zoomouty{to{transform : scaley(0)}}
+
+@keyframes spin{to{transform : rotatez(360deg)}}
+
+
+options{
+background : #eee;
+position : absolute ;
+bottom : 0;
+left : 0;
+right : 0;
+max-height : 200px;
+overflow : hidden auto;
+box-shadow : 0 -1px 5px rgba(0,0,0,0.1);
+z-index : 99999999
+}
+options items{
+display : block;
+background : #fff
+}
+options item{
+display : block;
+padding : 15px;
+border-bottom : 1px solid #eee
+}
+#osAlertComp{
+font-size: 1.2em;background : #fff;color: #444;border-radius: 5px; padding:5px 10px; position:fixed;top:0;left:50%; -webkit-transform:translate(-50%,-30px);white-space:pre-wrap;-webkit-animation:  osAlertCompAnim 3s forwards;box-shadow:0 2px 5px rgba(0,0,0,0.3), 0 10px 10px -7px rgba(0,0,0,0.3);z-index:9999999999999
+}
+@-webkit-keyframes osAlertCompAnim {
+from,to{opacity:0}
+10%{opacity: 1;-webkit-transform: translate(-50%,63px)scale(1.05,0.95)}
+20%{opacity: 1;-webkit-transform: translate(-50%,60px)scale(1,1)}
+30%{opacity: 1;-webkit-transform: translate(-50%,63px)scale(1.02,0.98)}
+80%{opacity: 1;-webkit-transform: translate(-50%,60px)scale(1,1)}
+}
+#_p{
+background: rgba(0,0,0,0.2);position:fixed;top:0;bottom:0;left:0;right:0;display:flex;justify-content:center;align-items:center;overflow: hidden;-webkit-animation: _pAnimaOn 0.5s;
+display: none;z-index:999999999999
+}
+@-webkit-keyframes _pAnimaOn{
+70%{opacity:1}
+from{opacity: 0}
+}
+@-webkit-keyframes _p_anim_close{
+50%{opacity:1}
+to{opacity: 0;}
+}
+#_w{
+background:#fff;color:#444;max-height : 80%;overflow :hidden;max-width: 90%;overflow: hidden;border-radius: 5px;position:relative;display:flex;flex-direction:column;box-shadow: 0 0 10px rgba(0,0,0,0.2),
+0 70px 40px -40px rgba(0,0,0,0.2);-webkit-animation:_wAnimaWrapOn 0.5s
+}
+@-webkit-keyframes _wAnimaWrapOn{
+from{opacity: 0;-webkit-transform: scale(1.5)}
+50%{opacity: 1;-webkit-transform: scale(0.95)}
+to{opacity: 1;-webkit-transform: scale(1)}
+}
+@-webkit-keyframes _w_anim_close{
+from{opacity: 1;-webkit-transform: scale(1)}
+50%{opacity: 1;-webkit-transform: scale(0.95)}
+to{opacity: 0;-webkit-transform: scale(1.5)}
+}
+#_h,#_m,#_b{
+min-width: 280px;padding: 15px;font-size: 1.3em
+}
+#_h{
+bo rder-bottom: 1px solid #ddd
+}
+#_m{
+flex: 1;overflow-y: auto;font-size:1em;color:#888;padding: 0 15px 30px 15px;white-space:pre-wrap
+}
+#_b{
+bo rder-top: 1px solid #ddd;text-align:right
+}
+#_b>div{
+display: inline-block;border:1px solid teal;padding:7px 15px;margin:-3px;min-width:60px;text-align:center;text--webkit-transform: uppercase
+}
+#_b>div:first-of-type{
+border-radius:50px 0 0 50px;background:#fff;color:teal
+}
+#_b>div:last-of-type{
+border-radius:0 50px 50px 0;background: teal;color:#fff
+}
+[w] {
+  position: relative;
+  overflow: hidden;
+}
+[w] *{
+pointer-events : none;
+}
+[w] .wave {
+  position: absolute;
+  display: block;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+  opacity: 1;
+  -webkit-pointer-events: none;
+  pointer-events: none;
+  will-change: opacity, transform;
+  transition: 0.8s ease;
+}
+[w][wd] .wave{
+background-color : rgba(0,0,0,0.2)
+}
+[w] .wave.is-active {
+  transform: scale(500);
+  opacity: 0;
+}
