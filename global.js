@@ -1,6 +1,6 @@
 
 const {c1,c2,c3} = crn(`<v poa i0 b0 c tsp pv1000 oh>
-		<v bguzg h150 co80 cp80 pof t0 l0 r0></v>
+		<v bguzg h100 co80 cp80 pof t0 l0 r0></v>
 		<h ref=c1 bgom poa b150 c5 tsp tn20>
 				<v ref=c2 bgazg clzzz c5 tn20 ry90 tsp>
 						<v ref=c3 bgezg clzzz p100 c5 tn20 rx90></v>
