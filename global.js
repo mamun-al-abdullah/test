@@ -6,10 +6,6 @@ const {c1,c2,c3} = crn(`<v poa i0 b0 c tsp pv1000 oh>
 						<v ref=c3 bgezg clzzz p100 c5 tn20 rx90></v>
 				</v>
 		</h>
-		<h bgozg clzzz pof b0 l0 r0 h60 f20>
-				<f c>EASY</f>
-				<f c clamq>HARD</f>
-		</h>
 </v>`)
 
 let r = {t : 3}
