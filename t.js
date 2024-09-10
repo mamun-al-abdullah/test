@@ -671,14 +671,22 @@ rx(t,v){t.style.transform = "rotatex(" + v + "deg"},
 ry(t,v){t.style.transform = "rotatey(" + v + "deg"},
 tx(t,v){t.style.transform = "translatex(" + pc(v) +")"},
 ty(t,v){t.style.transform = "translatey(" + pc(v) +")"},
+tz(t,v){t.style.transform = "translatez(" + pc(v) +")"},
 tt(t,v){
 t.style.transform =  "translate(" + pc(v.split('_')[0]) + "," + pc(v.split('_')[1]) +")"
+},
+tl(t,v){
+t.style.transform =  "translate(" + pc(v.split('_')[0]) + "," + pc(v.split('_')[1]) +"," + pc(v.split('_')[2]) + ")"
 },
 ts(t,v){t.style.transform = "scale(" + v/10 + ")"},
 ta(t,v){t.style.transform = "skewx(" + v + "deg"},
 tb(t,v){t.style.transform = "skewy(" + v + "deg"},
+to(t,v){t.style.transformOrigin =  pc(v.split('_')[0]) + " " + pc(v.split('_')[1])
+},
 
 pv(t,v){t.style.perspective = v + "px"},
+po(t,v){t.style.perspectiveOrigin =  pc(v.split('_')[0]) + " " + pc(v.split('_')[1])
+},
 
 ad(t,v){t.style.animationDuration = v/10 + "s"},
 aw(t,v){t.style.animationDelay = v/10 + "s"},
