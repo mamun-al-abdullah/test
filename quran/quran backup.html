@@ -1,0 +1,1954 @@
+<style>
+html, body{
+margin:0;
+height : 100%;
+line-height : 1.5;
+box-sizing : border-box
+}
+
+[tg] *, [ntg]{
+pointer-events : none;
+}
+[nos]{
+-webkit-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+}
+[contenteditable]{
+outline : none
+}
+mi{
+width:30px;
+height:30px;
+padding:10px;
+display: inline-block;
+line-height:30px;
+}
+h{
+display : flex;
+flex-direction : row;
+position : relative
+}
+v{
+display : flex;
+flex-direction : column;
+position : relative
+}
+[w]{flex-wrap : wrap}
+hs{
+display : block;
+overflow-x : auto;
+white-space : nowrap;
+position : relative
+}
+hs>*{
+display : inline-block !important;
+}
+vs{
+display : block;
+overflow-y : auto;
+position : relative;
+height : 100%
+}
+c, [c]{
+display : flex;
+justify-content : center;
+align-items : center;
+position : relative
+}
+[cm]{
+display : flex;
+justify-content : center;
+}
+[ca]{
+display : flex;
+align-items : center;
+}
+f,[f]{flex : 1}
+v>[f]{height : 10px}
+
+[bb]{box-sizing : border-box}
+
+[poa]{position : absolute}
+[pof]{position : fixed}
+[por]{position : relative}
+
+[ma]{margin : auto}
+[mla]{margin-left : auto}
+[mra]{margin-right : auto}
+[mxa]{margin-right : auto; margin-left : auto}
+
+[fb]{font-weight : bold}
+
+[ttu]{text-transform : uppercase}
+[ttc]{text-transform : capitalize}
+
+[tac]{text-align : center}
+[tar]{text-align : right}
+[tal]{text-align : left}
+
+[bs1]{box-shadow : 0 1px 3px rgba(0,0,0,0.1)}
+[bs2]{box-shadow : 0 -1px 3px rgba(0,0,0,0.1)}
+[bs3]{box-shadow : 0 0 0 1px rgba(0,0,0,0.1)}
+[bs4]{box-shadow : 0 0 0 2px rgba(0,0,0,0.1)}
+
+[oh]{
+overflow : hidden
+}
+[oxh]{
+overflow-x : hidden
+}
+[oyh]{
+overflow-y : hidden
+}
+[oa]{
+overflow : auto
+}
+[oxa]{
+overflow-x : auto
+}
+[oya]{
+overflow-y : auto
+}
+[ha]{height : auto}
+[wa]{width : auto}
+
+[bd1]{border : 1px solid rgba(0,0,0,0.2)}
+[bd2]{border : 2px rgba(0,0,0,0.2)}
+[bdn]{border : none}
+[otn]{outline : none}
+
+[bfbl]{
+background : rgba(255,255,255,0.7);
+backdrop-filter : blur(15px)
+}
+[none]{
+display : none
+}
+[db]{display : block}
+[dib]{display : inline-block}
+[df]{display : flex}
+[di]{display : inline}
+
+[totl]{transform-origin : top left}
+[totr]{transform-origin : top right}
+[tobl]{transform-origin : bottom left}
+[tobr]{transform-origin : bottom right}
+[toc]{transform-origin : center}
+[tsp]{transform-style:preserve-3d}
+
+[afi]{animation : fadein 0.3s both}
+[afo]{animation : fadeout 0.3s both}
+[alfi]{animation : leftfadein 0.3s both}
+[alfo]{animation : leftfadeout 0.3s both}
+[atfi]{animation : topfadein 0.3s both}
+[atfo]{animation : topfadeout 0.3s both}
+[arfi]{animation : rightfadein 0.3s both}
+[arfo]{animation : rightfadeout 0.3s both}
+[abfi]{animation : bottomfadein 0.3s both}
+[abfo]{animation : bottomfadeout 0.3s both}
+
+[ali]{animation : leftin 0.3s both}
+[alo]{animation : leftout 0.3s both}
+[ati]{animation : topin 0.3s both}
+[ato]{animation : topout 0.3s both}
+[ari]{animation : rightin 0.3s both}
+[aro]{animation : rightout 0.3s both}
+[abi]{animation : bottomin 0.3s both}
+[abo]{animation : bottomout 0.3s both}
+
+@keyframes fadein{from{opacity : 0}}
+@keyframes fadeout{to{opacity : 0}}
+@keyframes leftfadein{from{transform : translatex(-100%);opacity : 0}}
+@keyframes leftfadeout{to{transform : translatex(-100%);opacity : 0}}
+@keyframes rightfadein{from{transform : translatex(100%);opacity : 0}}
+@keyframes rightfadeout{to{transform : translatex(100%);opacity : 0}}
+
+@keyframes topfadein{from{transform : translatey(-100%);opacity : 0}}
+@keyframes topfadeout{to{transform : translatey(-100%);opacity : 0}}
+@keyframes bottomfadein{from{transform : translatey(100%);opacity : 0}}
+@keyframes bottomfadeout{to{transform : translatey(100%);opacity : 0}}
+
+
+@keyframes leftin{from{transform : translatex(-100%)}}
+@keyframes leftout{to{transform : translatex(-100%)}}
+@keyframes rightin{from{transform : translatex(100%)}}
+@keyframes rightout{to{transform : translatex(100%)}}
+
+@keyframes topin{from{transform : translatey(-100%)}}
+@keyframes topout{to{transform : translatey(-100%)}}
+@keyframes bottomin{from{transform : translatey(100%)}}
+@keyframes bottomout{to{transform : translatey(100%)}}
+
+
+options{
+background : #eee;
+position : absolute ;
+bottom : 0;
+left : 0;
+right : 0;
+max-height : 200px;
+overflow : hidden auto;
+box-shadow : 0 -1px 5px rgba(0,0,0,0.1);
+z-index : 99999999
+}
+options items{
+display : block;
+background : #fff
+}
+options item{
+display : block;
+padding : 15px;
+border-bottom : 1px solid #eee
+}
+#osAlertComp{
+font-size: 1.2em;background : #fff;color: #444;border-radius: 5px; padding:5px 10px; position:fixed;top:0;left:50%; -webkit-transform:translate(-50%,-30px);white-space:pre-wrap;-webkit-animation:  osAlertCompAnim 3s forwards;box-shadow:0 2px 5px rgba(0,0,0,0.3), 0 10px 10px -7px rgba(0,0,0,0.3);z-index:9999999999999
+}
+@-webkit-keyframes osAlertCompAnim {
+from,to{opacity:0}
+10%{opacity: 1;-webkit-transform: translate(-50%,63px)scale(1.05,0.95)}
+20%{opacity: 1;-webkit-transform: translate(-50%,60px)scale(1,1)}
+30%{opacity: 1;-webkit-transform: translate(-50%,63px)scale(1.02,0.98)}
+80%{opacity: 1;-webkit-transform: translate(-50%,60px)scale(1,1)}
+}
+#_p{
+background: rgba(0,0,0,0.2);position:fixed;top:0;bottom:0;left:0;right:0;display:flex;justify-content:center;align-items:center;overflow: hidden;-webkit-animation: _pAnimaOn 0.5s;
+display: none;z-index:999999999999
+}
+@-webkit-keyframes _pAnimaOn{
+70%{opacity:1}
+from{opacity: 0}
+}
+@-webkit-keyframes _p_anim_close{
+50%{opacity:1}
+to{opacity: 0;}
+}
+#_w{
+background:#fff;color:#444;max-height : 80%;overflow :hidden;max-width: 90%;overflow: hidden;border-radius: 5px;position:relative;display:flex;flex-direction:column;box-shadow: 0 0 10px rgba(0,0,0,0.2),
+0 70px 40px -40px rgba(0,0,0,0.2);-webkit-animation:_wAnimaWrapOn 0.5s
+}
+@-webkit-keyframes _wAnimaWrapOn{
+from{opacity: 0;-webkit-transform: scale(1.5)}
+50%{opacity: 1;-webkit-transform: scale(0.95)}
+to{opacity: 1;-webkit-transform: scale(1)}
+}
+@-webkit-keyframes _w_anim_close{
+from{opacity: 1;-webkit-transform: scale(1)}
+50%{opacity: 1;-webkit-transform: scale(0.95)}
+to{opacity: 0;-webkit-transform: scale(1.5)}
+}
+#_h,#_m,#_b{
+min-width: 280px;padding: 15px;font-size: 1.3em
+}
+#_h{
+bo rder-bottom: 1px solid #ddd
+}
+#_m{
+flex: 1;overflow-y: auto;font-size:1em;color:#888;padding: 0 15px 30px 15px;white-space:pre-wrap
+}
+#_b{
+bo rder-top: 1px solid #ddd;text-align:right
+}
+#_b>div{
+display: inline-block;border:1px solid teal;padding:7px 15px;margin:-3px;min-width:60px;text-align:center;text--webkit-transform: uppercase
+}
+#_b>div:first-of-type{
+border-radius:50px 0 0 50px;background:#fff;color:teal
+}
+#_b>div:last-of-type{
+border-radius:0 50px 50px 0;background: teal;color:#fff
+}
+[w] {
+  position: relative;
+  overflow: hidden;
+}
+[w] .wave {
+  position: absolute;
+  display: block;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.3);
+  opacity: 1;
+  -webkit-pointer-events: none;
+  pointer-events: none;
+  will-change: opacity, transform;
+  transition: 0.8s ease;
+}
+[w].dark .wave{
+background-color : rgba(0,0,0,0.3)
+}
+[w] .wave.is-active {
+  transform: scale(100);
+  opacity: 0;
+}
+</style>
+<script>
+var _iid = 0
+function iid(){ //eg-"s0", run time incremental integer-id
+return ++_iid
+}
+
+
+var $_$_cidObj ={}
+function sid(namespaceStr){
+var namespace = namespaceStr || "s"
+if(namespace.trim().length==0){namespace = "s"}
+namespace = namespace.trim()
+if($_$_cidObj[namespace] != undefined){
+$_$_cidObj[namespace] = $_$_cidObj[namespace]+1
+}else{
+$_$_cidObj[namespace] = 0
+}
+return namespace + $_$_cidObj[namespace]
+}
+
+function cid(namespaceStr){
+var namespace = namespaceStr || "s"
+if(namespace.trim().length==0){namespace = "s"}
+namespace = namespace.trim()
+if($_$_cidObj[namespace] != undefined){
+return namespace+$_$_cidObj[namespace]
+}else{
+return namespace+0
+}
+}
+
+
+sid.reset = function (namespaceStr){ //eg-"s0"
+var namespace = namespaceStr || "s"
+if(namespace.trim().length==0){namespace = "s"}
+namespace = namespace.trim()
+if($_$_cidObj[namespace] != undefined){
+$_$_cidObj[namespace] = 0
+}else{
+$_$_cidObj[namespace] = 0
+}
+return namespace + $_$_cidObj[namespace]
+}
+
+
+function uid(){
+return new Date().getTime()+iid()
+}
+function usid(){
+return "s"+new Date().getTime()+iid()
+}
+
+function K(obj){return Object.keys(obj)}
+
+function k(v){
+if(v==undefined||v==null||v.constructor.name=="Function"){
+return (v +" is not a pure object")
+}
+if(v == "[object Math]"){
+return Object.getOwnPropertyNames(v)
+}
+setTimeout(()=>c(v))
+if(v instanceof HTMLElement){
+var elx = []
+elx = prot(Node).concat(prot(Element), prot(HTMLElement),prot(EventTarget)).reverse()
+if(v.constructor.name == "HTMLInputElement"){
+elx = elx.concat(prot(HTMLInputElement))}
+if(v.constructor.name == "HTMLTextAreaElement"){
+elx = elx.concat(prot(HTMLTextAreaElement))}
+return elx
+}
+var _arr = []
+if(v.constructor === Object){_arr = Object.keys(v)}
+
+var _arrOwn = []
+if(![Array, Object, String].has(v.constructor)){
+_arrOwn = Object.getOwnPropertyNames(v)}
+
+var _arrProto = Object.getOwnPropertyNames(Object.getPrototypeOf(v)).reverse()
+var _arrAll = _arr.concat(_arrOwn,_arrProto)
+return(_arrAll)
+
+function prot(ifc){
+return Object.getOwnPropertyNames(ifc.prototype)}
+
+};
+
+
+function c(v){console.log(v)};
+
+function a(v){alert(v)};
+var w = window;
+function s(elm){
+return (document.querySelector(elm) || document.querySelector("[" + elm + "]"))
+}
+
+function S(elm){
+return document.querySelector(elm)
+}
+
+function sa(elms){
+return document.querySelectorAll(elms)
+}
+
+
+var idlAnonFncLst={};
+var db ={}
+db.setData = setData
+db.getData = getData
+db.getTags = getTags
+db.clearData = clearData
+db.clearDataAll = clearDataAll
+
+function setData(tag, value){
+ if(tag!=undefined){ console.log(tag+" idl.setData "+JSON.stringify(value)) }
+}
+
+function getData(tag, callBack){ 
+var callBackFunctionName;  
+if(callBack.name==""){ 
+var fnTag="idlAnonFnc"+tag; idlAnonFncLst[fnTag]=callBack; callBackFunctionName="idlAnonFncLst."+fnTag 
+}else{
+callBackFunctionName=callBack.name
+}
+if(tag!=""){
+console.log("idl.getData "+tag+" "+callBackFunctionName) }
+}
+
+function getTags(callBack){
+var tag="TagsAll"; var callBackFunctionName;  if(callBack.name==""){
+var fnTag="idlAnonFnc"+tag; idlAnonFncLst[fnTag]=callBack; callBackFunctionName="idlAnonFncLst."+fnTag
+}else{
+callBackFunctionName=callBack.name }
+if(tag!=""){
+console.log("idl.getTagsAll "+callBackFunctionName) }}
+
+
+function clearData(tag){
+if(tag!=undefined){
+console.log("idl.clearData "+tag) }
+}
+
+
+function clearDataAll(){
+console.log("idl.clearDataAll") }
+
+
+
+var fb={};
+fb.setData = function (tag, value){
+ if(tag!=undefined &&tag!=""){ console.log(tag+" idl.fb.setFbData "+JSON.stringify(value)) }
+}
+
+
+fb.getData = function (tag, callBack){ 
+var callBackFunctionName;  
+if(callBack.name==""){ 
+var fnTag="idlAnonFbFnc"+tag; idlAnonFncLst[fnTag]=callBack; callBackFunctionName="idlAnonFncLst."+fnTag 
+}else{
+callBackFunctionName=callBack.name
+}
+if(tag!=""){
+console.log("idl.fb.getFbData "+tag+" "+ callBackFunctionName) }
+}
+
+fb.getTags =function (callBack){
+var tag="FbTagsAll"; var callBackFunctionName;  if(callBack.name==""){
+var fnTag="idlAnonFbFnc"+tag; idlAnonFncLst[fnTag]=callBack; callBackFunctionName="idlAnonFncLst."+fnTag
+}else{
+callBackFunctionName=callBack.name }
+if(tag!=""){
+console.log("idl.fb.getFbTagsAll "+callBackFunctionName) }}
+
+fb.clearData = function(tag){
+if(tag!=undefined){
+console.log("idl.fb.clearFbData "+tag) }
+}
+
+fb.goOffline = function (){c("idl.fb.goOffline")}
+fb.goOnline = function (){c("idl.fb.goOnline")}
+
+fb.config = function (obj){
+//{token,url,bucket}
+c(obj.token+".idl.fb.config."+obj.url+".idl.fb.config."+ obj.bucket)
+}
+
+fb.token = function (token){c("idl.fb.token."+token)}
+
+fb.url = function (url){c("idl.fb.url."+url)}
+
+fb.bucket = function (bucket){c("idl.fb.bucket."+bucket)}
+
+
+fb.ongetvalue = function (tag,value){
+return null
+}
+
+fb.on = function (tag,value){
+return null
+}
+
+fb.isSignedIn = function(callBack){
+var tag="sign"; var callBackFunctionName;  if(callBack.name==""){
+var fnTag="idlAnonFnc"+tag; idlAnonFncLst[fnTag]=callBack; callBackFunctionName="idlAnonFncLst."+fnTag
+}else{
+callBackFunctionName=callBack.name }
+if(tag!=""){
+console.log("idl.fb.isSignedIn."+callBackFunctionName) 
+}
+}
+
+
+fb.phoneNoSignIn = function (phoneNum){
+c("idl.fb.phoneNoSignIn." + phoneNum)
+}
+
+fb.verifyPhoneCode = function (phoneCode){
+c("idl.fb.verifyPhoneCode." + phoneCode)
+}
+
+fb.logOut = function (){
+c("idl.fb.logOut.")
+}
+
+fb.onLoginSuccess = function(obj){
+return null
+}
+
+
+
+
+function launchApp(packageName){
+console.log("idl.launchApp "+packageName)
+}
+
+
+function statusBar (bol){ console.log("idl.statusBarShow "+bol)
+}
+function statusBarLightIcon (bol){ console.log("idl.statusBarLightIcon "+bol)
+}
+
+function statusBarTransparentBgColor(transparentHex){
+console.log("idl.screen.statusbar.transparentHEXColor."+transparentHex)
+}
+
+function transparentBg (){
+c("idl.screen.statusbar.transparentBg.")
+}
+
+function statusBarColor (hex){
+console.log("idl.statusBarColor "+hex)
+}
+
+function statusBarHslColor (bgColor) {
+var h,s,l = ""
+var hsl =  clr(bgColor, true)
+h = hsl.split(",")[0].split("(")[1]*1
+s = hsl.split("%,")[0].split(",")[1]*1
+l = l = hsl.split("%,")[1]*1
+
+l/= 100;
+const a = s * Math.min(l, 1 - l) / 100;
+const f = n => {
+const k = (n + h / 30) % 12;
+const color = l - a * Math.max(Math.min(k - 3, 9 - k, 1), -1);
+return Math.round(255 * color).toString(16).padStart(2, '0');
+// convert to Hex and prefix "0" if needed
+};
+var hex =  `#${f(0)}${f(8)}${f(4)}`;
+console.log("idl.statusBarColor "+hex)
+return hex
+}
+
+
+function onAppResume(){
+return null
+}
+
+
+function showNavBar (bool){
+c("idl.screen.showNavBar." + bool)
+}
+
+function hideKeyboard (){
+c("idl.screen.hideKeyboard.")
+}
+
+function keepScreenOn (bool){
+c("idl.screen.keepScreenOn." + bool)
+}
+
+function minimize (){
+c("idl.screen.minimize.")
+}
+function $O(prop, cbGet, cbSet){
+Object.defineProperty(Object.prototype, prop,
+{get : cbGet, set : cbSet})}
+
+function $A(prop, cbGet, cbSet){
+Object.defineProperty(Array.prototype, prop,
+{get : cbGet, set : cbSet})
+Object.defineProperty(NodeList.prototype, prop,
+{get : cbGet, set : cbSet})}
+
+function $S(prop, cbGet, cbSet){
+Object.defineProperty(String.prototype, prop,
+{get : cbGet, set : cbSet})}
+
+function $N(prop, cbGet, cbSet){
+Object.defineProperty(Number.prototype, prop,
+{get : cbGet, set : cbSet})}
+
+function $H(prop, cbGet, cbSet){
+Object.defineProperty(HTMLElement.prototype, prop,
+{get : cbGet, set : cbSet})
+Object.defineProperty(SVGElement.prototype, prop,
+{get : cbGet, set : cbSet})
+}
+
+$O("js", function (){return JSON.stringify(this)})
+$O("jsc", function (){c(JSON.stringify(this,null,4))})
+$O("jsa", function (){a(JSON.stringify(this,null,4))})
+$O("jsm", function (){os.message(JSON.stringify(this,null,4))})
+$O("jsn", function (){os.alert(JSON.stringify(this,null,4))})
+
+$O("jp", function (){return JSON.parse(this)})
+//$O("m", function (){os.message(this)})
+//$O("a", function (){os.alert(this)})
+//$O("A", function (){alert(this)})
+$O("copy", function (){return JSON.parse(JSON.stringify(this))})
+
+//
+
+$S("l", function (){return this.length})
+
+$A("l", function (){return this.length})
+
+$A("last", function (){return this[this.length -1 ]},
+function (val){this[this.length -1 ] = val})
+
+$A("secondLast", function (){return this[this.length -2 ]},
+function (val){this[this.length -2 ] = val})
+
+
+function $Af(fnName, fnDef){
+Array.prototype[fnName] = fnDef
+}
+function $Hf(fnName, fnDef){
+HTMLElement.prototype[fnName] = fnDef;
+SVGElement.prototype[fnName] = fnDef
+}
+
+$Af("Has", function (strOrNum){
+if(this.indexOf(strOrNum) != -1){
+return true
+}
+return false
+})
+
+$Af("has", function (strPart){
+for (var i=0; i<this.length; i++){
+if(typeof(this[i]) != "string"){
+this[i] = this[i].toString()
+}
+if(this[i].indexOf(strPart) != -1){
+return true
+}
+}
+return false
+})
+
+$Af("indOf", function (strPart){
+for (var i=0; i<this.length; i++){
+if(typeof(this[i]) != "string"){
+this[i] = this[i].toString()
+}
+if(this[i].indexOf(strPart) != -1){
+return i
+}
+}
+return -1
+})
+
+$Af("ins", function (index, valueToInsert){
+this.splice(index,0, valueToInsert)
+})
+
+$Af("rep", function (index, valueToReplace){
+this.splice(index,1, valueToReplace)
+})
+
+$Af("rm", function (index){
+this.splice(index,1)
+})
+
+$O("isArr", function (){
+return Array.isArray(this)
+})
+
+$O("isNum", function (){
+return this.constructor.name == "Number"
+})
+
+$O("isStr", function (){
+return this.constructor.name == "String"
+})
+
+$O("isEl", function (){
+return this instanceof Element || this instanceof HTMLDocument
+})
+
+
+$Hf("ats", function (attrName, attrValue){
+this.setAttribute(attrName,attrValue||"")
+reRenderHtml(this)
+return this
+})
+$Hf("atg", function (attrName){
+return this.getAttribute(attrName)
+})
+$Hf("atr", function (attrName, attrValue){
+this.removeAttribute(attrName,attrValue||"")
+reRenderHtml(this)
+return this
+})
+$Hf("att", function (attrName){
+this.style = ""
+this.toggleAttribute(attrName)
+reRenderHtml(this)
+return this
+})
+$Hf("ath", function (attrName){
+return this.hasAttribute(attrName)
+})
+
+$H("cln", function (){
+return this.className
+},
+function (classStr){
+this.className = classStr
+})
+
+$Hf("cla", function (classStr){
+this.classList.add(classStr)
+return this
+})
+$Hf("clr", function (classStr){
+this.classList.remove(classStr)
+return this
+})
+$Hf("clt", function (classStr){
+this.classList.toggle(classStr)
+return this
+})
+$Hf("clh", function (classStr){
+return this.className.indexOf(classStr) != -1
+})
+
+$H("ih", function (){
+return this.innerHTML
+},
+function (htmlStr){
+this.innerHTML = htmlStr
+reRenderHtmlChildren(this)
+})
+
+$H("oh", function (){
+return this.outerHTML
+},
+function (htmlStr){
+var pel = this.parentElement
+this.outerHTML = htmlStr
+reRenderHtmlChildren(pel)
+})
+
+
+
+$H("it", function (){
+return this.innerText
+},
+function (txtStr){
+this.innerText = txtStr
+})
+
+$H("tc", function (){
+return this.textContent
+},
+function (txtStr){
+this.textContent = txtStr
+})
+
+$H("C", function (){
+return function (fn){
+this.onclick = fn
+}
+},
+function (fn){
+this.onclick = fn
+})
+
+
+$H("c", function (){
+return function (fn){
+this.addEventListener("click", fn)
+}
+},
+function (fn){
+this.addEventListener("click", fn)
+})
+
+s("body").c=function(){
+var t = event.target
+if(t.ath("fn")){
+var fnStr = t.atg("fn")
+new Function(fnStr)()
+}
+}
+
+///
+function $s(obj, key, returnFn, setFn){
+//state handler
+obj[key] = ""
+Object.defineProperty(obj, key,
+{get : returnFn,set : setFn})}
+
+///
+function $(obj, key, el){
+//state-element syncer
+$s(obj, key, function (){return el && el.innerHTML},
+v=>el && (el.innerHTML = v))
+}
+
+///
+function tag(targetTagName){
+return(event.target.tagName == targetTagName.toUpperCase())
+}
+
+///
+function tf(elm,transformStr){
+elm.style.webkitTransform = transformStr
+}
+
+///
+function cre(html, css){
+var html = html || ""
+var css ="<style>" + css + "</style>" || ""
+document.body.ih += html + css
+}
+
+///
+function crt(elmStr,parentElm_se,txt){
+var txt = txt || "";
+var el = document.createElement(elmStr.toUpperCase())
+
+if(parentElm_se ==null)return c("parentElement is not found")
+
+var parentElm = parentElm_se.isEl?parentElm_se : parentElm_se?s(parentElm_se):document.body
+
+if(!parentElm) return c("parentElement is not found")
+
+el.appendChild(document.createTextNode(txt));
+parentElm.appendChild(el)
+}
+
+///
+function crh(elmStr,parentElm_se,html){
+var html = html || ""
+
+if(parentElm_se ==null)return c("parentElement is not found")
+
+var parentElm = parentElm_se.isEl?parentElm_se : parentElm_se?s(parentElm_se):document.body
+
+if(!parentElm) return c("parentElement is not found")
+
+var el = document.createElement(elmStr.toUpperCase())
+el.ih= html;
+parentElm.appendChild(el)
+}
+
+///
+function cra(parentElm_se, txt){
+if(parentElm_se ==null)return c("parentElement is not found")
+
+var parentElm = parentElm_se.isEl?parentElm_se : parentElm_se?s(parentElm_se):document.body
+
+if(!parentElm) return c("parentElement is not found")
+
+var txt = txt || ""
+parentElm.append(txt)
+}
+
+///
+function cri(targetElm_se, html, position){
+//position : 1/2/3/4
+if(targetElm_se ==null)return c("targetElement is not found")
+
+var targetElm = targetElm_se.isEl?targetElm_se : targetElm_se?s(targetElm_se):document.body
+
+if(!targetElm) return c("targetElement is not found")
+
+var html = html || ""
+var Position = position || 3
+var pos = {
+pos1 : "beforebegin",
+pos2 : "afterbegin",
+pos3 : "beforeend",
+pos4 : "afterend"
+}
+targetElm.insertAdjacentHTML(pos["pos"+Position ], html);
+reRenderHtmlChildren(targetElm.parentElement)
+}
+
+///
+function remove(selectorStr, css, delay){
+if(selectorStr){
+var d = delay || 0;
+if (d>0){
+var str= "<style>"+selectorStr+ "{transition:"+d+"ms;"+css+"}"+
+selectorStr + " ~*{transition : "+d+"ms;\
+-webkit-transform :\
+translatey(-"+(s(selectorStr).clientHeight+5)+"px)}\
+</style>";
+var elm = sid()
+crh(elm,"",str)
+//c(str)
+setTimeout(function (){
+if(s(selectorStr)){
+s(selectorStr).remove();
+}
+s(elm).remove()
+},d)
+}else{
+if(s(selectorStr)){
+s(selectorStr).remove()
+}
+}
+}
+}
+
+///
+var _i = function (arrOfObj, id){
+var ind = -1;
+arrOfObj.forEach((item, index)=>{
+if(item.id==id){
+ind = index
+return
+}
+})
+return ind
+}
+
+function getStl(oElm, css3Prop) {
+var strValue = "";
+if (window.getComputedStyle) {
+strValue = getComputedStyle(oElm).getPropertyValue(css3Prop)
+}else if (oElm.currentStyle) {
+try { strValue = oElm.currentStyle[css3Prop]
+}catch (e) {} }
+return strValue
+}
+
+//fn get node index
+function ind(currentNode){
+var child = currentNode;
+var parent = child.parentNode;
+var index = Array.prototype.indexOf.call(parent.children, child);
+return index;
+}
+
+//html controller
+var htc = {
+p(t,v){t.style.padding = pc(v)},
+m(t,v){t.style.margin = pc(v)},
+h(t,v){t.style.height = pc(v)},
+w(t,v){t.style.width = pc(v)},
+s(t,v){this.h(t,v);this.w(t,v)},
+l(t,v){t.style.left = pc(v)},
+r(t,v){t.style.right = pc(v)},
+t(t,v){t.style.top = pc(v)},
+b(t,v){t.style.bottom = pc(v)},
+i(t,v){this.l(t,v);this.r(t,v);this.t(t,v);this.b(t,v)},
+c(t,v){t.style.borderRadius = pc(v)},
+f(t,v){t.style.fontSize = pc(v)},
+o(t,v){t.style.opacity = v/10},
+z(t,v){t.style.zIndex = v},
+
+fg(t,v){t.style.flexGrow = v},
+fs(t,v){t.style.flexShrink = v},
+fb(t,v){t.style.flexBasis = pc(v)},
+
+pt(t,v){t.style.paddingTop = pc(v)},
+pb(t,v){t.style.paddingBottom = pc(v)},
+pl(t,v){t.style.paddingLeft = pc(v)},
+pr(t,v){t.style.paddingRight = pc(v)},
+px(t,v){this.pl(t,v);this.pr(t,v)},
+py(t,v){this.pt(t,v);this.pb(t,v)},
+
+mt(t,v){t.style.marginTop = pc(v)},
+mb(t,v){t.style.marginBottom = pc(v)},
+ml(t,v){t.style.marginLeft = pc(v)},
+mr(t,v){t.style.marginRight = pc(v)},
+mx(t,v){this.ml(t,v);this.mr(t,v)},
+my(t,v){this.mt(t,v);this.mb(t,v)},
+
+hm(t,v){t.style.maxHeight = pc(v)},
+hn(t,v){t.style.minHeight = pc(v)},
+wm(t,v){t.style.maxWidth = pc(v)},
+wn(t,v){t.style.minWidth = pc(v)},
+
+ra(t,v){t.style.border = pc(v) + " solid #ccc"},
+rt(t,v){t.style.borderTop = pc(v) + " solid #ccc"},
+rb(t,v){t.style.borderBottom = pc(v) + " solid #ccc"},
+rl(t,v){t.style.borderLeft = pc(v) + " solid #ccc"},
+rr(t,v){t.style.borderRight = pc(v) + " solid #ccc"},
+
+cm(t,v){t.style.borderTopLeftRadius = pc(v)},
+cn(t,v){t.style.borderTopRightRadius = pc(v)},
+co(t,v){t.style.borderBottomRightRadius = pc(v)},
+cp(t,v){t.style.borderBottomLeftRadius = pc(v)},
+
+bf(t,v){t.style.backdropFilter = "blur(" + v + "px)"},
+
+bw(t,v){t.style.backgroundColor = "rgba(255,255,255," + v/10 + ")"},
+bb(t,v){t.style.backgroundColor = "rgba(0,0,0," + v/10 + ")"},
+cw(t,v){t.style.color = "rgba(255,255,255," + v/10 + ")"},
+cb(t,v){t.style.color = "rgba(0,0,0," + v/10 + ")"},
+
+tn(t,v){t.style.transitionDuration = v/10 + "s"},
+td(t,v){t.style.transitionDelay = v/10 + "s"},
+
+tr(t,v){t.style.transform = "rotate(" + v + "deg"},
+tx(t,v){t.style.transform = "translatex(" + pc(v) +")"},
+ty(t,v){t.style.transform = "translatey(" + pc(v) +")"},
+tt(t,v){
+t.style.transform =  "translate(" + pc(v.split('_')[0]) + "," + pc(v.split('_')[1]) +")"
+},
+ts(t,v){t.style.transform = "scale(" + v/10 + ")"},
+ta(t,v){t.style.transform = "skewx(" + v + "deg"},
+tb(t,v){t.style.transform = "skewy(" + v + "deg"},
+
+ad(t,v){t.style.animationDuration = v/10 + "s"},
+aw(t,v){t.style.animationDelay = v/10 + "s"},
+bg(t,v){t.style.backgroundColor = clr(v)},
+cl(t,v){t.style.color = clr(v)},
+da(t,v){t.style.borderColor = clr(v)},
+dt(t,v){t.style.borderTopColor = clr(v)},
+db(t,v){t.style.borderBottomColor = clr(v)},
+dl(t,v){t.style.borderLeftColor = clr(v)},
+dr(t,v){t.style.borderRightColor = clr(v)},
+}
+
+function pc(v){
+if(v.slice(-1) == "p") return v.slice(0,-1) + "%"
+return v + "px"
+}
+
+function reRenderHtmlChildren(parentElm = "body"){
+var els
+if(typeof(parentElm) != "string"){
+els = parentElm.querySelectorAll("*")
+}else{
+els = sa(parentElm + " *")
+}
+
+for(var i=0; i<els.length;i++){
+reRenderHtml(els[i])
+}
+}
+
+function reRenderHtml(el){
+var atrs = el.attributes
+
+if(atrs.length == 0) return
+
+//s("[ctr]").style = ""
+
+for(var i =0; i<atrs.length; i++){
+var nm = atrs[i].name
+////
+if(num(1)){
+htc[nm[0]](el, nm.slice(1))
+}else if(num(2)){
+var fn = nm[0] + nm[1]
+if(!["in","bs","bg","cl"].Has(fn)){
+htc[fn](el, nm.slice(2))
+}
+}else{
+var fn = nm[0] + nm[1]
+if(["bg","cl","da","dt","db","dl","dr"].Has(fn)){
+htc[fn](el, nm.slice(2))
+}
+}
+////
+}
+function num(index){
+return (!isNaN(nm[index]) || nm[index] == "-" || nm[index] == ".")
+}
+}
+
+//setTimeout
+function af(millisecond, cb){
+var tnm = 1
+if(cb){
+tnm = setTimeout(cb,millisecond)
+}else{
+tnm = setTimeout(millisecond,0)
+}
+return tnm
+}
+
+//setInterval
+function aa(millisecond, cb){
+var tnm = 1
+if(cb){
+tnm = setInterval(cb,millisecond)
+}else{
+tnm = setInterval(millisecond,0)
+}
+return tnm
+}
+
+
+function clr(clrCode, bol){
+var addedIndex = 0
+if(bol == undefined){
+addedIndex = 0
+}else{
+addedIndex = 2
+}
+var ab="abcdefghijklmnopqrstuvwxyz"
+var h = Math.round(ab.split("").indexOf(clrCode[0 + addedIndex]) * 14.4)
+var s = Math.round(ab.split("").indexOf(clrCode[1 + addedIndex]) * 4)
+var l = Math.round(ab.split("").indexOf(clrCode[2 + addedIndex]) * 4)
+var a = ab.split("").indexOf(clrCode[3 + addedIndex]) * 0.04
+
+s<0 && (s=50)
+l<0 && (l=50)
+a<0 && (a=1)
+
+var str = `hsla(${h},${s}%,${l}%,${a})`
+return str
+}
+
+
+</script>
+
+<script>
+
+var os={
+alert :"",
+message : "",
+screen : {
+hideKeyboard,
+showNavBar,
+onAppResume,
+keepScreenOn,
+minimize,
+},
+render : reRenderHtmlChildren,
+fileman : {}, 
+activity : "",
+viewport : "",
+ripple :"",
+statusBar : {
+show : statusBar, 
+transparentBgColor : statusBarTransparentBgColor,
+transparentBg : transparentBg,
+color : statusBarColor,
+hslColor : statusBarHslColor,
+lightIcon : statusBarLightIcon
+},
+abstracts : {}
+};
+
+os.closeApplication = function (){
+console.log("idl.os.closeApplication")
+}
+os.onbackpress = function (){
+//to close application on backpress hardware button;
+this.closeApplication();
+//alert("বেক ক্লিক করা হয়েছে");
+//launchApp("ru.irk.ang.balsan.shortcutled")
+}
+os.api={
+battery: {
+onchange: function (obj){
+return obj
+}}
+}
+os.vibrate = function(duration){
+var d = duration || 100
+c("idl.os.sensors.vibrator.vibrate"+d)
+}
+os.clipboard = {
+paste : function (callBack){
+var tag = "pasted"
+var callBackFunctionName;  
+if(callBack.name==""){ 
+var fnTag="idlAnonFnc"+tag; idlAnonFncLst[fnTag]=callBack; callBackFunctionName="idlAnonFncLst."+fnTag 
+}else{
+callBackFunctionName=callBack.name
+}
+if(tag!=""){
+console.log("idl.clipboard.paste " + callBackFunctionName) }
+},
+copy : function (data){
+c("idl.clipboard.copy"+data);
+}
+}
+
+
+os.activity = {
+start : function (){
+c("idl.activity.start"+ JSON.stringify(this))
+this.action = ""
+this.class = ""
+this.package = ""
+this.dataType = ""
+this.dataUri = ""
+this.extraKey = ""
+this.extraValue = ""
+this.extras = ""
+this.resultName = ""
+},
+onafteractivity : function (txt){
+return null
+},
+action : "",
+class : "",
+package : "",
+dataType : "",
+dataUri : "",
+extraKey : "",
+extraValue : "",
+extras : "",
+resultName : "",
+}
+
+$O("isScrPortrait", ()=> w.matchMedia("(orientation: portrait)").matches)
+
+$O("isAppPortrait", ()=> w.screen.orientation.type.replace("-primary","") == "portrait"? true : false)
+
+
+
+/*--os.api--*/
+
+
+os.api={
+battery: {
+onchange: function (obj){
+return obj
+}
+}
+}
+os.alert = function (str){
+var x = document. createElement("ALERT");
+x.id="osAlertComp";
+x.appendChild(document.createTextNode(str));
+document.body.appendChild(x);
+setTimeout(function (){
+document.body.removeChild(x)
+},3000);
+}
+os.message= function(msgHtml){
+if(typeof(_p)=="undefined"){
+var el=document.createElement("DIV");
+el.id="_p";
+el.ih="<div id='_w'><div id='_h'>Message</div><div id='_m'></div><div id='_b'><div id='_b_back'>Back</div><div id='_b_ok'>Ok</div></div></div>";
+document.body.appendChild(el);
+_b_back.onclick=closeModal;
+_b_ok.onclick=closeModal;
+_p.style.display="flex";
+_m.ih =msgHtml;
+}
+}
+
+function closeModal(){
+_p.style.webkitAnimation="_p_anim_close 0.5s forwards";
+_w.style.webkitAnimation="_w_anim_close 0.5s forwards";
+setTimeout(function(){
+if(typeof(_p)!="undefined"){
+_p.remove();
+}},500)
+}
+if(!os.abstracts){os.abstracts = {}}
+os.abstracts.fileman = {}
+
+os.abstracts.fileman.fn = function (){
+var img = s("[filePickerInput]").files[0]
+if(img){
+var url = URL.createObjectURL(img)
+os.abstracts.fileman.url = url
+fs.onpick(url)
+}
+}
+
+os.fileman = function (){
+return {
+pick, onpick, setData, getData
+}
+
+function pick(){
+if(!s("filePickerInput")){
+cri("", `<input style="display: none" filePickerInput type="file" oninput=os.abstracts.fileman.fn() accept="image/gif, image/jpeg, image/png">`)
+}
+s("[filePickerInput]").click()
+}
+
+function onpick(url){
+return url
+}
+
+function setData(tagName,srcElName, method="image/jpeg"){
+if(!tagName){
+return os.alert("tag name is required")
+}
+
+if(!s("filePickerCanvas")){
+  cri("", `<canvas style="display: none" filePickerCanvas>
+  </canvas>`)}
+
+var img = s(srcElName);
+if(img.tagName!="IMG"){
+if(!s("filePickerImg")){
+    cri("", `<img src="" style="display: none" filePickerImg>`)
+  }
+img = s("filePickerImg")
+}
+img.src = os.abstracts.fileman.url
+if(img.src.indexOf("undefined")!=-1){
+os.alert("image is not loaded")
+return
+}
+var cnv = s("filePickerCanvas");
+cnv.width = img.naturalWidth;
+cnv.height = img.naturalHeight;
+var ctx = cnv.getContext("2d");
+ctx.drawImage(img, 0, 0);
+var scl = window.innerWidth/cnv.width
+cnv.style.transform = "scale("+ scl +")"
+cnv.style.transformOrigin = "0 0"
+var imgData = cnv.toDataURL(method)
+db.setData(tagName, imgData)
+}
+
+function getData(tagName, fn){
+if(!tagName || !fn){
+return os.alert("tag name and src element is required")
+}
+db.getData(tagName, fn)
+}
+}
+
+os.random= function (min, max) {
+if(!min || !max){
+return Math.random()
+}
+if((min>=0) && (max>=0)){
+min = Math.ceil(min);
+max = Math.floor(max);
+return Math.floor(Math.random() * (max - min + 1)) + min;
+}else{
+console.log("invoke os.random function with these two arguments : \nmin and max");
+return "";
+}
+}
+var _v_scale=1.0;
+os.viewport= function(){
+if(typeof(_v_p)=="undefined"){
+var el=document.createElement("DIV");
+el.id="_v_p";
+var style ="<style>\
+#_v_p{\
+position:fixed;top:0;bottom:0;left:0;right:0;display:flex;\
+justify-content:center;align-items:flex-start;overflow: hidden;\
+-webkit-animation: _v_pAnimaOn 0.5s;pointer-events:none; \
+display: none;z-index:999999999}\
+@-webkit-keyframes _v_pAnimaOn{\
+70%{opacity:1}\
+from{opacity: 0}\
+}\
+@-webkit-keyframes _v_p_v_anim_v_close{\
+50%{opacity:1}\
+to{opacity: 0;}\
+}\
+#_v_w{\
+pointer-events: auto;\
+-webkit-transform-origin: top;\
+background:#fff;color:#444;height:70px;overflow :hidden;\
+width: 280px;overflow: hidden;border-radius: 5px;display:flex;\
+flex-wrap: wrap;box-shadow: 0 0 10px rgba(0,0,0,0.2);\
+-webkit-animation:_v_wAnimaWrapOn 0.5s\
+}\
+@-webkit-keyframes _v_wAnimaWrapOn{\
+from{opacity: 0;-webkit-transform: translatey(-100px)}\
+50%{opacity: 1;-webkit-transform: translatey(10px)}\
+}\
+@-webkit-keyframes _v_w_v_anim_v_close{\
+from{opacity: 1}\
+50%{opacity: 1;-webkit-transform: translatey(10px)}\
+to{opacity: 0;-webkit-transform: translatey(-100px)}\
+}\
+#_v_m{\
+width:280px;padding: 15px;font-size: 1.2em;margin-top:5px;\
+display:flex;flex-wrap: wrap;justify-content:center;\
+font-size:1em;color:#888;\
+}\
+#_v_m>div{\
+border:1px solid #eee;margin:3px;padding:5px;border-radius: 50px;\
+}\
+#_v_m>#_v_b_v_close{color:tomato;position:absolute; right:-10px;\ top:-10px;border-radius: 0 0 0 30px}\
+#_v_m>#_v_b_v_info {position:absolute;left:0;top:-6px;border:none;\
+padding:5px 5px 11px 5px}\
+</style>";
+
+
+el.innerHTML="<div id='_v_w'><div id='_v_m'></div></div>"+style;
+document.body.insertAdjacentElement("afterend",el);
+_v_p.style.display="flex";
+_v_m.innerHTML ='<div class="mt"\ onclick=osViewport(this,1)>phone_android</div>\
+<div class="mt" onclick=osViewport(this,0.912)>tablet</div>\
+<div class="mt" onclick=osViewport(this,0.513)>tablet</div>\
+<div class="mt" onclick=osViewport(this,0.639) >desktop_windows</div>\
+<div class="mt" onclick=osViewport(this,0.3595)>desktop_windows</div>\
+<div class="mt" id="_v_b_v_close">close</div>\
+<div id="_v_b_v_info">screen info</div>';
+
+_v_w.style.webkitTransform="scale("+(1/_v_scale)+")";
+_v_b_v_close.onclick=close_v_Modal;
+_v_b_v_info.innerHTML = "w: "+window.innerWidth+ "&nbsp &nbsp h: "+window.innerHeight
+}
+}
+
+function close_v_Modal(){
+_v_p.style.webkitAnimation="_v_p_v_anim_v_close 0.5s forwards";
+_v_w.style.webkitAnimation="_v_w_v_anim_v_close 0.5s forwards";
+setTimeout(function(){
+if(typeof(_v_p)!="undefined"){
+_v_p.remove();
+}},500)
+}
+
+function osViewport(that,scale){
+_v_scale=scale;
+
+that.innerHTML = '<meta name="viewport" content= "width=\
+device-width,initial-scale='+scale+', user-scalable=no">'+that.innerHTML;
+_v_w.style.webkitTransform="scale("+(1/scale)+")";
+_v_b_v_info.innerHTML = "w: "+window.innerWidth+ "&nbsp &nbsp h: "+window.innerHeight
+}
+os.ripple = function(){
+var waves = document.querySelectorAll('[w]');
+waves.forEach(function (wave, index) {
+  wave.addEventListener('click', function (e) {
+    var button = this,
+        wave   = document.createElement('ripple'),
+        id     = 'wave-' + new Date().getTime();
+    wave.setAttribute('id', id);
+    wave.setAttribute('class', 'wave');
+    wave.style.left = e.offsetX + 'px';
+    wave.style.top  = e.offsetY + 'px';
+    button.appendChild(wave);
+    setTimeout(function () {
+      wave.classList.add('is-active');
+    }, 0);
+    wave.addEventListener('transitionend', function (e) {
+      if (button.contains(this)) {
+        button.removeChild(this);
+      }
+    }, false);
+  }, false);
+});
+}
+
+/*
+💥 v1.0
+1. add protos.js
+2. add utility.js
+3. add docs.js
+4. add cid in index.js
+5. add sid(namespace<optional)
+6. add sid.reset(namespace<optional)
+
+💥 v2.0
+1. firebase phone auth
+2. statusbar transparency
+3. navbar toggle
+4. hide keyboard function
+6. onclick proto >> C
+7. addEventListener> click >> c
+
+💥 v3.0
+1. tiny library added
+2. array and string method for length >> l
+3. setTimeout fn >> af
+4. setInterval fn >> aa
+5. html method >> isEl
+6. os.random without arguments
+7. fn attribute onbodyclick run fnValues as a function
+8. os.screen.keepScreenOn added
+9. os.screen.minimize added
+*/
+</script><!--fbconfig--
+<token>sxGvdZtsFpLsiuEtiYlbyOUQOdoArqxmHdyR3uei</token>
+<url>https://khushu-e5d5c-default-rtdb.firebaseio.com/</url>
+<bucket>quran</bucket>
+--fbconfig-->
+<!DOCTYPE html>
+ <html lang="en">
+ <head>
+ <title>App</title>
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, user-scalable=no">
+ </head>
+ 
+<body>
+<v app h100p oh nos>
+
+<h topbar bgozg h58 clzzz px15 c f24 bs1>
+<h ttl>quran</h>
+<mi bookmark mla></mi>
+<mi menu></mi>
+</h>
+
+
+<v cnt bgozg f>
+<vs m5>
+<h wrp c15 oh w100p bgzzz>
+<img w100p quran src="" c15 afi ad20 poa z1 i0>
+</h>
+</vs>
+</v>
+
+
+<v menus bs1 poa z1 i0 tn3 tx100p w100p>
+<v bgaax poa r0 t0 b0 w270 pt60>
+<vs lst></vs>
+</v>
+<h segs bgzzz poa r0 t0 w270 h58 bs1>
+<v f c seg=marks>Marks</v>
+<v f c seg=suras>Suras</v>
+<v f c seg=paras>Paras</v>
+<mi ext tg c p14></mi>
+</h>
+</v>
+
+ </body>
+ </html>
+<style>
+html,body{
+margin:0
+}
+body{
+background : #004e7a
+}
+[uifull] [topbar],
+[uifull] [topbar] *,
+[uifull] [cnt]{
+background : black !important;
+color : black !important;
+fill : black
+}
+[uifull] [topbar]{
+pointer-events : none;
+}
+[wrp]{
+aspect-ratio : 0.6
+}
+mi{fill : #fff}
+mi[ext]{fill : tomato}
+
+</style>
+<style>
+@media only screen and (orientation : landscape){
+[uifull] h[topbar]{
+display : none
+}
+}
+</style>
+<script>
+os.render()
+os.statusBar.hslColor("bgozg")
+os.statusBar.show(true)
+os.screen.keepScreenOn(true)
+
+var qd = {
+curPage : 2,
+navActive : true,
+bookmark : [294,441,532,535,538,563,587]
+}
+
+var mn = {} //menu functions
+var sideArea =  150 //px
+
+
+db.getData("qdBase", v=>{
+if(v){
+qd = v
+}
+
+s("ttl").ih = getSuraName(qd.curPage)
+s("quran").src = "quran/quran_"+ qd.curPage +".png"
+
+if(qd.bookmark.Has(qd.curPage)){
+s("bookmark").style.fill= clr("ozt")
+}else{
+s("bookmark").style.fill= ""
+}
+
+if(qd.uifull){uiFull()}
+
+})
+
+function uiFull(){
+s("body").att("uifull")
+if(s("body").ath("uifull")){
+os.statusBar.hslColor("bgaaa")
+os.statusBar.lightIcon(true)
+qd.uifull = true
+}else{
+os.statusBar.hslColor("bgozg")
+os.statusBar.lightIcon(false)
+qd.uifull = false
+}
+db.setData("qdBase", qd)
+}
+
+s("cnt").ontouchstart = e=>{
+qd.navActive = true
+qd.touch = Math.round(e.touches[0].clientX)
+}
+
+s("cnt").ontouchend = e=>{
+if(qd.navActive){
+//lefty
+if(qd.touch <= sideArea){
+if(qd.curPage == 2){qd.curPage = 612}
+
+cri(S("[cnt] [wrp]"),`<img quran w100p src="quran/quran_${--qd.curPage}.png" c15 ari ad10 poa z1 i0>`)
+
+if(sa("[quran]").l > 10){
+sa("[quran]")[0].remove()
+}
+
+s("ttl").ih = getSuraName(qd.curPage)
+
+//righty
+}else if((window.innerWidth - qd.touch) <= sideArea){
+if(qd.curPage == 611){qd.curPage = 1}
+
+cri(S("[cnt] [wrp]"),`<img quran w100p src="quran/quran_${++qd.curPage}.png" c15 ali ad10 poa z1 i0>`)
+
+if(sa("[quran]").l > 10){
+sa("[quran]")[0].remove()
+}
+
+s("ttl").ih = getSuraName(qd.curPage)
+//middly
+}else{
+uiFull()
+}
+
+if(qd.bookmark.Has(qd.curPage)){
+s("bookmark").style.fill= clr("ozt")
+}else{
+s("bookmark").style.fill= ""
+}
+db.setData("qdBase", qd)
+}
+}
+
+s("cnt").ontouchmove = e=>{
+qd.navActive = false
+}
+var suras = ["الفاتحة,Al-Fatihah,2,সূচনা",
+"البقرة,Al-Baqarah,3,বকনা-বাছুর",
+"آل عمران,Ali 'Imran,51,ইমরানের পরিবার",
+"النساء,An-Nisa,78,নারী",
+"المائدة,Al-Ma'idah,107,খাদ্য পরিবেশিত টেবিল",
+"الأنعام,Al-An'am,129,গৃহপালিত পশু",
+"الأعراف,Al-A'raf,152,উচু স্থান",
+"الأنفال,Al-Anfal,178,যুদ্ধ-লব্ধ ধনসম্পদ",
+"التوبة,At-Tawbah,188,অনুশোচনা",
+"يونس,Yunus,209,নবী ইউনুস",
+"هود,Hud,222,নবী হুদ",
+"يوسف,Yusuf,236,নবী ইউসুফ",
+"الرعد,Ar-Ra'd,250,বজ্রপাত",
+"ابراهيم,Ibrahim,256,নবী ইবরাহীম",
+"الحجر,Al-Hijr,262,পাথুরে পাহাড়",
+"النحل,An-Nahl,268,মৌমাছি",
+"الإسراء,Al-Isra,283,ইহুদি জাতি",
+"الكهف,Al-Kahf,294,গুহা",
+"مريم,Maryam,306,মারইয়াম (ঈসা নবীর মা)",
+"طه,Taha,313,ত়া হা",
+"الأنبياء,Al-Anbya,323,নবীগণ",
+"الحج,Al-Hajj,332,হ়াজ্জ",
+"المؤمنون,Al-Mu'minun,343,বিশ্বাসী",
+"النور,An-Nur,351,আলো",
+"الفرقان,Al-Furqan,360,মানদণ্ড",
+"الشعراء,Ash-Shu'ara,367,কবি",
+"النمل,An-Naml,377,পিঁপড়া",
+"القصص,Al-Qasas,386,কাহিনি",
+"العنكبوت,Al-'Ankabut,397,মাকড়শা",
+"الروم,Ar-Rum,405,রোমান জাতি",
+"لقمان,Luqman,412,এক জ্ঞানী ব্যাক্তি",
+"السجدة,As-Sajdah,416,সিজদা",
+"الأحزاب,Al-Ahzab,419,জোট",
+"سبإ,Saba,429,রানী সাবা/শেবা",
+"فاطر,Fatir,435,আদি স্রষ্টা",
+"يس,Ya-Sin,441,ইয়াসীন",
+"الصافات,As-Saffat,446,সারিবদ্ধভাবে দাঁড়ানো",
+"ص,Sad,453,আরবি বর্ণ সাদ",
+"الزمر,Az-Zumar,459,দলবদ্ধ জনতা",
+"غافر,Ghafir,468,ক্ষমাকারী",
+"فصلت,Fussilat,478,সুস্পষ্ট বিবরণ",
+"الشورى,Ash-Shuraa,484,পরামর্শ",
+"الزخرف,Az-Zukhruf,490,সোনাদানা",
+"الدخان,Ad-Dukhan,496,ধোঁয়া",
+"الجاثية,Al-Jathiyah,499,নতজানু",
+"الأحقاف,Al-Ahqaf,503,বালুর পাহাড়",
+"محمد,Muhammad,507,নবী মুহাম্মদ",
+"الفتح,Al-Fath,512,বিজয়",
+"الحجرات,Al-Hujurat,516,আবাস",
+"ق,Qaf,519,কাফ",
+"الذاريات,Adh-Dhariyat,521,বিক্ষেপকারী বাতাস",
+"الطور,At-Tur,524,পাহাড়",
+"النجم,An-Najm,527,তারা",
+"القمر,Al-Qamar,529,চাঁদ",
+"الرحمن,Ar-Rahman,532,পরম করুণাময়",
+"الواقعة,Al-Waqi'ah,535,নিশ্চিত ঘটনা",
+"الحديد,Al-Hadid,538,লোহা",
+"المجادلة,Al-Mujadila,543,অনুযোগকারিণী",
+"الحشر,Al-Hashr,546,সমাবেশ",
+"الممتحنة,Al-Mumtahanah,550,নারী, যাকে পরীক্ষা করা হবে",
+"الصف,As-Saf,552,সারিবদ্ধ সৈন্যদল",
+"الجمعة,Al-Jumu'ah,554,সম্মেলন/শুক্রবার",
+"المنافقون,Al-Munafiqun,555,ভণ্ড বিশ্বাসী",
+"التغابن,At-Taghabun,557,মোহ অপসারণ",
+"الطلاق,At-Talaq,559,তালাক",
+"التحريم,At-Tahrim,561,নিষিদ্ধকরণ",
+"الملك,Al-Mulk,563,সার্বভৌম কর্তৃত্ব",
+"القلم,Al-Qalam,565,কলম",
+"الحاقة,Al-Haqqah,568,নিশ্চিত সত্য",
+"المعارج,Al-Ma'arij,570,উন্নয়নের সোপান",
+"نوح,Nuh,572,নবী নূহ",
+"الجن,Al-Jinn,574,জিন সম্প্রদায়",
+"المزمل,Al-Muzzammil,577,বস্ত্রাচ্ছাদনকারী",
+"المدثر,Al-Muddaththir,579,পোশাক পরিহিত",
+"القيامة,Al-Qiyamah,581,পুনরুত্থান",
+"الانسان,Al-Insan,583,মানবজাতি",
+"المرسلات,Al-Mursalat,585,প্রেরিত পুরুষ",
+"النبإ,An-Naba,587,মহাসংবাদ",
+"النازعات,An-Nazi'at,588,প্রচেষ্টাকারী",
+"عبس,'Abasa,590,সে ভ্রু কুঁচকালো",
+"التكوير,At-Takwir,591,অন্ধকারাচ্ছন্ন",
+"الإنفطار,Al-Infitar,592,বিদীর্ণ করা",
+"المطففين,Al-Mutaffifin,593,প্রতারণা করা",
+"الإنشقاق,Al-Inshiqaq,595,খণ্ড-বিখণ্ডকরণ",
+"البروج,Al-Buruj,596,নক্ষত্রপুঞ্জ",
+"الطارق,At-Tariq,597,রাতের আগন্তুক",
+"الأعلى,Al-A'la,598,সর্বোন্নত",
+"الغاشية,Al-Ghashiyah,598,বিহ্বলকর ঘটনা",
+"الفجر,Al-Fajr,599,ভোরবেলা",
+"البلد,Al-Balad,601,নগর",
+"الشمس,Ash-Shams,601,সূর্য",
+"الليل,Al-Layl,602,রাত",
+"الضحى,Ad-Duhaa,603,পূর্বাহ্নের সুর্যকিরণ",
+"الشرح,Ash-Sharh,603,বক্ষ প্রশস্তকরণ",
+"التين,At-Tin,604,ডুমুর",
+"العلق,Al-'Alaq,604,রক্তপিণ্ড",
+"القدر,Al-Qadr,605,মহিমান্বিত",
+"البينة,Al-Bayyinah,605,প্রমাণ",
+"الزلزلة,Az-Zalzalah,606,ভূমিকম্প",
+"العاديات,Al-'Adiyat,606,অভিযানকারী",
+"القارعة,Al-Qari'ah,607,মহাসংকট",
+"التكاثر,At-Takathur,607,প্রাচুর্যের প্রতিযোগিতা",
+"العصر,Al-'Asr,608,সময়",
+"الهمزة,Al-Humazah,608,পরনিন্দাকারী",
+"الفيل,Al-Fil,608,হাতি",
+"قريش,Quraysh,609,কুরাইশ গোত্র",
+"الماعون,Al-Ma'un,609,সাহায্য সহায়তা",
+"الكوثر,Al-Kawthar,609,কাউসার/প্রাচুর্য",
+"الكافرون,Al-Kafirun,609,অবিশ্বাসী",
+"النصر,An-Nasr,610,সাহায্য",
+"اللهب,Al-Masad,610,খেজুরের পাকানো (রশি)",
+"الإخلاص,Al-Ikhlas,610,আন্তরিকতা",
+"الفلق,Al-Falaq,611,নিশিভোর",
+"الناس,An-Nas,611,মানুষ জাতি"]
+
+
+var paras = [2,23,43,63,83,103,123,143,163,183,203,223,243,263,283,303,323,343,363,383,403,423,443,463,483,503,523,543,563,587]
+
+
+var mi = {
+menu : `<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M560-564v-68q33-14 67.5-21t72.5-7q26 0 51 4t49 10v64q-24-9-48.5-13.5T700-600q-38 0-73 9.5T560-564Zm0 220v-68q33-14 67.5-21t72.5-7q26 0 51 4t49 10v64q-24-9-48.5-13.5T700-380q-38 0-73 9t-67 27Zm0-110v-68q33-14 67.5-21t72.5-7q26 0 51 4t49 10v64q-24-9-48.5-13.5T700-490q-38 0-73 9.5T560-454Zm-40 176q44-21 88.5-31.5T700-320q36 0 70.5 6t69.5 18v-396q-33-14-68.5-21t-71.5-7q-47 0-93 12t-87 36v394Zm-40 118q-48-38-104-59t-116-21q-42 0-82.5 11T100-198q-21 11-40.5-1T40-234v-482q0-11 5.5-21T62-752q47-23 96.5-35.5T260-800q58 0 113.5 15T480-740q51-30 106.5-45T700-800q52 0 101.5 12.5T898-752q11 5 16.5 15t5.5 21v482q0 23-19.5 35t-40.5 1q-37-20-77.5-31T700-240q-60 0-116 21t-104 59Z"/></svg>`,
+bookmark : `<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M200-120v-640q0-33 23.5-56.5T280-840h400q33 0 56.5 23.5T760-760v640L480-240 200-120Z"/></svg>`,
+close : `<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>`
+}
+
+s("bookmark").ih = mi.bookmark
+s("menu").ih = mi.menu
+s("ext").ih = mi.close
+
+s("bookmark").c = ()=>{
+if(!qd.bookmark.Has(qd.curPage)){
+qd.bookmark.push(qd.curPage)
+//s("bookmark").ats("clozt")
+s("bookmark").style.fill= clr("ozt")
+}else{
+qd.bookmark.rm(qd.bookmark.indexOf(qd.curPage))
+//s("bookmark").atr("clozt")
+s("bookmark").style.fill= ""
+}
+db.setData("qdBase", qd)
+}
+// 
+s("menu").c = ()=>{
+mn.lastSeg?mn[mn.lastSeg]():mn.marks()
+}
+
+
+
+s("menus").c = e=>{
+// 
+var t= e.target
+var page = t.atg("page")*1
+if(t.ath("seg")){
+var sg = t.atg("seg")
+mn.lastSeg = sg
+s("segs").ih = `<v f c seg=marks>Marks</v>
+<v f c seg=suras>Suras</v>
+<v f c seg=paras>Paras</v>
+<mi ext tg c p14>${mi.close}</mi>`
+mn[sg]()
+return
+}
+
+if(t.ath("li")){
+s("ttl").ih = getSuraName(page)
+
+var dr = page - qd.curPage //direction [-, 0, +]
+var ani = dr==0? "afi" : dr>0 ? "ali" : "ari"
+
+cri(S("[cnt] [wrp]"),`<img quran w100p src="quran/quran_${page}.png" c15 ${ani} ad10 poa z1 i0>`)
+
+if(sa("[quran]").l > 10){
+//sa("[quran]")[0].remove()
+}
+qd.curPage = page
+db.setData("qdBase", qd)
+
+if(qd.bookmark.Has(qd.curPage)){
+s("bookmark").style.fill= clr("ozt")
+}else{
+s("bookmark").style.fill= ""
+}
+
+}else if(t.ath("ext")){
+os.message("Click <b>OK</b> to exit")
+_h.it = "Exit?"
+_b_ok.c =v=>{
+os.closeApplication()
+}
+}
+
+s("menus").atr("tx0")
+}
+
+
+
+function getSuraName(page){
+// 
+var suraName = ""
+suras.forEach(v=>{
+var pageOfSura = (v.split(",")[2])*1
+if(pageOfSura == page){
+suraName =  v.split(",")[1] + " (" + page + ")"
+}
+})
+
+if(suraName == ""){
+suras.forEach(v=>{
+var pageOfSura = (v.split(",")[2])*1
+if(pageOfSura < page){
+suraName =  v.split(",")[1] + " (" + page + ")"
+}
+})
+}
+
+return suraName
+}
+
+
+mn.marks = function (){
+// 
+var ar = qd.bookmark.sort(function(a, b){return a-b})
+if(ar.l == []){
+//os.alert("Bookmark list is empty")
+mn.paras()
+return
+}
+
+s("[seg=marks]").ats("cloz")
+var str = ""
+ar.forEach(v=>{
+str+= `<h li p15 m5 bgzzz bs1 c5 page="${v}">${getSuraName(v)}</h>`
+})
+
+s("lst").ih = str
+s("menus").ats("tx0")
+}
+
+
+
+
+
+mn.paras = function (){
+// 
+s("[seg=paras]").ats("cloz")
+var str = "<h w>"
+paras.forEach((v, i)=>{
+str+= `<h li p15 m5 bgzzz bs1 f c fb30 c5 page="${v}">${++i}</h>`
+})
+
+s("lst").ih = str + "</h>"
+s("menus").ats("tx0")
+}
+
+
+
+
+
+
+mn.suras = function (){
+//
+s("[seg=suras]").ats("cloz")
+var str = ""
+suras.forEach(v=>{
+var page = v.split(",")[2]
+var name = v.split(",")[1]
+str+= `<h li p15 m5 bgzzz bs1 c5 page="${page}">${name}</h>`
+
+})
+
+s("lst").ih = str + "</h>"
+s("menus").ats("tx0")
+}
+
+
+os.onbackpress = function (){
+if(S("#_p")){
+closeModal()
+return
+}
+
+if(s("menus").ath("tx0")){
+s("menus").atr("tx0")
+af(500,()=>s("lst").ih = "")
+}else{
+mn.lastSeg?mn[mn.lastSeg]():mn.marks()
+s("menus").ats("tx0")
+}
+}
+
+
+
+
+</script>
