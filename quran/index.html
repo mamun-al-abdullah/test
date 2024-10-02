@@ -127,8 +127,9 @@
       db.setData("qdBase", qd)
     }
 
-
+    let isTouchableDevice = false
     s('cnt').c = function(e) {
+      if (!isTouchableDevice) {
       if (e.clientX <= sideArea) {
         if (qd.curPage == 611) { qd.curPage = 1 }
 
@@ -163,9 +164,11 @@
         }
         db.setData("qdBase", qd)
     }
+  }
 
 
     s("cnt").ontouchstart = e => {
+      isTouchableDevice = true
       qd.navActive = true
       qd.touch = Math.round(e.touches[0].clientX)
     }
