@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no">
+  <title>App</title>
+  <link rel="stylesheet" href="lib3.css">
+</head>
+
+<body>
+</body>
+
+</html>
+<script src="localforage.js"></script>
+<script src="lib3Pc.js"></script>
+
+
+
+<v app h100p oh nos>
+
+  <h topbar bgozg h58 clzzz px15 c f24 bs1>
+    <h ttl>quran</h>
+    <mi bookmark mla></mi>
+    <mi menu></mi>
+  </h>
+
+
+  <v cnt bgozg f>
+    <vs m5>
+      <h wrp c15 oh mxa>
+        <img h100p quran src="" c15 afi ad20 poa z1 i0 mxa>
+      </h>
+    </vs>
+  </v>
+
+
+  <v menus bs1 poa z1 i0 tn3 tx100p w100p>
+    <v bgaax poa r0 t0 b0 w270 pt60>
+      <vs lst></vs>
+    </v>
+    <h segs bgzzz poa r0 t0 w270 h58 bs1>
+      <v f c seg=marks>Marks</v>
+      <v f c seg=suras>Suras</v>
+      <v f c seg=paras>Paras</v>
+      <mi ext tg c p14></mi>
+    </h>
+  </v>
+  <style>
+    [uifull] [topbar],
+    [uifull] [topbar] *,
+    [uifull] [cnt] {
+      background: black !important;
+      color: black !important;
+      fill: black
+    }
+
+    [uifull] [topbar] {
+      pointer-events: none;
+    }
+
+    [wrp] {
+      aspect-ratio: 0.6;
+      max-height: 100%;
+    }
+
+    mi {
+      fill: #fff
+    }
+
+    mi[ext] {
+      fill: tomato
+    }
+  </style>
+  <style>
+    @media only screen and (orientation : landscape) {
+      [uifull] h[topbar] {
+        display: none
+      }
+    }
+  </style>
+  <script>
+    os.render()
+    os.statusBar.hslColor("bgozg")
+    os.statusBar.show(true)
+    os.screen.keepScreenOn(true)
+
+    var qd = {
+      curPage: 2,
+      navActive: true,
+      bookmark: [294, 441, 532, 535, 538, 563, 587]
+    }
+
+    var mn = {} //menu functions
+    var sideArea = 150 //px
+
+
+    db.getData("qdBase", v => {
+      if (v) {
+        qd = v
+      }
+
+      s("ttl").ih = getSuraName(qd.curPage)
+      s("quran").src = "quran/quran_" + qd.curPage + ".png"
+
+      if (qd.bookmark.Has(qd.curPage)) {
+        s("bookmark").style.fill = clr("ozt")
+      } else {
+        s("bookmark").style.fill = ""
+      }
+
+      if (qd.uifull) { uiFull() }
+
+    })
+
+    function uiFull() {
+      s("body").att("uifull")
+      if (s("body").ath("uifull")) {
+        os.statusBar.hslColor("bgaaa")
+        os.statusBar.lightIcon(true)
+        qd.uifull = true
+      } else {
+        os.statusBar.hslColor("bgozg")
+        os.statusBar.lightIcon(false)
+        qd.uifull = false
+      }
+      db.setData("qdBase", qd)
+    }
+
+
+    s('cnt').c = function(e) {
+      if (e.clientX <= sideArea) {
+        if (qd.curPage == 611) { qd.curPage = 1 }
+
+          cri(S("[cnt] [wrp]"), `<img quran h100p src="quran/quran_${++qd.curPage}.png" c15 ali ad10 poa z1 i0 mxa>`)
+
+          if (sa("[quran]").l > 10) {
+            sa("[quran]")[0].remove()
+          }
+
+          s("ttl").ih = getSuraName(qd.curPage)
+          
+          //righty
+        } else if ((window.innerWidth - e.clientX) <= sideArea) {
+          if (qd.curPage == 2) { qd.curPage = 612 }
+
+          cri(S("[cnt] [wrp]"), `<img quran h100p src="quran/quran_${--qd.curPage}.png" c15 ari ad10 poa z1 i0 mxa>`)
+
+          if (sa("[quran]").l > 10) {
+            sa("[quran]")[0].remove()
+          }
+
+          s("ttl").ih = getSuraName(qd.curPage)
+          //middly
+        } else {
+          uiFull()
+        }
+
+        if (qd.bookmark.Has(qd.curPage)) {
+          s("bookmark").style.fill = clr("ozt")
+        } else {
+          s("bookmark").style.fill = ""
+        }
+        db.setData("qdBase", qd)
+    }
+
+
+    s("cnt").ontouchstart = e => {
+      qd.navActive = true
+      qd.touch = Math.round(e.touches[0].clientX)
+    }
+
+    s("cnt").ontouchend = e => {
+      if (qd.navActive) {
+        //lefty
+        if (qd.touch <= sideArea) {
+          if (qd.curPage == 2) { qd.curPage = 612 }
+
+          cri(S("[cnt] [wrp]"), `<img quran w100p src="quran/quran_${--qd.curPage}.png" c15 ari ad10 poa z1 i0 mxa>`)
+
+          if (sa("[quran]").l > 10) {
+            sa("[quran]")[0].remove()
+          }
+
+          s("ttl").ih = getSuraName(qd.curPage)
+
+          //righty
+        } else if ((window.innerWidth - qd.touch) <= sideArea) {
+          if (qd.curPage == 611) { qd.curPage = 1 }
+
+          cri(S("[cnt] [wrp]"), `<img quran w100p src="quran/quran_${++qd.curPage}.png" c15 ali ad10 poa z1 i0 mxa>`)
+
+          if (sa("[quran]").l > 10) {
+            sa("[quran]")[0].remove()
+          }
+
+          s("ttl").ih = getSuraName(qd.curPage)
+          //middly
+        } else {
+          uiFull()
+        }
+
+        if (qd.bookmark.Has(qd.curPage)) {
+          s("bookmark").style.fill = clr("ozt")
+        } else {
+          s("bookmark").style.fill = ""
+        }
+        db.setData("qdBase", qd)
+      }
+    }
+
+    s("cnt").ontouchmove = e => {
+      qd.navActive = false
+    }
+    var suras = ["الفاتحة,Al-Fatihah,2,সূচনা",
+      "البقرة,Al-Baqarah,3,বকনা-বাছুর",
+      "آل عمران,Ali 'Imran,51,ইমরানের পরিবার",
+      "النساء,An-Nisa,78,নারী",
+      "المائدة,Al-Ma'idah,107,খাদ্য পরিবেশিত টেবিল",
+      "الأنعام,Al-An'am,129,গৃহপালিত পশু",
+      "الأعراف,Al-A'raf,152,উচু স্থান",
+      "الأنفال,Al-Anfal,178,যুদ্ধ-লব্ধ ধনসম্পদ",
+      "التوبة,At-Tawbah,188,অনুশোচনা",
+      "يونس,Yunus,209,নবী ইউনুস",
+      "هود,Hud,222,নবী হুদ",
+      "يوسف,Yusuf,236,নবী ইউসুফ",
+      "الرعد,Ar-Ra'd,250,বজ্রপাত",
+      "ابراهيم,Ibrahim,256,নবী ইবরাহীম",
+      "الحجر,Al-Hijr,262,পাথুরে পাহাড়",
+      "النحل,An-Nahl,268,মৌমাছি",
+      "الإسراء,Al-Isra,283,ইহুদি জাতি",
+      "الكهف,Al-Kahf,294,গুহা",
+      "مريم,Maryam,306,মারইয়াম (ঈসা নবীর মা)",
+      "طه,Taha,313,ত়া হা",
+      "الأنبياء,Al-Anbya,323,নবীগণ",
+      "الحج,Al-Hajj,332,হ়াজ্জ",
+      "المؤمنون,Al-Mu'minun,343,বিশ্বাসী",
+      "النور,An-Nur,351,আলো",
+      "الفرقان,Al-Furqan,360,মানদণ্ড",
+      "الشعراء,Ash-Shu'ara,367,কবি",
+      "النمل,An-Naml,377,পিঁপড়া",
+      "القصص,Al-Qasas,386,কাহিনি",
+      "العنكبوت,Al-'Ankabut,397,মাকড়শা",
+      "الروم,Ar-Rum,405,রোমান জাতি",
+      "لقمان,Luqman,412,এক জ্ঞানী ব্যাক্তি",
+      "السجدة,As-Sajdah,416,সিজদা",
+      "الأحزاب,Al-Ahzab,419,জোট",
+      "سبإ,Saba,429,রানী সাবা/শেবা",
+      "فاطر,Fatir,435,আদি স্রষ্টা",
+      "يس,Ya-Sin,441,ইয়াসীন",
+      "الصافات,As-Saffat,446,সারিবদ্ধভাবে দাঁড়ানো",
+      "ص,Sad,453,আরবি বর্ণ সাদ",
+      "الزمر,Az-Zumar,459,দলবদ্ধ জনতা",
+      "غافر,Ghafir,468,ক্ষমাকারী",
+      "فصلت,Fussilat,478,সুস্পষ্ট বিবরণ",
+      "الشورى,Ash-Shuraa,484,পরামর্শ",
+      "الزخرف,Az-Zukhruf,490,সোনাদানা",
+      "الدخان,Ad-Dukhan,496,ধোঁয়া",
+      "الجاثية,Al-Jathiyah,499,নতজানু",
+      "الأحقاف,Al-Ahqaf,503,বালুর পাহাড়",
+      "محمد,Muhammad,507,নবী মুহাম্মদ",
+      "الفتح,Al-Fath,512,বিজয়",
+      "الحجرات,Al-Hujurat,516,আবাস",
+      "ق,Qaf,519,কাফ",
+      "الذاريات,Adh-Dhariyat,521,বিক্ষেপকারী বাতাস",
+      "الطور,At-Tur,524,পাহাড়",
+      "النجم,An-Najm,527,তারা",
+      "القمر,Al-Qamar,529,চাঁদ",
+      "الرحمن,Ar-Rahman,532,পরম করুণাময়",
+      "الواقعة,Al-Waqi'ah,535,নিশ্চিত ঘটনা",
+      "الحديد,Al-Hadid,538,লোহা",
+      "المجادلة,Al-Mujadila,543,অনুযোগকারিণী",
+      "الحشر,Al-Hashr,546,সমাবেশ",
+      "الممتحنة,Al-Mumtahanah,550,নারী, যাকে পরীক্ষা করা হবে",
+      "الصف,As-Saf,552,সারিবদ্ধ সৈন্যদল",
+      "الجمعة,Al-Jumu'ah,554,সম্মেলন/শুক্রবার",
+      "المنافقون,Al-Munafiqun,555,ভণ্ড বিশ্বাসী",
+      "التغابن,At-Taghabun,557,মোহ অপসারণ",
+      "الطلاق,At-Talaq,559,তালাক",
+      "التحريم,At-Tahrim,561,নিষিদ্ধকরণ",
+      "الملك,Al-Mulk,563,সার্বভৌম কর্তৃত্ব",
+      "القلم,Al-Qalam,565,কলম",
+      "الحاقة,Al-Haqqah,568,নিশ্চিত সত্য",
+      "المعارج,Al-Ma'arij,570,উন্নয়নের সোপান",
+      "نوح,Nuh,572,নবী নূহ",
+      "الجن,Al-Jinn,574,জিন সম্প্রদায়",
+      "المزمل,Al-Muzzammil,577,বস্ত্রাচ্ছাদনকারী",
+      "المدثر,Al-Muddaththir,579,পোশাক পরিহিত",
+      "القيامة,Al-Qiyamah,581,পুনরুত্থান",
+      "الانسان,Al-Insan,583,মানবজাতি",
+      "المرسلات,Al-Mursalat,585,প্রেরিত পুরুষ",
+      "النبإ,An-Naba,587,মহাসংবাদ",
+      "النازعات,An-Nazi'at,588,প্রচেষ্টাকারী",
+      "عبس,'Abasa,590,সে ভ্রু কুঁচকালো",
+      "التكوير,At-Takwir,591,অন্ধকারাচ্ছন্ন",
+      "الإنفطار,Al-Infitar,592,বিদীর্ণ করা",
+      "المطففين,Al-Mutaffifin,593,প্রতারণা করা",
+      "الإنشقاق,Al-Inshiqaq,595,খণ্ড-বিখণ্ডকরণ",
+      "البروج,Al-Buruj,596,নক্ষত্রপুঞ্জ",
+      "الطارق,At-Tariq,597,রাতের আগন্তুক",
+      "الأعلى,Al-A'la,598,সর্বোন্নত",
+      "الغاشية,Al-Ghashiyah,598,বিহ্বলকর ঘটনা",
+      "الفجر,Al-Fajr,599,ভোরবেলা",
+      "البلد,Al-Balad,601,নগর",
+      "الشمس,Ash-Shams,601,সূর্য",
+      "الليل,Al-Layl,602,রাত",
+      "الضحى,Ad-Duhaa,603,পূর্বাহ্নের সুর্যকিরণ",
+      "الشرح,Ash-Sharh,603,বক্ষ প্রশস্তকরণ",
+      "التين,At-Tin,604,ডুমুর",
+      "العلق,Al-'Alaq,604,রক্তপিণ্ড",
+      "القدر,Al-Qadr,605,মহিমান্বিত",
+      "البينة,Al-Bayyinah,605,প্রমাণ",
+      "الزلزلة,Az-Zalzalah,606,ভূমিকম্প",
+      "العاديات,Al-'Adiyat,606,অভিযানকারী",
+      "القارعة,Al-Qari'ah,607,মহাসংকট",
+      "التكاثر,At-Takathur,607,প্রাচুর্যের প্রতিযোগিতা",
+      "العصر,Al-'Asr,608,সময়",
+      "الهمزة,Al-Humazah,608,পরনিন্দাকারী",
+      "الفيل,Al-Fil,608,হাতি",
+      "قريش,Quraysh,609,কুরাইশ গোত্র",
+      "الماعون,Al-Ma'un,609,সাহায্য সহায়তা",
+      "الكوثر,Al-Kawthar,609,কাউসার/প্রাচুর্য",
+      "الكافرون,Al-Kafirun,609,অবিশ্বাসী",
+      "النصر,An-Nasr,610,সাহায্য",
+      "اللهب,Al-Masad,610,খেজুরের পাকানো (রশি)",
+      "الإخلاص,Al-Ikhlas,610,আন্তরিকতা",
+      "الفلق,Al-Falaq,611,নিশিভোর",
+      "الناس,An-Nas,611,মানুষ জাতি"]
+
+
+    var paras = [2, 23, 43, 63, 83, 103, 123, 143, 163, 183, 203, 223, 243, 263, 283, 303, 323, 343, 363, 383, 403, 423, 443, 463, 483, 503, 523, 543, 563, 587]
+
+
+    var mi = {
+      menu: `<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M560-564v-68q33-14 67.5-21t72.5-7q26 0 51 4t49 10v64q-24-9-48.5-13.5T700-600q-38 0-73 9.5T560-564Zm0 220v-68q33-14 67.5-21t72.5-7q26 0 51 4t49 10v64q-24-9-48.5-13.5T700-380q-38 0-73 9t-67 27Zm0-110v-68q33-14 67.5-21t72.5-7q26 0 51 4t49 10v64q-24-9-48.5-13.5T700-490q-38 0-73 9.5T560-454Zm-40 176q44-21 88.5-31.5T700-320q36 0 70.5 6t69.5 18v-396q-33-14-68.5-21t-71.5-7q-47 0-93 12t-87 36v394Zm-40 118q-48-38-104-59t-116-21q-42 0-82.5 11T100-198q-21 11-40.5-1T40-234v-482q0-11 5.5-21T62-752q47-23 96.5-35.5T260-800q58 0 113.5 15T480-740q51-30 106.5-45T700-800q52 0 101.5 12.5T898-752q11 5 16.5 15t5.5 21v482q0 23-19.5 35t-40.5 1q-37-20-77.5-31T700-240q-60 0-116 21t-104 59Z"/></svg>`,
+      bookmark: `<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M200-120v-640q0-33 23.5-56.5T280-840h400q33 0 56.5 23.5T760-760v640L480-240 200-120Z"/></svg>`,
+      close: `<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>`
+    }
+
+    s("bookmark").ih = mi.bookmark
+    s("menu").ih = mi.menu
+    s("ext").ih = mi.close
+
+    s("bookmark").c = () => {
+      if (!qd.bookmark.Has(qd.curPage)) {
+        qd.bookmark.push(qd.curPage)
+        //s("bookmark").ats("clozt")
+        s("bookmark").style.fill = clr("ozt")
+      } else {
+        qd.bookmark.rm(qd.bookmark.indexOf(qd.curPage))
+        //s("bookmark").atr("clozt")
+        s("bookmark").style.fill = ""
+      }
+      db.setData("qdBase", qd)
+    }
+    // 
+    s("menu").c = () => {
+      mn.lastSeg ? mn[mn.lastSeg]() : mn.marks()
+    }
+
+
+
+    s("menus").c = e => {
+      // 
+      var t = e.target
+      var page = t.atg("page") * 1
+      if (t.ath("seg")) {
+        var sg = t.atg("seg")
+        mn.lastSeg = sg
+        s("segs").ih = `<v f c seg=marks>Marks</v>
+<v f c seg=suras>Suras</v>
+<v f c seg=paras>Paras</v>
+<mi ext tg c p14>${mi.close}</mi>`
+        mn[sg]()
+        return
+      }
+
+      if (t.ath("li")) {
+        s("ttl").ih = getSuraName(page)
+
+        var dr = page - qd.curPage //direction [-, 0, +]
+        var ani = dr == 0 ? "afi" : dr > 0 ? "ali" : "ari"
+
+        cri(S("[cnt] [wrp]"), `<img quran w100p src="quran/quran_${page}.png" c15 ${ani} ad10 poa z1 i0>`)
+
+        if (sa("[quran]").l > 10) {
+          //sa("[quran]")[0].remove()
+        }
+        qd.curPage = page
+        db.setData("qdBase", qd)
+
+        if (qd.bookmark.Has(qd.curPage)) {
+          s("bookmark").style.fill = clr("ozt")
+        } else {
+          s("bookmark").style.fill = ""
+        }
+
+      } else if (t.ath("ext")) {
+        os.message("Click <b>OK</b> to exit")
+        _h.it = "Exit?"
+        _b_ok.c = v => {
+          os.closeApplication()
+        }
+      }
+
+      s("menus").atr("tx0")
+    }
+
+
+
+    function getSuraName(page) {
+      // 
+      var suraName = ""
+      suras.forEach(v => {
+        var pageOfSura = (v.split(",")[2]) * 1
+        if (pageOfSura == page) {
+          suraName = v.split(",")[1] + " (" + page + ")"
+        }
+      })
+
+      if (suraName == "") {
+        suras.forEach(v => {
+          var pageOfSura = (v.split(",")[2]) * 1
+          if (pageOfSura < page) {
+            suraName = v.split(",")[1] + " (" + page + ")"
+          }
+        })
+      }
+
+      return suraName
+    }
+
+
+    mn.marks = function () {
+      // 
+      var ar = qd.bookmark.sort(function (a, b) { return a - b })
+      if (ar.l == []) {
+        //os.alert("Bookmark list is empty")
+        mn.paras()
+        return
+      }
+
+      s("[seg=marks]").ats("cloz")
+      var str = ""
+      ar.forEach(v => {
+        str += `<h li p15 m5 bgzzz bs1 c5 page="${v}">${getSuraName(v)}</h>`
+      })
+
+      s("lst").ih = str
+      s("menus").ats("tx0")
+    }
+
+
+
+
+
+    mn.paras = function () {
+      // 
+      s("[seg=paras]").ats("cloz")
+      var str = "<h w>"
+      paras.forEach((v, i) => {
+        str += `<h li p15 m5 bgzzz bs1 f c fb30 c5 page="${v}">${++i}</h>`
+      })
+
+      s("lst").ih = str + "</h>"
+      s("menus").ats("tx0")
+    }
+
+
+
+
+
+
+    mn.suras = function () {
+      //
+      s("[seg=suras]").ats("cloz")
+      var str = ""
+      suras.forEach(v => {
+        var page = v.split(",")[2]
+        var name = v.split(",")[1]
+        str += `<h li p15 m5 bgzzz bs1 c5 page="${page}">${name}</h>`
+
+      })
+
+      s("lst").ih = str + "</h>"
+      s("menus").ats("tx0")
+    }
+
+
+    os.onbackpress = function () {
+      if (S("#_p")) {
+        closeModal()
+        return
+      }
+
+      if (s("menus").ath("tx0")) {
+        s("menus").atr("tx0")
+        af(500, () => s("lst").ih = "")
+      } else {
+        mn.lastSeg ? mn[mn.lastSeg]() : mn.marks()
+        s("menus").ats("tx0")
+      }
+    }
+
+
+
+
+  </script>
