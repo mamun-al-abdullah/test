@@ -2,8 +2,9 @@ const CACHE_NAME = "pwa-cache-v1";
 const urlsToCache = [
   "/",
   "/index.html",
-  "/style.css",
+  "/t.css",
   "/index.js",
+  "/t.js",
   "/icon-192x192.png",
   "/icon-512x512.png"
 ];
