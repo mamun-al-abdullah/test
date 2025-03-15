@@ -14,7 +14,7 @@ crn(`
 <a href="./quran">hafezi quran (emdadiya)</a>
 <a href="./t.html">tiny library example</a>
 
-<a href="./drmamun.html"> dr mamun's status</a>
+<a href="./drmamun.html"> dr mamun app</a>
 
 
 <a href="./touch.html">test✅ touch</a>
