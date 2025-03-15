@@ -8,7 +8,7 @@ crn(`
 
 	<v f>
 		<vs>
-				<v h2000 bg="L,az,ez,iz,oz,uz" c p15>
+				<v h2000 bg="L,az,ez,iz,oz,uz" p15>
 
 <h1>Click the link to test the sites </h1>
 <a href="./quran">hafezi quran (emdadiya)</a>
