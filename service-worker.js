@@ -5,8 +5,6 @@ const urlsToCache = [
   "/t.css",
   "/index.js",
   "/t.js",
-  "/t.html",
-  "/global.js",
   "/icon-192x192.png",
   "/icon-512x512.png"
 ];
