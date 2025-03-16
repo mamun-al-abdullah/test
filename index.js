@@ -5,7 +5,7 @@ crn(`
 <v poa i0 p15>
 <h1>Click the link to test the sites </h1>
 <h s100>
-<img src="icon-512x512.png"/>
+<img w100p h100p src="icon-512x512.png"/>
 </h>
 <a href="./quran">hafezi quran (emdadiya)</a>
 <a href="./t.html">tiny library example</a>
