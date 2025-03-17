@@ -1,11 +1,28 @@
+const {prn, lt, dk, light, dark} = crn(`
+<v ref=prn>
+<meta ref=light name="theme-color" media="(prefers-color-scheme: light)" content="#ff0000" />
+<meta ref=dark name="theme-color" media="(prefers-color-scheme: dark)" content="#00ff00" />
 
-
-crn(`
-<v>
-<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ff0000" />
-<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#00ff00" />
+<h pof b15 l50p tx-50p>
+<v ref=lt bgazx p15 m5 c5 bsm1>light</v>
+<v ref=dk bgazg clzzz p15 m5 c5 bsm1>dark</v>
+</h>
 </v>
 `)
+
+lt.c = v=>{
+light.ats(`content`, `#aaffff`)
+dark.ats(`content`, `#aa00ff`)
+}
+
+dk.c = v=>{
+light.ats(`content`, `#00ffff`)
+dark.ats(`content`, `#0000ff`)
+}
+
+
+
+
 
 const {c1,c2,c3} = crn(`<v poa i0 b0 c tsp pv1000 oh>
 		<v bguzg h100 co80 cp80 pof t0 l0 r0></v>
