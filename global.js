@@ -1,4 +1,12 @@
 
+
+crn(`
+<v>
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ff0000" />
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#00ff00" />
+</v>
+`)
+
 const {c1,c2,c3} = crn(`<v poa i0 b0 c tsp pv1000 oh>
 		<v bguzg h100 co80 cp80 pof t0 l0 r0></v>
 		<h ref=c1 bgom poa b150 c5 tsp tn20>
