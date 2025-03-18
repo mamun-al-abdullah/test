@@ -13,11 +13,13 @@ const {prn, lt, dk, light, dark} = crn(`
 lt.c = v=>{
 light.ats(`content`, `#aaffff`)
 dark.ats(`content`, `#aa00ff`)
+a(prn.ih)
 }
 
 dk.c = v=>{
 light.ats(`content`, `#00ffff`)
 dark.ats(`content`, `#0000ff`)
+a(prn.ih)
 }
 
 
