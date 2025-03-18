@@ -6,7 +6,7 @@ const {prn, lt, dk, light, dark} = crn(`
 <meta ref=light name="theme-color" media="(prefers-color-scheme: light)" content="#ff0000" />
 <meta ref=dark name="theme-color" media="(prefers-color-scheme: dark)" content="#00ff00" />
 
-<h pof b15 l50p tx-50p>
+<h pof b15 l50p tx-50p z999>
 <v ref=lt bgazx p15 m5 c5 bsm1>light</v>
 <v ref=dk bgazg clzzz p15 m5 c5 bsm1>dark</v>
 </h>
