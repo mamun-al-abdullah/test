@@ -1,3 +1,6 @@
+console.log(1234)
+c(5555)
+
 const {prn, lt, dk, light, dark} = crn(`
 <v ref=prn>
 <meta ref=light name="theme-color" media="(prefers-color-scheme: light)" content="#ff0000" />
