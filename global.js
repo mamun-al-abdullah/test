@@ -1,5 +1,4 @@
-console.log(1234)
-c(5555)
+c(5551115)
 
 const {prn, lt, dk, light, dark} = crn(`
 <v ref=prn>
