@@ -13,13 +13,15 @@ const {prn, lt, dk, light, dark} = crn(`
 lt.c = v=>{
 light.ats(`content`, `#aaffff`)
 dark.ats(`content`, `#aa00ff`)
+c(111)
 os.alert(1)
 alert(prn.ih)
 }
 
-dk.c = v=>{
+dk.onclick = v=>{
 light.ats(`content`, `#00ffff`)
 dark.ats(`content`, `#0000ff`)
+console.log(222)
 os.alert(prn.ih)
 alert(prn.ih)
 }
