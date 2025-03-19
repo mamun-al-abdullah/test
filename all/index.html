@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>tiny library</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no" />
+    <link rel="shortcut icon" href="favicon.ico" />
+    <link rel="stylesheet" href="t.css" />
+    <meta
+      name="theme-color"
+      media="(prefers-color-scheme: light)"
+      content="#aa7d8b"
+    />
+    <meta
+      name="theme-color"
+      media="(prefers-color-scheme: dark)"
+      content="#666666"
+    />
+    <link rel="manifest" href="manifest.json" />
+  </head>
+
+  <body>
+    <div id="app"></div>
+  </body>
+  <script>
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker
+        .register("/service-worker.js")
+        .then(() => console.log("Service Worker registered"))
+        .catch((error) =>
+          console.error("Service Worker registration failed", error)
+        );
+    }
+  </script>
+
+  <script src="t.js"></script>
+  <script src="index.js"></script>
+</html>

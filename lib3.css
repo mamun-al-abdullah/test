@@ -1,0 +1,676 @@
+ html,
+    body {
+      margin: 0;
+      height: 100%;
+      line-height: 1.5;
+      box-sizing: border-box
+    }
+
+    [tg] *,
+    [ntg] {
+      pointer-events: none;
+    }
+
+    [nos] {
+      user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+
+    [contenteditable] {
+      outline: none
+    }
+
+    mi {
+      width: 30px;
+      height: 30px;
+      padding: 10px;
+      display: inline-block;
+      line-height: 30px;
+    }
+
+    h {
+      display: flex;
+      flex-direction: row;
+      position: relative
+    }
+
+    v {
+      display: flex;
+      flex-direction: column;
+      position: relative
+    }
+
+    [w] {
+      flex-wrap: wrap
+    }
+
+    hs {
+      display: block;
+      overflow-x: auto;
+      white-space: nowrap;
+      position: relative
+    }
+
+    hs>* {
+      display: inline-block !important;
+    }
+
+    vs {
+      display: block;
+      overflow-y: auto;
+      position: relative;
+      height: 100%
+    }
+
+    c,
+    [c] {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative
+    }
+
+    [cm] {
+      display: flex;
+      justify-content: center;
+    }
+
+    [ca] {
+      display: flex;
+      align-items: center;
+    }
+
+    f,
+    [f] {
+      flex: 1
+    }
+
+    v>[f] {
+      height: 10px
+    }
+
+    [bb] {
+      box-sizing: border-box
+    }
+
+    [poa] {
+      position: absolute
+    }
+
+    [pof] {
+      position: fixed
+    }
+
+    [por] {
+      position: relative
+    }
+
+    [ma] {
+      margin: auto
+    }
+
+    [mla] {
+      margin-left: auto
+    }
+
+    [mra] {
+      margin-right: auto
+    }
+
+    [mxa] {
+      margin-right: auto;
+      margin-left: auto
+    }
+
+    [fb] {
+      font-weight: bold
+    }
+
+    [ttu] {
+      text-transform: uppercase
+    }
+
+    [ttc] {
+      text-transform: capitalize
+    }
+
+    [tac] {
+      text-align: center
+    }
+
+    [tar] {
+      text-align: right
+    }
+
+    [tal] {
+      text-align: left
+    }
+
+    [bs1] {
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1)
+    }
+
+    [bs2] {
+      box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.1)
+    }
+
+    [bs3] {
+      box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1)
+    }
+
+    [bs4] {
+      box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1)
+    }
+
+    [oh] {
+      overflow: hidden
+    }
+
+    [oxh] {
+      overflow-x: hidden
+    }
+
+    [oyh] {
+      overflow-y: hidden
+    }
+
+    [oa] {
+      overflow: auto
+    }
+
+    [oxa] {
+      overflow-x: auto
+    }
+
+    [oya] {
+      overflow-y: auto
+    }
+
+    [ha] {
+      height: auto
+    }
+
+    [wa] {
+      width: auto
+    }
+
+    [bd1] {
+      border: 1px solid rgba(0, 0, 0, 0.2)
+    }
+
+    [bd2] {
+      border: 2px rgba(0, 0, 0, 0.2)
+    }
+
+    [bdn] {
+      border: none
+    }
+
+    [otn] {
+      outline: none
+    }
+
+    [bfbl] {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(15px)
+    }
+
+    [none] {
+      display: none
+    }
+
+    [db] {
+      display: block
+    }
+
+    [dib] {
+      display: inline-block
+    }
+
+    [df] {
+      display: flex
+    }
+
+    [di] {
+      display: inline
+    }
+
+    [totl] {
+      transform-origin: top left
+    }
+
+    [totr] {
+      transform-origin: top right
+    }
+
+    [tobl] {
+      transform-origin: bottom left
+    }
+
+    [tobr] {
+      transform-origin: bottom right
+    }
+
+    [toc] {
+      transform-origin: center
+    }
+
+    [tsp] {
+      transform-style: preserve-3d
+    }
+
+    [afi] {
+      animation: fadein 0.3s both
+    }
+
+    [afo] {
+      animation: fadeout 0.3s both
+    }
+
+    [alfi] {
+      animation: leftfadein 0.3s both
+    }
+
+    [alfo] {
+      animation: leftfadeout 0.3s both
+    }
+
+    [atfi] {
+      animation: topfadein 0.3s both
+    }
+
+    [atfo] {
+      animation: topfadeout 0.3s both
+    }
+
+    [arfi] {
+      animation: rightfadein 0.3s both
+    }
+
+    [arfo] {
+      animation: rightfadeout 0.3s both
+    }
+
+    [abfi] {
+      animation: bottomfadein 0.3s both
+    }
+
+    [abfo] {
+      animation: bottomfadeout 0.3s both
+    }
+
+    [ali] {
+      animation: leftin 0.3s both
+    }
+
+    [alo] {
+      animation: leftout 0.3s both
+    }
+
+    [ati] {
+      animation: topin 0.3s both
+    }
+
+    [ato] {
+      animation: topout 0.3s both
+    }
+
+    [ari] {
+      animation: rightin 0.3s both
+    }
+
+    [aro] {
+      animation: rightout 0.3s both
+    }
+
+    [abi] {
+      animation: bottomin 0.3s both
+    }
+
+    [abo] {
+      animation: bottomout 0.3s both
+    }
+
+    @keyframes fadein {
+      from {
+        opacity: 0
+      }
+    }
+
+    @keyframes fadeout {
+      to {
+        opacity: 0
+      }
+    }
+
+    @keyframes leftfadein {
+      from {
+        transform: translatex(-100%);
+        opacity: 0
+      }
+    }
+
+    @keyframes leftfadeout {
+      to {
+        transform: translatex(-100%);
+        opacity: 0
+      }
+    }
+
+    @keyframes rightfadein {
+      from {
+        transform: translatex(100%);
+        opacity: 0
+      }
+    }
+
+    @keyframes rightfadeout {
+      to {
+        transform: translatex(100%);
+        opacity: 0
+      }
+    }
+
+    @keyframes topfadein {
+      from {
+        transform: translatey(-100%);
+        opacity: 0
+      }
+    }
+
+    @keyframes topfadeout {
+      to {
+        transform: translatey(-100%);
+        opacity: 0
+      }
+    }
+
+    @keyframes bottomfadein {
+      from {
+        transform: translatey(100%);
+        opacity: 0
+      }
+    }
+
+    @keyframes bottomfadeout {
+      to {
+        transform: translatey(100%);
+        opacity: 0
+      }
+    }
+
+
+    @keyframes leftin {
+      from {
+        transform: translatex(-100%)
+      }
+    }
+
+    @keyframes leftout {
+      to {
+        transform: translatex(-100%)
+      }
+    }
+
+    @keyframes rightin {
+      from {
+        transform: translatex(100%)
+      }
+    }
+
+    @keyframes rightout {
+      to {
+        transform: translatex(100%)
+      }
+    }
+
+    @keyframes topin {
+      from {
+        transform: translatey(-100%)
+      }
+    }
+
+    @keyframes topout {
+      to {
+        transform: translatey(-100%)
+      }
+    }
+
+    @keyframes bottomin {
+      from {
+        transform: translatey(100%)
+      }
+    }
+
+    @keyframes bottomout {
+      to {
+        transform: translatey(100%)
+      }
+    }
+
+
+    options {
+      background: #eee;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      max-height: 200px;
+      overflow: hidden auto;
+      box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1);
+      z-index: 99999999
+    }
+
+    options items {
+      display: block;
+      background: #fff
+    }
+
+    options item {
+      display: block;
+      padding: 15px;
+      border-bottom: 1px solid #eee
+    }
+
+    #osAlertComp {
+      font-size: 1.2em;
+      background: #fff;
+      color: #444;
+      border-radius: 5px;
+      padding: 5px 10px;
+      position: fixed;
+      top: 0;
+      left: 50%;
+      transform: translate(-50%, -30px);
+      white-space: pre-wrap;
+      animation: osAlertCompAnim 3s forwards;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3), 0 10px 10px -7px rgba(0, 0, 0, 0.3);
+      z-index: 9999999999999
+    }
+
+    @keyframes osAlertCompAnim {
+
+      from,
+      to {
+        opacity: 0
+      }
+
+      10% {
+        opacity: 1;
+        transform: translate(-50%, 63px)scale(1.05, 0.95)
+      }
+
+      20% {
+        opacity: 1;
+        transform: translate(-50%, 60px)scale(1, 1)
+      }
+
+      30% {
+        opacity: 1;
+        transform: translate(-50%, 63px)scale(1.02, 0.98)
+      }
+
+      80% {
+        opacity: 1;
+        transform: translate(-50%, 60px)scale(1, 1)
+      }
+    }
+
+    #_p {
+      background: rgba(0, 0, 0, 0.2);
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      animation: _pAnimaOn 0.5s;
+      display: none;
+      z-index: 999999999999
+    }
+
+    @keyframes _pAnimaOn {
+      70% {
+        opacity: 1
+      }
+
+      from {
+        opacity: 0
+      }
+    }
+
+    @keyframes _p_anim_close {
+      50% {
+        opacity: 1
+      }
+
+      to {
+        opacity: 0;
+      }
+    }
+
+    #_w {
+      background: #fff;
+      color: #444;
+      max-height: 80%;
+      overflow: hidden;
+      max-width: 90%;
+      overflow: hidden;
+      border-radius: 5px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2),
+        0 70px 40px -40px rgba(0, 0, 0, 0.2);
+      animation: _wAnimaWrapOn 0.5s
+    }
+
+    @keyframes _wAnimaWrapOn {
+      from {
+        opacity: 0;
+        transform: scale(1.5)
+      }
+
+      50% {
+        opacity: 1;
+        transform: scale(0.95)
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1)
+      }
+    }
+
+    @keyframes _w_anim_close {
+      from {
+        opacity: 1;
+        transform: scale(1)
+      }
+
+      50% {
+        opacity: 1;
+        transform: scale(0.95)
+      }
+
+      to {
+        opacity: 0;
+        transform: scale(1.5)
+      }
+    }
+
+    #_h,
+    #_m,
+    #_b {
+      min-width: 280px;
+      padding: 15px;
+      font-size: 1.3em
+    }
+
+    #_m {
+      flex: 1;
+      overflow-y: auto;
+      font-size: 1em;
+      color: #888;
+      padding: 0 15px 30px 15px;
+      white-space: pre-wrap
+    }
+
+    #_b {
+      text-align: right
+    }
+
+    #_b>div {
+      display: inline-block;
+      border: 1px solid teal;
+      padding: 7px 15px;
+      margin: -3px;
+      min-width: 60px;
+      text-align: center;
+      text-transform: uppercase
+    }
+
+    #_b>div:first-of-type {
+      border-radius: 50px 0 0 50px;
+      background: #fff;
+      color: teal
+    }
+
+    #_b>div:last-of-type {
+      border-radius: 0 50px 50px 0;
+      background: teal;
+      color: #fff
+    }
+
+    [w] {
+      position: relative;
+      overflow: hidden;
+    }
+
+    [w] .wave {
+      position: absolute;
+      display: block;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.3);
+      opacity: 1;
+      pointer-events: none;
+      pointer-events: none;
+      will-change: opacity, transform;
+      transition: 0.8s ease;
+    }
+
+    [w].dark .wave {
+      background-color: rgba(0, 0, 0, 0.3)
+    }
+
+    [w] .wave.is-active {
+      transform: scale(100);
+      opacity: 0;
+    }

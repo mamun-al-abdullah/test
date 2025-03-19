@@ -2,11 +2,10 @@ const CACHE_NAME = "pwa-cache-v1";
 const urlsToCache = [
   "/",
   "/index.html",
-  "/t.css",
-  "/index.js",
-  "/t.js",
-  "/icon-192x192.png",
-  "/icon-512x512.png"
+  "/lib3.css",
+  "/lib3.js",
+  "/localforage.js",
+  "/MaterialIcons-Regular.ttf",
 ];
 
 // Install event - Cache assets
@@ -19,10 +18,23 @@ self.addEventListener("install", (event) => {
 });
 
 // Fetch event - Serve from cache first
+// self.addEventListener("fetch", (event) => {
+//   event.respondWith(
+//     caches.match(event.request).then((response) => {
+//       return response || fetch(event.request);
+//     })
+//   );
+// });
+
 self.addEventListener("fetch", (event) => {
   event.respondWith(
     caches.match(event.request).then((response) => {
-      return response || fetch(event.request);
+      return response || fetch(event.request).then((networkResponse) => {
+        return caches.open(CACHE_NAME).then((cache) => {
+          cache.put(event.request, networkResponse.clone());
+          return networkResponse;
+        });
+      });
     })
   );
 });

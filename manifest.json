@@ -1,6 +1,6 @@
 {
-  "name": "muslim os",
-  "short_name": "mos",
+  "name": "idl-quran",
+  "short_name": "quran",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
