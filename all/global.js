@@ -24,7 +24,7 @@ main
 
 
 crn(app.main, `
-<v pof b0 f20 bgo p5 px15 cm15 cn15>
+<v pof b0 f20 bgo p50 px15 cm15 cn15>
 task
 </v>
 `)
