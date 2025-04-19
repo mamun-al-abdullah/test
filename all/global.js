@@ -1,5 +1,6 @@
 
 
+
 const app = (() =>{
 
 const {main} = crn(`<v poa i0>
@@ -26,3 +27,4 @@ crn(app.main, `
 <v pof b0 f20 bgo p5 px15 cm15 cn15>
 task
 </v>
+`)
