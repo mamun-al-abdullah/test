@@ -2,13 +2,41 @@
 
 const app = (() =>{
 
+var d = new Date();
+
+const mnt = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+
+const dy = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+
+const getFormattedTime = ()=> {
+  const now = new Date();
+  let hours = now.getHours();
+  const minutes = now.getMinutes();
+
+  const ampm = hours >= 12 ? 'pm' : 'am';
+  hours = hours % 12;
+  hours = hours ? hours : 12;
+  const formattedMinutes = minutes < 10 ? '0' + minutes : minutes;
+
+  return `${hours.toString().padStart(2, '0')}:${formattedMinutes} ${ampm}`;
+}
+
+
+
 const {main} = crn(`<v poa i0 nos>
 
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#00a1ff" />
 
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0d1419" />
 
-<v ref=main poa i0 bg="L180,oz,wz" c clzzz f50 ttu>m o s</v>
+<v ref=main poa i0 bg="L180,oz,wz" c clzzz>
+<h f24 fb>${getFormattedTime()}</h>
+	<h f19>
+		<h mr15 clnz fb>${dy[d.getDay()]}</h>
+		<h clkz>${d.getDate()} ${mnt[d.getMonth()]}</h>
+	</h>
+<h f50 fb mt100>M O S</h>
+</v>
 
 </v>`)
 
