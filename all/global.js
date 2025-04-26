@@ -1,13 +1,13 @@
 
 
 const app = (() =>{
-const O = crn(`<v poa i0 nos>
+const O = crn(`<v pof i0 nos>
 
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#00a1ff" />
 
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0d1419" />
 
-<v ref=Main poa i0 bg="L180,oz,wz" c clzzz>
+<v ref=Main pof i0 bg="L180,oz,wz" c clzzz>
 <v ref=DateTime></v>
 <h f50 fb mt100>M O S</h>
 </v>
