@@ -67,16 +67,83 @@ aa(1000, v=>{
 	app.Home.DateTime.ih = app.Home.getDateTime()
 })
 
+const Taskbar = {
+tasks : [],
+render : () =>{
 crn( `
-<v pof r0 t50p ty-50p f20 bg="L90,oz,wz" px5 py5 bsm5 cm15 cp15 oh>
+<v pof r0 t50p ty-50p f20 bg="L90,oz,wz" px5 py5 bsm5 cm15 cp15 oh z1>
 	<v>
-		<mi bgaaae c10 c>${app.icons.book}</mi>
+		<mi bgaaae c10 c onclick=Quran.start()>${app.icons.book}</mi>
 				<h s5></h>
-		<mi bgaaze bsm4 c10 c>${app.icons.task}</mi>
+		<mi bgaaze bsm4 c10 c onclick=Task.start()>${app.icons.task}</mi>
 				<h s5></h>
-		<mi bgaaae c10 c>${app.icons.apps}</mi>
+		<mi bgaaae c10 c onclick=Quran.close()>${app.icons.apps}</mi>
 				<h s5></h>
-		<mi bgaaae c10 c>${app.icons.home}</mi>
+		<mi bgaaae c10 c onclick=Task.close()>${app.icons.home}</mi>
 	</v>
 </v>
 `)
+
+}
+}
+
+Taskbar.render()
+const Win = (p)=>{
+let o
+
+const start = ()=>{
+if(o?.ref1){
+o.ref1.ats(`arfi`)
+Taskbar.tasks.map(t=>{
+if(t != o.ref1){
+t.atr(`z1`)
+t.ats(`z0`)
+}else{
+t.atr(`z0`)
+t.ats(`z1`)
+}
+})
+
+}else{
+o = crn(`
+<v bgzzzm pof i0 r60 bf15 c10 m15 oh bsm7 arfi z1>
+<h h58 bgzzzm bsm1 ca px15 ttu>${p?.title || "title"}</h>
+<h p15>${p?.body || ""}</h>
+</v>
+`)
+
+Taskbar.tasks.push(o.ref1)
+}
+
+}
+
+const close = ()=>{
+if(o?.ref1){
+o.ref1.ats(`arfo`)
+af(300, v=> {
+o?.ref1?.remove()
+Taskbar.tasks.splice(Taskbar.tasks.indexOf(o.ref1),1)
+delete o.ref1
+}
+)
+}
+}
+
+return {
+start, close
+}
+
+}
+
+
+const Task = Win({
+title : `task`,
+body : `<v>task 1</v>`
+})
+
+
+const Quran = Win({
+title : `sura 1`,
+body : `<v>bismillah</v>`
+})
+
