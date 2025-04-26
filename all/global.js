@@ -68,32 +68,91 @@ aa(1000, v=>{
 	app.Home.DateTime.ih = app.Home.getDateTime()
 })
 
-const Taskbar = {
-tasks : [],
-render : () =>{
-crn( `
-<v pof r0 t50p ty-50p f20 bg="L90,oz,wz" px5 py5 bsm5 cm15 cp15 oh z1>
-	<v>
-		<mi bgaaae c10 c onclick=Quran.toggle()>${app.icons.book}</mi>
-				<h s5></h>
-		<mi bgaaze bsm4 c10 c onclick=Task.toggle()>${app.icons.task}</mi>
-				<h s5></h>
-		<mi bgaaae c10 c onclick=AppPanel.toggle()>${app.icons.apps}</mi>
-				<h s5></h>
-		<mi bgaaae c10 c>${app.icons.home}</mi>
-	</v>
-</v>
-`)
+const Taskbar = (() => {
+  let o;
+  const tasks = [];
 
-}
-}
+  const apps = [
+    { id: `a1b1`, icon: `book`, active: false, focus: false, el: `Quran` },
+    { id: `a1b2`, icon: `task`, active: false, focus: false, el: `Task` },
+    { id: `a1b3`, icon: `apps`, active: false, focus: false, el: `AppPanel` }
+  ];
 
-Taskbar.render()
+  const getApp = id => apps.find(app => app.id === id);
+
+  const updateTaskbar = () => {
+    o.tasks.ih = apps.map(v => `
+      <mi aid=${v.id}
+          ${v.focus ? `bgaaze bsm4` : `bgaaae`}
+          c10 c onclick=${v.el}.toggle("${v.id}")>
+        ${v.active ? `<h s5 poa bgiu c5 l5 bsm1></h>` : ``}
+        ${app.icons[v.icon]}
+      </mi>
+    `).join(`<h s5></h>`);
+  };
+
+  const render = () => {
+    o = crn(`
+      <v pof r0 t50p ty-50p f20 bg="L90,oz,wz" px5 py5 bsm5 cm15 cp15 oh z1>
+        <v ref=tasks></v>
+      </v>
+    `);
+    updateTaskbar();
+  };
+
+  const activate = id => {
+    const app = getApp(id);
+    if (app) { app.active = true; }
+    updateTaskbar();
+  };
+
+  const deactivate = id => {
+    const app = getApp(id);
+    if (app) {
+      app.active = false;
+      app.focus = false;
+    }
+    updateTaskbar();
+  };
+
+  const focus = id => {
+    apps.forEach(app => {
+      if (app.id === id) {
+        app.focus = true;
+        app.active = true;
+      } else {
+        app.focus = false;
+      }
+    });
+    updateTaskbar();
+  };
+
+  const defocus = id => {
+    const app = getApp(id);
+    if (app) { app.focus = false; }
+    updateTaskbar();
+  };
+
+  render();
+
+  return {
+    tasks,
+    apps,
+    render,
+    updateTaskbar,
+    activate,
+    deactivate,
+    focus,
+    defocus
+  };
+})();
+
 const Win = (p)=>{
 let o, start, close, toggle, toggleForce
 
 //
-start = ()=>{
+start = (id)=>{
+Taskbar.focus(id)
 if(o?.ref1){
 o.ref1.ats(`arfi`)
 Taskbar.tasks.map(t=>{
@@ -114,7 +173,7 @@ t.ats(`z0`)
 })
 
 o = crn(`
-<v bgzzzm pof i0 r60 bf15 c10 m15 oh bsm7 arfi z1>
+<v wid="${id}" bgzzzm pof i0 r60 bf15 c10 m15 oh bsm7 arfi z1>
 ${p?.title != false? `<h h58 bgzzzm bsm1 ca ttu>
 	<h px15>${p?.title || "title"}</h>
 	<h ref=close f24 mla s58 c>
@@ -127,7 +186,7 @@ ${p?.title != false? `<h h58 bgzzzm bsm1 ca ttu>
 
 if(o.close){
 o.close.c = ()=>{
-close()
+close(id)
 }
 }
 
@@ -137,36 +196,32 @@ Taskbar.tasks.push(o.ref1)
 }
 
 //
-close = ()=>{
+close = (id)=>{
+Taskbar.deactivate(id)
 if(o?.ref1){
 o.ref1.ats(`arfo`)
 af(300, v=> {
 o?.ref1?.remove()
-Taskbar.tasks.splice(Taskbar.tasks.indexOf(o.ref1),1)
+
+const tasks = Taskbar.tasks
+tasks.splice(tasks.indexOf(o.ref1),1)
 delete o.ref1
-if(Taskbar.tasks.l>0){
-Taskbar.tasks[Taskbar.tasks.l -1].ats(`z1`)
+
+if(tasks.l>0){
+const elToFocus = tasks[tasks.l -1]
+elToFocus.ats(`z1`)
+Taskbar.focus(elToFocus.atg(`wid`))
 }
 }
 )
 }
 }
 
-//
-toggleForce = ()=>{
-if(o?.ref1){
-close()
-}else{
-start()
-}
-}
 
 //
-toggle = ()=>{
+toggle = (id)=>{
 if(o?.ref1){
 
-
-//o.ref1.ats(`arfi`)
 Taskbar.tasks.map(t=>{
 if(t != o.ref1){
 t.atr(`z1`)
@@ -174,21 +229,22 @@ t.ats(`z0`)
 }else{
 //selected panel
 if(o.ref1.ath(`z1`)){
-close()
+close(id)
 }else{
 t.atr(`z0`)
 t.ats(`z1`)
+Taskbar.focus(id)
 }
 }
 })
 
 }else{
-start()
+start(id)
 }
 }
 
 return {
-start, close, toggle
+toggle
 }
 
 }
