@@ -74,11 +74,11 @@ render : () =>{
 crn( `
 <v pof r0 t50p ty-50p f20 bg="L90,oz,wz" px5 py5 bsm5 cm15 cp15 oh z1>
 	<v>
-		<mi bgaaae c10 c onclick=Quran.start()>${app.icons.book}</mi>
+		<mi bgaaae c10 c onclick=Quran.toggle()>${app.icons.book}</mi>
 				<h s5></h>
-		<mi bgaaze bsm4 c10 c onclick=Task.start()>${app.icons.task}</mi>
+		<mi bgaaze bsm4 c10 c onclick=Task.toggle()>${app.icons.task}</mi>
 				<h s5></h>
-		<mi bgaaae c10 c>${app.icons.apps}</mi>
+		<mi bgaaae c10 c onclick=AppPanel.toggle()>${app.icons.apps}</mi>
 				<h s5></h>
 		<mi bgaaae c10 c>${app.icons.home}</mi>
 	</v>
@@ -90,9 +90,10 @@ crn( `
 
 Taskbar.render()
 const Win = (p)=>{
-let o, close
+let o, start, close, toggle, toggleForce
 
-const start = ()=>{
+//
+start = ()=>{
 if(o?.ref1){
 o.ref1.ats(`arfi`)
 Taskbar.tasks.map(t=>{
@@ -100,26 +101,34 @@ if(t != o.ref1){
 t.atr(`z1`)
 t.ats(`z0`)
 }else{
+//selected panel
 t.atr(`z0`)
 t.ats(`z1`)
 }
 })
 
 }else{
+Taskbar.tasks.map(t=>{
+t.atr(`z1`)
+t.ats(`z0`)
+})
+
 o = crn(`
 <v bgzzzm pof i0 r60 bf15 c10 m15 oh bsm7 arfi z1>
-<h h58 bgzzzm bsm1 ca ttu>
+${p?.title != false? `<h h58 bgzzzm bsm1 ca ttu>
 	<h px15>${p?.title || "title"}</h>
 	<h ref=close f24 mla s58 c>
 		<h s14 c24 bga bsm1></h>
 	</h>
-</h>
+</h>` : ``}
 <h p15>${p?.body || ""}</h>
 </v>
 `)
 
+if(o.close){
 o.close.c = ()=>{
 close()
+}
 }
 
 Taskbar.tasks.push(o.ref1)
@@ -127,7 +136,7 @@ Taskbar.tasks.push(o.ref1)
 
 }
 
-
+//
 close = ()=>{
 if(o?.ref1){
 o.ref1.ats(`arfo`)
@@ -135,17 +144,60 @@ af(300, v=> {
 o?.ref1?.remove()
 Taskbar.tasks.splice(Taskbar.tasks.indexOf(o.ref1),1)
 delete o.ref1
+if(Taskbar.tasks.l>0){
+Taskbar.tasks[Taskbar.tasks.l -1].ats(`z1`)
+}
 }
 )
 }
 }
 
+//
+toggleForce = ()=>{
+if(o?.ref1){
+close()
+}else{
+start()
+}
+}
+
+//
+toggle = ()=>{
+if(o?.ref1){
+
+
+//o.ref1.ats(`arfi`)
+Taskbar.tasks.map(t=>{
+if(t != o.ref1){
+t.atr(`z1`)
+t.ats(`z0`)
+}else{
+//selected panel
+if(o.ref1.ath(`z1`)){
+close()
+}else{
+t.atr(`z0`)
+t.ats(`z1`)
+}
+}
+})
+
+}else{
+start()
+}
+}
 
 return {
-start, close
+start, close, toggle
 }
 
 }
+
+
+const AppPanel = Win({
+title : "",
+body : `<v>AppPanel body</v>`
+})
 
 
 const Task = Win({
