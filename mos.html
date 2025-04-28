@@ -68,6 +68,22 @@
       flex-direction: column;
       z-index: 1;
       touch-action: none;
+      /* Only apply transitions to specific properties */
+      transition: opacity 0.3s, transform 0.3s;
+    }
+    .app.with-transitions {
+      transition: width 0.3s, height 0.3s, top 0.3s, left 0.3s, opacity 0.3s, transform 0.3s;
+    }
+    .app.closing {
+      opacity: 0;
+      transform: scale(0.8);
+    }
+    .app.minimizing {
+      opacity: 0;
+      transform: translateY(100px) scale(0.6);
+    }
+    .app.maximizing {
+      transform: scale(1.05);
     }
     .app-header {
       background: #444;
@@ -95,10 +111,14 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 3px;
+      transition: background 0.2s, transform 0.2s;
     }
     .app-header button:hover {
       background: rgba(255,255,255,0.2);
-      border-radius: 3px;
+      transform: scale(1.1);
     }
     .app-header button.close:hover {
       background: #ff4444;
@@ -108,6 +128,10 @@
       height: 14px;
       fill: white;
       pointer-events: none;
+      transition: all 0.2s;
+    }
+    .app-header button:active svg {
+      transform: scale(0.8);
     }
     .app-content {
       flex: 1;
@@ -233,6 +257,9 @@ function openApp(app) {
   const appDiv = document.createElement('div');
   appDiv.className = 'app';
   appDiv.setAttribute('data-app-id', app.id);
+  appDiv.style.opacity = '0';
+  appDiv.style.transform = 'scale(0.9)';
+  
   appDiv.innerHTML = `
     <div class="app-header">
       <span class="title">${app.name}</span>
@@ -266,6 +293,12 @@ function openApp(app) {
   app.opened = true;
   app.focused = true;
   app.minimized = false;
+  
+  // Opening animation
+  setTimeout(() => {
+    appDiv.style.opacity = '1';
+    appDiv.style.transform = 'scale(1)';
+  }, 10);
 
   appDiv.querySelector('.minimize').onclick = (e) => {
     e.stopPropagation();
@@ -310,38 +343,90 @@ function focusApp(app) {
 }
 
 function minimizeApp(app) {
-  app.minimized = true;
-  app.focused = false;
-  app.element.classList.add('minimized');
-  updateTaskbar();
+  app.element.classList.add('with-transitions');
+  app.element.classList.add('minimizing');
+  
+  setTimeout(() => {
+    app.minimized = true;
+    app.focused = false;
+    app.element.classList.add('minimized');
+    app.element.classList.remove('minimizing');
+    app.element.classList.remove('with-transitions');
+    updateTaskbar();
+  }, 300);
 }
 
 function maximizeApp(app) {
-  if (app.element.dataset.maximized === "true") {
-    app.element.style.width = '300px';
-    app.element.style.height = '200px';
-    app.element.style.top = '50px';
-    app.element.style.left = '50px';
-    app.element.dataset.maximized = "false";
+  const appDiv = app.element;
+  
+  // Add transitions for this operation
+  appDiv.classList.add('with-transitions');
+  
+  if (appDiv.dataset.maximized === "true") {
+    // Store current dimensions for animation
+    const maxWidth = appDiv.style.width;
+    const maxHeight = appDiv.style.height;
+    
+    // Add maximizing class for transition effect
+    appDiv.classList.add('maximizing');
+    
+    // Restore previous dimensions after animation
+    setTimeout(() => {
+      appDiv.style.width = '300px';
+      appDiv.style.height = '200px';
+      appDiv.style.top = '50px';
+      appDiv.style.left = '50px';
+      appDiv.dataset.maximized = "false";
+      
+      setTimeout(() => {
+        appDiv.classList.remove('maximizing');
+        // Remove transitions after animation completes
+        appDiv.classList.remove('with-transitions');
+      }, 300);
+    }, 10);
   } else {
-    app.element.style.width = '100%';
-    app.element.style.height = `calc(100% - 40px)`;
-    app.element.style.top = '0';
-    app.element.style.left = '0';
-    app.element.dataset.maximized = "true";
+    // Store current dimensions for possible restore
+    appDiv.dataset.prevWidth = appDiv.style.width || '300px';
+    appDiv.dataset.prevHeight = appDiv.style.height || '200px';
+    appDiv.dataset.prevTop = appDiv.style.top || '50px';
+    appDiv.dataset.prevLeft = appDiv.style.left || '50px';
+    
+    // Add maximizing class for transition effect
+    appDiv.classList.add('maximizing');
+    
+    // Set to maximized dimensions
+    setTimeout(() => {
+      appDiv.style.width = '100%';
+      appDiv.style.height = `calc(100% - 40px)`;
+      appDiv.style.top = '0';
+      appDiv.style.left = '0';
+      appDiv.dataset.maximized = "true";
+      
+      setTimeout(() => {
+        appDiv.classList.remove('maximizing');
+        // Remove transitions after animation completes
+        appDiv.classList.remove('with-transitions');
+      }, 300);
+    }, 10);
   }
+  
   focusApp(app);
 }
 
 function closeApp(app) {
   if (app.element) {
-    app.element.remove();
+    app.element.classList.add('with-transitions');
+    app.element.classList.add('closing');
+    
+    setTimeout(() => {
+      app.element.remove();
+      app.opened = false;
+      app.focused = false;
+      app.minimized = false;
+      app.element = null;
+      updateTaskbar();
+    }, 300);
   }
-  app.opened = false;
-  app.focused = false;
-  app.minimized = false;
-  app.element = null;
-  updateTaskbar();
 }
 
 function updateTaskbar() {
@@ -375,6 +460,10 @@ function makeDraggable(app) {
   function startDrag(x, y) {
     if (appDiv.dataset.maximized === "true") return;
     isDown = true;
+    
+    // Remove transitions when starting to drag
+    appDiv.classList.remove('with-transitions');
+    
     offsetX = x - appDiv.offsetLeft;
     offsetY = y - appDiv.offsetTop;
   }
@@ -427,6 +516,10 @@ function makeResizable(app) {
       if (appDiv.dataset.maximized === "true") return;
       
       resizing = true;
+      
+      // Remove transitions when starting to resize
+      appDiv.classList.remove('with-transitions');
+      
       startX = e.clientX || e.touches[0].clientX;
       startY = e.clientY || e.touches[0].clientY;
       startWidth = parseInt(document.defaultView.getComputedStyle(appDiv).width, 10);
