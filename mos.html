@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Taskbar with App State Management</title>
   <style>
     * {
@@ -12,13 +13,14 @@
       background: #ddd;
       font-family: sans-serif;
       overflow: hidden;
+      touch-action: manipulation;
     }
     #taskbar {
       position: fixed;
       bottom: 0;
       left: 0;
       right: 0;
-      height: 40px;
+      height: 50px;
       background: #333;
       display: flex;
       align-items: center;
@@ -29,23 +31,26 @@
       background: #555;
       color: white;
       border: none;
-      margin-right: 5px;
-      padding: 5px 10px;
+      margin-right: 8px;
+      padding: 8px 12px;
       cursor: pointer;
       border-radius: 5px;
-      font-size: 14px;
+      font-size: 16px;
       position: relative;
       transition: background 0.3s;
+      flex: 1;
+      max-width: 100px;
+      height: 36px;
     }
     .taskbar-button.focused {
       background: #00aaff;
     }
     .dot {
       position: absolute;
-      top: 3px;
-      right: 3px;
-      width: 3px;
-      height: 3px;
+      top: 4px;
+      right: 4px;
+      width: 6px;
+      height: 6px;
       border-radius: 50%;
     }
     .dot.grey {
@@ -56,10 +61,10 @@
     }
     .app {
       position: absolute;
-      top: 50px;
-      left: 50px;
-      width: 300px;
-      height: 200px;
+      top: 10%;
+      left: 5%;
+      width: 90%;
+      height: 80%;
       background: white;
       border: 2px solid #666;
       box-shadow: 2px 2px 8px rgba(0,0,0,0.5);
@@ -71,12 +76,13 @@
     .app-header {
       background: #444;
       color: white;
-      padding: 5px;
+      padding: 10px;
       cursor: move;
       display: flex;
       justify-content: space-between;
       align-items: center;
       user-select: none;
+      height: 45px;
     }
     .controls {
       display: flex;
@@ -87,33 +93,34 @@
       background: transparent;
       border: none;
       color: white;
-      margin-left: 5px;
+      margin-left: 8px;
       cursor: pointer;
-      padding: 2px;
-      font-size: 14px;
+      padding: 6px;
+      font-size: 16px;
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 20px;
-      height: 20px;
+      width: 32px;
+      height: 32px;
     }
     .app-header button:hover {
       background: rgba(255,255,255,0.2);
-      border-radius: 3px;
+      border-radius: 4px;
     }
     .app-header button.close:hover {
       background: #ff4444;
     }
     .app-header button svg {
-      width: 14px;
-      height: 14px;
+      width: 18px;
+      height: 18px;
       fill: white;
       pointer-events: none;
     }
     .app-content {
       flex: 1;
-      padding: 10px;
+      padding: 15px;
       overflow: auto;
+      font-size: 16px;
     }
     .minimized {
       display: none;
@@ -121,6 +128,33 @@
     .focused {
       border-color: #00aaff;
       box-shadow: 0 0 10px #00aaff;
+    }
+    
+    /* Media queries for different screen sizes */
+    @media (max-width: 480px) {
+      .app {
+        width: 95%;
+        left: 2.5%;
+        top: 5%;
+        height: 85%;
+      }
+      
+      .taskbar-button {
+        font-size: 14px;
+        padding: 6px 8px;
+        margin-right: 4px;
+        height: 34px;
+      }
+      
+      .app-header {
+        padding: 8px;
+        height: 42px;
+      }
+      
+      .app-header button {
+        width: 28px;
+        height: 28px;
+      }
     }
   </style>
 </head>
@@ -249,14 +283,22 @@ function minimizeApp(app) {
 
 function maximizeApp(app) {
   if (app.element.dataset.maximized === "true") {
-    app.element.style.width = '300px';
-    app.element.style.height = '200px';
-    app.element.style.top = '50px';
-    app.element.style.left = '50px';
+    app.element.style.width = '90%';
+    app.element.style.height = '80%';
+    app.element.style.top = '10%';
+    app.element.style.left = '5%';
     app.element.dataset.maximized = "false";
+    
+    // Additional adjustment for mobile
+    if (window.innerWidth <= 480) {
+      app.element.style.width = '95%';
+      app.element.style.height = '85%';
+      app.element.style.top = '5%';
+      app.element.style.left = '2.5%';
+    }
   } else {
     app.element.style.width = '100%';
-    app.element.style.height = `calc(100% - 40px)`;
+    app.element.style.height = `calc(100% - 50px)`;
     app.element.style.top = '0';
     app.element.style.left = '0';
     app.element.dataset.maximized = "true";
@@ -315,7 +357,7 @@ function makeDraggable(app) {
       let newLeft = x - offsetX;
       let newTop = y - offsetY;
       newLeft = Math.max(0, Math.min(newLeft, window.innerWidth - appDiv.offsetWidth));
-      newTop = Math.max(0, Math.min(newTop, window.innerHeight - appDiv.offsetHeight - 40));
+      newTop = Math.max(0, Math.min(newTop, window.innerHeight - appDiv.offsetHeight - 50));
       appDiv.style.left = newLeft + 'px';
       appDiv.style.top = newTop + 'px';
     }
@@ -345,6 +387,15 @@ function makeDraggable(app) {
   }, { passive: false });
   document.addEventListener('touchend', stopDrag);
 }
+
+// Check window size on load and resize
+function checkMobileSize() {
+  const isMobile = window.innerWidth <= 480;
+  document.body.classList.toggle('mobile', isMobile);
+}
+
+window.addEventListener('load', checkMobileSize);
+window.addEventListener('resize', checkMobileSize);
 
 createTaskbarButtons();
 </script>
