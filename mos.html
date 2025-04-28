@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Taskbar with App State Management</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      background: #ddd;
+      font-family: sans-serif;
+      overflow: hidden;
+    }
+    #taskbar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 40px;
+      background: #333;
+      display: flex;
+      align-items: center;
+      padding: 0 10px;
+      z-index: 1000;
+    }
+    .taskbar-button {
+      background: #555;
+      color: white;
+      border: none;
+      margin-right: 5px;
+      padding: 5px 10px;
+      cursor: pointer;
+      border-radius: 5px;
+      font-size: 14px;
+      position: relative;
+      transition: background 0.3s;
+    }
+    .taskbar-button.focused {
+      background: #00aaff;
+    }
+    .dot {
+      position: absolute;
+      top: 3px;
+      right: 3px;
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+    }
+    .dot.grey {
+      background: grey;
+    }
+    .dot.green {
+      background: limegreen;
+    }
+    .app {
+      position: absolute;
+      top: 50px;
+      left: 50px;
+      width: 300px;
+      height: 200px;
+      background: white;
+      border: 2px solid #666;
+      box-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+      display: flex;
+      flex-direction: column;
+      z-index: 1;
+      touch-action: none;
+    }
+    .app-header {
+      background: #444;
+      color: white;
+      padding: 5px;
+      cursor: move;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      user-select: none;
+    }
+    .app-header button {
+      background: #666;
+      border: none;
+      color: white;
+      margin-left: 5px;
+      cursor: pointer;
+      padding: 2px 5px;
+      font-size: 12px;
+    }
+    .app-content {
+      flex: 1;
+      padding: 10px;
+      overflow: auto;
+    }
+    .minimized {
+      display: none;
+    }
+    .focused {
+      border-color: #00aaff;
+      box-shadow: 0 0 10px #00aaff;
+    }
+  </style>
+</head>
+<body>
+
+<div id="apps-container"></div>
+<div id="taskbar"></div>
+
+<script>
+let zIndexCounter = 1;
+
+const apps = {
+  "app1": { id: "app1", name: "App 1", opened: false, focused: false, minimized: false, element: null },
+  "app2": { id: "app2", name: "App 2", opened: false, focused: false, minimized: false, element: null },
+  "app3": { id: "app3", name: "App 3", opened: false, focused: false, minimized: false, element: null },
+  "app4": { id: "app4", name: "App 4", opened: false, focused: false, minimized: false, element: null }
+};
+
+const buttons = {};
+
+function createTaskbarButtons() {
+  const taskbar = document.getElementById('taskbar');
+  Object.values(apps).forEach(app => {
+    const button = document.createElement('button');
+    button.className = 'taskbar-button';
+    button.textContent = app.name;
+    button.onclick = () => {
+      if (!app.opened) {
+        openApp(app);
+      } else if (app.focused && !app.minimized) {
+        minimizeApp(app);
+      } else {
+        app.minimized = false;
+        app.element.classList.remove('minimized');
+        focusApp(app);
+      }
+      updateTaskbar();
+    };
+    taskbar.appendChild(button);
+    buttons[app.id] = button;
+  });
+}
+
+function openApp(app) {
+  if (app.opened) {
+    focusApp(app);
+    return;
+  }
+
+  const appDiv = document.createElement('div');
+  appDiv.className = 'app';
+  appDiv.setAttribute('data-app-id', app.id);
+  appDiv.innerHTML = `
+    <div class="app-header">
+      <span class="title">${app.name}</span>
+      <div class="controls">
+        <button class="minimize">_</button>
+        <button class="maximize">[ ]</button>
+        <button class="close">X</button>
+      </div>
+    </div>
+    <div class="app-content">
+      Content of ${app.name}
+    </div>
+  `;
+
+  document.getElementById('apps-container').appendChild(appDiv);
+  app.element = appDiv;
+  app.opened = true;
+  app.focused = true;
+  app.minimized = false;
+
+  appDiv.querySelector('.minimize').onclick = (e) => {
+    e.stopPropagation();
+    minimizeApp(app);
+  };
+  appDiv.querySelector('.maximize').onclick = (e) => {
+    e.stopPropagation();
+    maximizeApp(app);
+  };
+  appDiv.querySelector('.close').onclick = (e) => {
+    e.stopPropagation();
+    closeApp(app);
+  };
+
+  appDiv.addEventListener('mousedown', (e) => {
+    if (!e.target.closest('button')) focusApp(app);
+  });
+  appDiv.addEventListener('touchstart', (e) => {
+    if (!e.target.closest('button')) focusApp(app);
+  });
+
+  makeDraggable(app);
+  focusApp(app);
+  updateTaskbar();
+}
+
+function focusApp(app) {
+  Object.values(apps).forEach(a => {
+    if (a.opened && a.element) {
+      a.focused = false;
+      a.element.classList.remove('focused');
+    }
+  });
+
+  app.focused = true;
+  app.minimized = false;
+  app.element.classList.remove('minimized');
+  app.element.classList.add('focused');
+  app.element.style.zIndex = ++zIndexCounter;
+  updateTaskbar();
+}
+
+function minimizeApp(app) {
+  app.minimized = true;
+  app.focused = false;
+  app.element.classList.add('minimized');
+  updateTaskbar();
+}
+
+function maximizeApp(app) {
+  if (app.element.dataset.maximized === "true") {
+    app.element.style.width = '300px';
+    app.element.style.height = '200px';
+    app.element.style.top = '50px';
+    app.element.style.left = '50px';
+    app.element.dataset.maximized = "false";
+  } else {
+    app.element.style.width = '100%';
+    app.element.style.height = `calc(100% - 40px)`;
+    app.element.style.top = '0';
+    app.element.style.left = '0';
+    app.element.dataset.maximized = "true";
+  }
+  focusApp(app);
+}
+
+function closeApp(app) {
+  if (app.element) {
+    app.element.remove();
+  }
+  app.opened = false;
+  app.focused = false;
+  app.minimized = false;
+  app.element = null;
+  updateTaskbar();
+}
+
+function updateTaskbar() {
+  Object.values(apps).forEach(app => {
+    const button = buttons[app.id];
+    button.classList.remove('focused');
+    const oldDot = button.querySelector('.dot');
+    if (oldDot) oldDot.remove();
+
+    if (!app.opened) {
+      // Closed app: no indicator
+    } else if (app.minimized) {
+      const dot = document.createElement('div');
+      dot.className = 'dot grey';
+      button.appendChild(dot);
+    } else if (app.focused) {
+      button.classList.add('focused');
+    } else {
+      const dot = document.createElement('div');
+      dot.className = 'dot green';
+      button.appendChild(dot);
+    }
+  });
+}
+
+function makeDraggable(app) {
+  const appDiv = app.element;
+  const header = appDiv.querySelector('.app-header');
+  let offsetX = 0, offsetY = 0, isDown = false;
+
+  function startDrag(x, y) {
+    if (appDiv.dataset.maximized === "true") return;
+    isDown = true;
+    offsetX = x - appDiv.offsetLeft;
+    offsetY = y - appDiv.offsetTop;
+  }
+
+  function moveDrag(x, y) {
+    if (isDown) {
+      let newLeft = x - offsetX;
+      let newTop = y - offsetY;
+      newLeft = Math.max(0, Math.min(newLeft, window.innerWidth - appDiv.offsetWidth));
+      newTop = Math.max(0, Math.min(newTop, window.innerHeight - appDiv.offsetHeight - 40));
+      appDiv.style.left = newLeft + 'px';
+      appDiv.style.top = newTop + 'px';
+    }
+  }
+
+  function stopDrag() {
+    isDown = false;
+  }
+
+  header.addEventListener('mousedown', (e) => {
+    if (e.target.closest('button')) return;
+    e.preventDefault();
+    startDrag(e.clientX, e.clientY);
+  });
+  document.addEventListener('mousemove', (e) => moveDrag(e.clientX, e.clientY));
+  document.addEventListener('mouseup', stopDrag);
+
+  header.addEventListener('touchstart', (e) => {
+    if (e.target.closest('button')) return;
+    startDrag(e.touches[0].clientX, e.touches[0].clientY);
+  });
+  document.addEventListener('touchmove', (e) => {
+    if (isDown) {
+      e.preventDefault();
+      moveDrag(e.touches[0].clientX, e.touches[0].clientY);
+    }
+  }, { passive: false });
+  document.addEventListener('touchend', stopDrag);
+}
+
+createTaskbarButtons();
+</script>
+
+</body>
+</html>
