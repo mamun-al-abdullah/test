@@ -15,7 +15,7 @@
       height: 100%;
     }
     body {
-      background: #ddd;
+      background: linear-gradient(purple, darkblue);
       font-family: sans-serif;
     }
     #taskbar {
@@ -24,7 +24,8 @@
       left: 0;
       right: 0;
       height: 40px;
-      background: #333;
+      background: #aaa4;
+			backdrop-filter : blur(20px);
       display: flex;
       align-items: center;
       padding: 0 10px;
@@ -71,7 +72,8 @@
     }
     .app {
       position: absolute;
-      background: white;
+      background: #aaa4;
+			backdrop-filter : blur(20px);
       box-shadow: 
         0 0 0 1px #666,
         2px 2px 8px rgba(0,0,0,0.3);
@@ -98,7 +100,7 @@
       transform: scale(1.05);
     }
     .app-header {
-      background: #444;
+      background: #aaa4;
       color: white;
       padding: 5px;
       cursor: move;
@@ -160,6 +162,7 @@
     }
     .maximized {
       box-shadow: none !important;
+      border-radius: 0 !important;
     }
     /* Resize handles */
     .resize-handle {
@@ -230,7 +233,8 @@
       left: 10px;
       width: 300px;
       max-height: 0;
-      background: rgba(51, 51, 51, 0.95);
+      background: rgba(51, 51, 51, 0.5);
+			backdrop-filter : blur(20px);
       border-radius: 8px 8px 0 0;
       padding: 0;
       display: flex;
@@ -350,8 +354,8 @@ const apps = {
         <circle cx="12" cy="12" r="3" fill="white"/>
       </svg>
     `,
-    windowState: calculateInitialPosition(300, 200),
-    initialWindowState: calculateInitialPosition(300, 200)
+    windowState: calculateInitialPosition(200, 200),
+    initialWindowState: calculateInitialPosition(200, 200)
   },
   "app2": { 
     id: "app2", 
