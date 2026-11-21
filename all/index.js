@@ -26,6 +26,10 @@ crn(`
 
 <a href="./app.html">test✅ responsive site</a>
 
+<a href="./ezycourse-money-flow.html">📘 EzyCourse money flow (student → school)</a>
+
+<a href="./ezycourse-platform-billing.html">📗 EzyCourse platform billing (school → EzyCourse, super admin, payouts)</a>
+
     </v>
 		</vs>
 	</v>
